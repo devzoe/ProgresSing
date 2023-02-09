@@ -11,6 +11,11 @@
 		2F80C78D2994E3C400184398 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78C2994E3C400184398 /* UIButton.swift */; };
 		2F80C78F2995741D00184398 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78E2995741D00184398 /* UIViewController.swift */; };
 		2F80C7912995759000184398 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7902995759000184398 /* BaseViewController.swift */; };
+		2F80C79329957DD300184398 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79229957DD300184398 /* VideoViewController.swift */; };
+		2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79429957E1E00184398 /* MyRecordViewController.swift */; };
+		2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79629957FBB00184398 /* ChartTableViewCell.swift */; };
+		2F80C79929957FBB00184398 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C79729957FBB00184398 /* ChartTableViewCell.xib */; };
+		2F80C79B2995836100184398 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79A2995836100184398 /* Chart.swift */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -31,6 +36,11 @@
 		2F80C78C2994E3C400184398 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		2F80C78E2995741D00184398 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2F80C7902995759000184398 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2F80C79229957DD300184398 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		2F80C79429957E1E00184398 /* MyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordViewController.swift; sourceTree = "<group>"; };
+		2F80C79629957FBB00184398 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		2F80C79729957FBB00184398 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
+		2F80C79A2995836100184398 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF3897029927BD20034729D /* MyRecordStoryboard.storyboard */,
+				2F80C79429957E1E00184398 /* MyRecordViewController.swift */,
 			);
 			path = MyRecord;
 			sourceTree = "<group>";
@@ -204,6 +215,10 @@
 			isa = PBXGroup;
 			children = (
 				2FF3897629927C300034729D /* VideoStoryboard.storyboard */,
+				2F80C79229957DD300184398 /* VideoViewController.swift */,
+				2F80C79629957FBB00184398 /* ChartTableViewCell.swift */,
+				2F80C79729957FBB00184398 /* ChartTableViewCell.xib */,
+				2F80C79A2995836100184398 /* Chart.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -271,6 +286,7 @@
 				2FF3895829926BD70034729D /* LaunchScreen.storyboard in Resources */,
 				2FF3895529926BD70034729D /* Assets.xcassets in Resources */,
 				2FF3896A29927B580034729D /* HomeStoryboard.storyboard in Resources */,
+				2F80C79929957FBB00184398 /* ChartTableViewCell.xib in Resources */,
 				2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */,
 				2FF3897129927BD20034729D /* MyRecordStoryboard.storyboard in Resources */,
 				2FF3896E29927B860034729D /* SettingStoryboard.storyboard in Resources */,
@@ -284,14 +300,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */,
 				2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */,
 				2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */,
 				2F80C78D2994E3C400184398 /* UIButton.swift in Sources */,
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
 				2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */,
+				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
+				2F80C79B2995836100184398 /* Chart.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
+				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
