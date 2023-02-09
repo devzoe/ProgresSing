@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78A2994E2BD00184398 /* HomeViewController.swift */; };
 		2F80C78D2994E3C400184398 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78C2994E3C400184398 /* UIButton.swift */; };
+		2F80C78F2995741D00184398 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78E2995741D00184398 /* UIViewController.swift */; };
+		2F80C7912995759000184398 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7902995759000184398 /* BaseViewController.swift */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		2F80C78A2994E2BD00184398 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F80C78C2994E3C400184398 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		2F80C78E2995741D00184398 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2F80C7902995759000184398 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 		2FF38963299272620034729D /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				2F80C7902995759000184398 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			children = (
 				2FC5F70329928E0D00631F1A /* UIFont.swift */,
 				2F80C78C2994E3C400184398 /* UIButton.swift */,
+				2F80C78E2995741D00184398 /* UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -283,7 +289,9 @@
 				2F80C78D2994E3C400184398 /* UIButton.swift in Sources */,
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
 				2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */,
+				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
+				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

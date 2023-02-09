@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="391" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-G0-5yV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9b-G0-5yV">
                                 <rect key="frame" x="0.0" y="103" width="391" height="1314"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDr-gv-gXJ">
@@ -67,7 +67,7 @@
                                                 <color key="textColor" name="secondTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LD-ho-wUV">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LD-ho-wUV">
                                                 <rect key="frame" x="10" y="145.33333333333334" width="381" height="50"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPL-2S-6l4">
@@ -141,7 +141,7 @@
                                                 <viewLayoutGuide key="contentLayoutGuide" id="5SJ-Rw-GSe"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="U3T-t0-0ZW"/>
                                             </scrollView>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUY-sV-4jO">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUY-sV-4jO">
                                                 <rect key="frame" x="10" y="205.33333333333331" width="381" height="329.99999999999994"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIl-Fs-SUD">
@@ -1121,7 +1121,7 @@
                                                 <color key="textColor" name="secondTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG3-hK-Cmc">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hG3-hK-Cmc">
                                                 <rect key="frame" x="10" y="609" width="381" height="270"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-Th-B49">
@@ -1223,7 +1223,7 @@
                                                 <viewLayoutGuide key="contentLayoutGuide" id="4fW-DJ-vgO"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="FZW-tH-5jJ"/>
                                             </scrollView>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flq-ae-u3u">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flq-ae-u3u">
                                                 <rect key="frame" x="10" y="909" width="381" height="184"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KoW-XN-sLP">
@@ -1383,6 +1383,22 @@
                         <outlet property="balladButton" destination="Ee9-sW-gPM" id="shV-wT-YVT"/>
                         <outlet property="danceButton" destination="TwR-BT-QgK" id="M8D-mc-yYD"/>
                         <outlet property="hiphopButton" destination="HlA-hK-kKJ" id="nOH-CI-kOZ"/>
+                        <outlet property="playButton1" destination="gC5-jp-Dho" id="tMk-f8-cDy"/>
+                        <outlet property="playButton10" destination="GZI-F4-Bgv" id="bv2-rf-sFG"/>
+                        <outlet property="playButton11" destination="siL-z4-5ik" id="lPC-TR-vux"/>
+                        <outlet property="playButton12" destination="Wsc-9r-Uga" id="pYX-aP-7LT"/>
+                        <outlet property="playButton13" destination="5jq-VW-rIK" id="sw0-JL-0Ov"/>
+                        <outlet property="playButton14" destination="sEg-Ei-EFW" id="gPI-Uk-UF6"/>
+                        <outlet property="playButton15" destination="4tF-RF-hTN" id="mIa-g1-5lv"/>
+                        <outlet property="playButton16" destination="BsX-zs-Vt6" id="9ff-he-H4m"/>
+                        <outlet property="playButton2" destination="PQM-m1-MXM" id="Djj-gn-hQ7"/>
+                        <outlet property="playButton3" destination="Umg-cj-rji" id="oCW-5F-gxw"/>
+                        <outlet property="playButton4" destination="f9T-jw-sys" id="6Dq-Y8-6Fl"/>
+                        <outlet property="playButton5" destination="jcy-UY-6nY" id="DKY-Ah-guw"/>
+                        <outlet property="playButton6" destination="6vB-FD-8RO" id="QSV-gv-Cbb"/>
+                        <outlet property="playButton7" destination="hwU-pJ-Jew" id="6KM-uF-ujT"/>
+                        <outlet property="playButton8" destination="NRf-To-JiF" id="OYX-Iw-4Lj"/>
+                        <outlet property="playButton9" destination="sN8-6p-4V8" id="3sx-jy-mPe"/>
                         <outlet property="popsongButton" destination="p1h-Bu-gTi" id="ZBA-sa-fQS"/>
                         <outlet property="popularityButton" destination="j6K-A1-GZb" id="SSW-N2-nZ9"/>
                     </connections>
