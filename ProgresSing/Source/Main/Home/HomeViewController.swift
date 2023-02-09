@@ -12,7 +12,6 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var popularityButton: UIButton!
     @IBOutlet weak var balladButton: UIButton!
     @IBOutlet weak var danceButton: UIButton!
-    
     @IBOutlet weak var hiphopButton: UIButton!
     @IBOutlet weak var popsongButton: UIButton!
     
