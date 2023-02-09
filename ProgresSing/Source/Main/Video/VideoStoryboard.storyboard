@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,17 +28,114 @@
             </objects>
             <point key="canvasLocation" x="-633" y="-2"/>
         </scene>
-        <!--View Controller-->
+        <!--Video View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="VideoViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuV-Xr-fNP">
+                                <rect key="frame" x="10" y="103" width="383" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSp-wS-L5r">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="srL-Ym-sv5">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmm-zW-730">
+                                                        <rect key="frame" x="0.0" y="0.0" width="76" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="인기">
+                                                            <color key="titleColor" name="textColor"/>
+                                                            <color key="titleShadowColor" name="textColor"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwB-hs-Hti">
+                                                        <rect key="frame" x="81" y="0.0" width="76" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="발라드">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrv-gu-2R6">
+                                                        <rect key="frame" x="162" y="0.0" width="76" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="댄스">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jy-Hw-hK4">
+                                                        <rect key="frame" x="243" y="0.0" width="76" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="힙합">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECY-bs-sct">
+                                                        <rect key="frame" x="324" y="0.0" width="76" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="팝송">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="srL-Ym-sv5" firstAttribute="top" secondItem="rSp-wS-L5r" secondAttribute="top" id="2ly-Sv-vEC"/>
+                                            <constraint firstAttribute="width" constant="400" id="F4g-fD-6gc"/>
+                                            <constraint firstAttribute="bottom" secondItem="srL-Ym-sv5" secondAttribute="bottom" id="YjZ-Wh-2RU"/>
+                                            <constraint firstItem="srL-Ym-sv5" firstAttribute="leading" secondItem="rSp-wS-L5r" secondAttribute="leading" id="or7-fS-XYW"/>
+                                            <constraint firstAttribute="height" constant="50" id="yz6-MP-xYw"/>
+                                            <constraint firstAttribute="trailing" secondItem="srL-Ym-sv5" secondAttribute="trailing" id="zic-QN-5PF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="rSp-wS-L5r" firstAttribute="leading" secondItem="GEO-qV-nZS" secondAttribute="leading" id="7zI-7D-2ST"/>
+                                    <constraint firstItem="GEO-qV-nZS" firstAttribute="top" secondItem="rSp-wS-L5r" secondAttribute="top" id="8Py-dY-kjV"/>
+                                    <constraint firstItem="rSp-wS-L5r" firstAttribute="trailing" secondItem="GEO-qV-nZS" secondAttribute="trailing" id="Pk6-pX-N8W"/>
+                                    <constraint firstItem="rSp-wS-L5r" firstAttribute="bottom" secondItem="GEO-qV-nZS" secondAttribute="bottom" id="Wno-pK-Tae"/>
+                                    <constraint firstItem="rSp-wS-L5r" firstAttribute="height" secondItem="1E4-tO-jX7" secondAttribute="height" id="dQX-bR-NhN"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="GEO-qV-nZS"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="1E4-tO-jX7"/>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QG2-UD-Vo5">
+                                <rect key="frame" x="0.0" y="163" width="393" height="606"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QG2-UD-Vo5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bdj-Lg-aBm"/>
+                            <constraint firstItem="QG2-UD-Vo5" firstAttribute="top" secondItem="TuV-Xr-fNP" secondAttribute="bottom" constant="10" id="fUC-JR-h4O"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QG2-UD-Vo5" secondAttribute="trailing" id="gpR-h2-Eix"/>
+                            <constraint firstItem="TuV-Xr-fNP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="qFk-83-Ns7"/>
+                            <constraint firstItem="TuV-Xr-fNP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="v8k-eC-4jG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="QG2-UD-Vo5" secondAttribute="bottom" id="wbO-YL-GT7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TuV-Xr-fNP" secondAttribute="trailing" id="yao-Ju-zaq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DDi-qL-6RJ"/>
+                    <connections>
+                        <outlet property="balladButton" destination="rwB-hs-Hti" id="nGQ-Or-NkL"/>
+                        <outlet property="chartTableView" destination="QG2-UD-Vo5" id="9JY-hg-7du"/>
+                        <outlet property="danceButton" destination="Mrv-gu-2R6" id="ZMu-F5-P9v"/>
+                        <outlet property="hiphopButton" destination="2Jy-Hw-hK4" id="Daa-zr-XS7"/>
+                        <outlet property="popsongButton" destination="ECY-bs-sct" id="xZD-R4-CFw"/>
+                        <outlet property="popularityButton" destination="kmm-zW-730" id="El2-jC-4YW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,6 +144,9 @@
     </scenes>
     <resources>
         <image name="music.mic" catalog="system" width="128" height="119"/>
+        <namedColor name="textColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
