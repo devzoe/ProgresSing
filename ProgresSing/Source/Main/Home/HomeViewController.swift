@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var hiphopButton: UIButton!
     @IBOutlet weak var popsongButton: UIButton!
     
+    @IBOutlet weak var firstScrollView: UIScrollView!
+    @IBOutlet weak var popularityButtonLeading: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,16 +27,4 @@ class HomeViewController: UIViewController {
         self.hiphopButton.setCornerRadius(25)
         self.popsongButton.setCornerRadius(25)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
