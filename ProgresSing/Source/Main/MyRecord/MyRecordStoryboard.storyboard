@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5TK-Qb-PiU">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,14 +17,54 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-5B-guP">
+                                <rect key="frame" x="10" y="103" width="373" height="1"/>
+                                <color key="backgroundColor" name="secondBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bPl-iw-IAm"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoH-KI-Yrf">
+                                <rect key="frame" x="10" y="425.66666666666669" width="373" height="1"/>
+                                <color key="backgroundColor" name="secondBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="BFR-UP-c6O"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="재생목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFs-Mc-Bh3">
+                                <rect key="frame" x="10" y="119" width="69.333333333333329" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="녹음목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg3-mr-TDO">
+                                <rect key="frame" x="10" y="441.66666666666669" width="69.333333333333329" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gFs-Mc-Bh3" firstAttribute="leading" secondItem="uAc-5B-guP" secondAttribute="leading" id="6S1-s4-h1P"/>
+                            <constraint firstItem="uAc-5B-guP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="BW4-lS-h8Q"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uAc-5B-guP" secondAttribute="trailing" constant="10" id="Cuc-2O-K88"/>
+                            <constraint firstItem="hoH-KI-Yrf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="Iod-QO-yNE"/>
+                            <constraint firstItem="gFs-Mc-Bh3" firstAttribute="top" secondItem="uAc-5B-guP" secondAttribute="bottom" constant="15" id="MCk-le-Vg9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hoH-KI-Yrf" secondAttribute="trailing" constant="10" id="Mzh-Vh-aBz"/>
+                            <constraint firstItem="Dg3-mr-TDO" firstAttribute="top" secondItem="hoH-KI-Yrf" secondAttribute="bottom" constant="15" id="Rgm-xx-QUa"/>
+                            <constraint firstItem="uAc-5B-guP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Slz-ht-us0"/>
+                            <constraint firstItem="Dg3-mr-TDO" firstAttribute="leading" secondItem="hoH-KI-Yrf" secondAttribute="leading" id="kmg-54-pH0"/>
+                            <constraint firstItem="hoH-KI-Yrf" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="sIS-g8-3C9"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pWR-qT-BdC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="315" y="103"/>
+            <point key="canvasLocation" x="313.74045801526717" y="102.8169014084507"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DFR-7q-IxC">
@@ -46,6 +87,12 @@
     </scenes>
     <resources>
         <image name="tray.2" catalog="system" width="128" height="115"/>
+        <namedColor name="secondBackgroundColor">
+            <color red="0.85100001096725464" green="0.85100001096725464" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

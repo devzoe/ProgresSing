@@ -33,5 +33,14 @@ class ChartTableViewCell: UITableViewCell {
         self.titleLabel.text = data.title
         self.artistLabel.text = data.artist
     }
+    public func get2(data: Search) {
+        DispatchQueue.main.async {
+            self.playButton.setCornerRadius(5)
+        }
+        self.albumImageView.image = UIImage(named: data.imageName)
+        self.rankLabel.text = data.rank
+        self.titleLabel.text = data.title
+        self.artistLabel.text = data.artist
+    }
     
 }

@@ -16,6 +16,7 @@
 		2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79629957FBB00184398 /* ChartTableViewCell.swift */; };
 		2F80C79929957FBB00184398 /* ChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C79729957FBB00184398 /* ChartTableViewCell.xib */; };
 		2F80C79B2995836100184398 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79A2995836100184398 /* Chart.swift */; };
+		2F80C79D29958D3900184398 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79C29958D3900184398 /* Search.swift */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		2F80C79629957FBB00184398 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		2F80C79729957FBB00184398 /* ChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartTableViewCell.xib; sourceTree = "<group>"; };
 		2F80C79A2995836100184398 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		2F80C79C29958D3900184398 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				2FF3897329927BFA0034729D /* SearchStoryboard.storyboard */,
 				2FC5F7052993863000631F1A /* SearchViewController.swift */,
+				2F80C79C29958D3900184398 /* Search.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
+				2F80C79D29958D3900184398 /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
