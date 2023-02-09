@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ox1-wT-TM0">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="3oK-nl-9tt">
+            <objects>
+                <navigationController storyboardIdentifier="SearchNavigationController" id="Ox1-wT-TM0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="uaZ-TZ-qpX"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PzJ-zc-QHp">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="We4-hQ-MGg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlE-Ab-ojh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-634" y="-2"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SearchViewController" customModule="Javis" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIy-P2-YNA">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="검색어를 입력하세요" translatesAutoresizingMaskIntoConstraints="NO" id="ViD-S6-672">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="kbP-H3-68P"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-eI-Bp0">
+                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="csX-J9-B9L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5PD-eI-Bp0" secondAttribute="bottom" id="HPc-6Z-kdi"/>
+                            <constraint firstItem="5PD-eI-Bp0" firstAttribute="trailing" secondItem="csX-J9-B9L" secondAttribute="trailing" id="fYC-zv-7rj"/>
+                            <constraint firstItem="ViD-S6-672" firstAttribute="trailing" secondItem="csX-J9-B9L" secondAttribute="trailing" id="ht1-dl-74K"/>
+                            <constraint firstItem="5PD-eI-Bp0" firstAttribute="leading" secondItem="csX-J9-B9L" secondAttribute="leading" id="lkc-de-4xm"/>
+                            <constraint firstItem="ViD-S6-672" firstAttribute="leading" secondItem="csX-J9-B9L" secondAttribute="leading" id="oeW-VX-NnW"/>
+                            <constraint firstItem="ViD-S6-672" firstAttribute="top" secondItem="csX-J9-B9L" secondAttribute="top" id="uLO-6I-sYv"/>
+                            <constraint firstItem="5PD-eI-Bp0" firstAttribute="top" secondItem="ViD-S6-672" secondAttribute="bottom" constant="10" id="vE6-II-RmC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xD1-Zb-6kx"/>
+                    <connections>
+                        <outlet property="searchBar" destination="ViD-S6-672" id="MLg-Cg-473"/>
+                        <outlet property="searchTableView" destination="5PD-eI-Bp0" id="YzP-qi-bAA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
