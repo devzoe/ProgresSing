@@ -10,6 +10,8 @@ import UIKit
 class SearchViewController: BaseViewController {
     let searchData = SearchService()
     let chartCell = "ChartTableViewCell"
+    let searchCell = "SearchTableViewCell"
+    let searchWord : [String] = ["너의 모든 순간", "Ditto", "OMG", "Hype boy", "사건의 지평선", "Attention", "After Like"]
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
@@ -21,6 +23,7 @@ class SearchViewController: BaseViewController {
         //self.searchTableView.isHidden = true
         self.setUpSearchTableView()
         self.searchTableView.keyboardDismissMode = .onDrag
+        self.searchBar.delegate = self
     }
     private func setUpSearchTableView() {
         searchTableView.register(
@@ -50,4 +53,44 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return  (searchTableView.bounds.height) * 0.1
     }
      
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    // 서치바에서 검색을 시작할 때 호출
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //self.isFiltering = true
+        self.searchBar.showsCancelButton = true
+        //self.tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //guard let text = searchController.searchBar.text?.lowercased() else { return }
+        //self.filterredArr = self.arr.filter { $0.localizedCaseInsensitiveContains(text) }
+       
+        //self.tableView.reloadData()
+    }
+    
+    // 서치바에서 검색버튼을 눌렀을 때 호출
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+
+        //self.tableView.reloadData()
+    }
+    
+    // 서치바에서 취소 버튼을 눌렀을 때 호출
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+        //self.tableView.reloadData()
+    }
+    
+    // 서치바 검색이 끝났을 때 호출
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //self.tableView.reloadData()
+    }
+    
+    // 서치바 키보드 내리기
+    override func dismissKeyboard() {
+        searchBar.resignFirstResponder()
+    }
 }

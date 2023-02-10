@@ -32,13 +32,26 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var playButton15: UIButton!
     @IBOutlet weak var playButton16: UIButton!
     
+    @IBOutlet weak var lessonLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
         // Dismiss Keyboard When Tapped Arround
         self.dismissKeyboardWhenTappedAround()
+        // Initialize Tap Gesture Recognizer
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        // Add Tap Gesture Recognizer
+        self.lessonLabel.addGestureRecognizer(tapGestureRecognizer)
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .white
+        self.navigationItem.backBarButtonItem = backBarButtonItem
         
+    }
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("push")
+        let lessonVideoVC = self.storyboard?.instantiateViewController(withIdentifier: "LessonVideoViewController") as! LessonVideoViewController
+        self.navigationController?.pushViewController(lessonVideoVC, animated: true)
     }
     
     func setUpUI() {
