@@ -31,6 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    var shouldSupportAllOrientation = true
 
+     //화면회전을 잠그고 고정할 목적의 플래그 변수를 추가한다.
+
+
+
+        func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            if (shouldSupportAllOrientation == true){
+                return UIInterfaceOrientationMask.portrait
+            
+            }
+            return UIInterfaceOrientationMask.landscapeRight
+        }
 }
 

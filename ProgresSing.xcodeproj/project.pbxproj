@@ -20,6 +20,8 @@
 		2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C79E2995931200184398 /* SearchTableViewCell.swift */; };
 		2F80C7A12995931200184398 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C79F2995931200184398 /* SearchTableViewCell.xib */; };
 		2F80C7A329959E4B00184398 /* LessonVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7A229959E4B00184398 /* LessonVideoViewController.swift */; };
+		2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7B5299A567700184398 /* VocalLessonViewController.swift */; };
+		2F80C7B8299A60B100184398 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7B7299A60B100184398 /* Device.swift */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -49,6 +51,8 @@
 		2F80C79E2995931200184398 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2F80C79F2995931200184398 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		2F80C7A229959E4B00184398 /* LessonVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVideoViewController.swift; sourceTree = "<group>"; };
+		2F80C7B5299A567700184398 /* VocalLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonViewController.swift; sourceTree = "<group>"; };
+		2F80C7B7299A60B100184398 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		2FF38960299272290034729D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2F80C7B7299A60B100184398 /* Device.swift */,
 				2FF389672992729F0034729D /* Extension */,
 			);
 			path = Util;
@@ -216,6 +221,7 @@
 			children = (
 				2FF3897329927BFA0034729D /* SearchStoryboard.storyboard */,
 				2FC5F7052993863000631F1A /* SearchViewController.swift */,
+				2F80C7B5299A567700184398 /* VocalLessonViewController.swift */,
 				2F80C79E2995931200184398 /* SearchTableViewCell.swift */,
 				2F80C79F2995931200184398 /* SearchTableViewCell.xib */,
 				2F80C79C29958D3900184398 /* Search.swift */,
@@ -316,6 +322,7 @@
 				2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */,
 				2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */,
 				2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */,
+				2F80C7B8299A60B100184398 /* Device.swift in Sources */,
 				2F80C78D2994E3C400184398 /* UIButton.swift in Sources */,
 				2F80C7A329959E4B00184398 /* LessonVideoViewController.swift in Sources */,
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
@@ -329,6 +336,7 @@
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
 				2F80C79D29958D3900184398 /* Search.swift in Sources */,
+				2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
