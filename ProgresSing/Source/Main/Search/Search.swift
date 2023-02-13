@@ -20,8 +20,8 @@ struct SearchService {
     
     init() {
         [
-            Search(imageName: "Ditto", rank: "1", title: "Ditto", artist: "NewJeans"),
-            Search(imageName: "Ditto", rank: "2", title: "OMG", artist: "NewJeans"),
+            Search(imageName: "fine", rank: "1", title: "fine", artist: "태연"),
+
             
         ].forEach { search in
             self.searchList.append(search)
