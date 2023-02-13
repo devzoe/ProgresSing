@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progressing" translatesAutoresizingMaskIntoConstraints="NO" id="DIa-KM-2JY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Progressing 1" translatesAutoresizingMaskIntoConstraints="NO" id="DIa-KM-2JY">
                                 <rect key="frame" x="19.666666666666657" y="331.66666666666669" width="353.66666666666674" height="188.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DIa-KM-2JY" secondAttribute="height" multiplier="15:8" id="2Qg-Gu-vcg"/>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="progressing" width="412" height="304"/>
+        <image name="Progressing 1" width="221" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
