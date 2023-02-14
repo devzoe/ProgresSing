@@ -24,6 +24,8 @@
 		2F80C7B8299A60B100184398 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7B7299A60B100184398 /* Device.swift */; };
 		2F80C7BB299A89C800184398 /* Lyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7BA299A89C800184398 /* Lyrics.swift */; };
 		2F80C7BF299A8F2700184398 /* Fine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7BE299A8F2700184398 /* Fine.mp3 */; };
+		2F80C7C2299B67D600184398 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C1299B67D600184398 /* AudioController.swift */; };
+		2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C4299B70CA00184398 /* new_model.mlpackage */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 		2F80C7B7299A60B100184398 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2F80C7BA299A89C800184398 /* Lyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyrics.swift; sourceTree = "<group>"; };
 		2F80C7BE299A8F2700184398 /* Fine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fine.mp3; sourceTree = "<group>"; };
+		2F80C7C1299B67D600184398 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		2F80C7C4299B70CA00184398 /* new_model.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = new_model.mlpackage; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		2F80C7B9299A895400184398 /* VocalLesson */ = {
 			isa = PBXGroup;
 			children = (
+				2F80C7C0299B67AE00184398 /* Audio */,
 				2F80C7B5299A567700184398 /* VocalLessonViewController.swift */,
 				2F80C7BA299A89C800184398 /* Lyrics.swift */,
 			);
@@ -102,6 +107,22 @@
 				2F80C7BE299A8F2700184398 /* Fine.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		2F80C7C0299B67AE00184398 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				2F80C7C1299B67D600184398 /* AudioController.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		2F80C7C3299B70AC00184398 /* AIModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F80C7C4299B70CA00184398 /* new_model.mlpackage */,
+			);
+			path = AIModel;
 			sourceTree = "<group>";
 		};
 		2FF3893F29926BD50034729D = {
@@ -139,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF38965299272930034729D /* Constant.swift */,
+				2F80C7C3299B70AC00184398 /* AIModel */,
 				2F80C7BD299A8F0400184398 /* Audio */,
 				2FF38962299272590034729D /* Secret */,
 				2FF38964299272700034729D /* Font */,
@@ -352,10 +374,12 @@
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
 				2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */,
 				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
+				2F80C7C2299B67D600184398 /* AudioController.swift in Sources */,
 				2F80C79B2995836100184398 /* Chart.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
+				2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
@@ -510,6 +534,7 @@
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProgresSing/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "사용자의 음성 인식을 위한 마이크 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainStoryboard;
@@ -543,6 +568,7 @@
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProgresSing/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "사용자의 음성 인식을 위한 마이크 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainStoryboard;
