@@ -6,37 +6,46 @@
 //
 
 import AVFoundation
+import UIKit
+import CoreML
 
 class AudioController {
     var audioEngine = AVAudioEngine()
-    var audioPlayerNode = AVAudioPlayerNode()
-    var audioFile: AVAudioFile?
+    var audioInputNode: AVAudioInputNode?
+    let model = try! new_model2(configuration: MLModelConfiguration())
     
-    let sampleRate: Double = 44100
-    let yinThreshold: Double = 0.1
-    let yinBufferLength: Int = 1024
-    /*
-    func playAndCheckPitch() {
-        audioFile = try! AVAudioFile(forReading: URL(fileURLWithPath: "path/to/audiofile.mp3"))
+    func startCapturingAudio() {
+        audioInputNode = audioEngine.inputNode
         
-        audioEngine.attach(audioPlayerNode)
-        audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: audioFile?.processingFormat)
-        
-        try! audioEngine.start()
-        audioPlayerNode.play()
-        
-        let yin = YIN(sampleRate: sampleRate, threshold: yinThreshold, bufferSize: yinBufferLength)
-        
-        audioPlayerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount(yinBufferLength), format: audioFile?.processingFormat) { (buffer, time) in
-            let floatArray = Array(UnsafeBufferPointer(start: buffer.floatChannelData?[0], count:Int(buffer.frameLength)))
-            
-            if let pitch = yin.getPitch(floatArray) {
-                print("Current pitch: \(pitch) Hz")
+        let audioFormat = audioInputNode?.outputFormat(forBus: 0)
+        audioInputNode?.installTap(onBus: 0, bufferSize: 1024, format: audioFormat) { buffer, time in
+            do{
+                let audioData = buffer.floatChannelData![0]
+                let audioDataPtr = UnsafeMutablePointer<Float>(mutating: audioData)
+                let audioSamples = try MLMultiArray(dataPointer: audioDataPtr, shape: [1024], dataType: .float32, strides: [1])
+                
+                let modelInput = new_model2Input(conv2d_4_input: audioSamples)
+                if let modelOutput = try? self.model.prediction(input: modelInput) {
+                    print(modelOutput.Identity)
+                }
+            }catch( _){
+                print("error in install Tab")
             }
         }
+        
+        try! audioEngine.start()
     }
-     */
+    func stopCapturingAudio() {
+        audioInputNode?.removeTap(onBus: 0)
+        audioEngine.stop()
+    }
+    
 }
+
+
+ 
+
+
 
 
 

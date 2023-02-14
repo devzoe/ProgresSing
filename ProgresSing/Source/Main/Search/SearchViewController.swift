@@ -91,10 +91,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             print("search word")
         case false :
             print("chart")
+            
             let vocalLessonVC = self.storyboard?.instantiateViewController(withIdentifier: "VocalLessonViewController") as! VocalLessonViewController
             self.tabBarController?.tabBar.isHidden = true
             appDelegate.shouldSupportAllOrientation = false
             self.navigationController?.pushViewController(vocalLessonVC, animated: true)
+            
+            
             
         }
     }
