@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class HomeViewController: BaseViewController {
 
@@ -46,7 +47,8 @@ class HomeViewController: BaseViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .white
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        
+
+        self.requestMicrophonePermission()
     }
     @objc func didTapView(_ sender: UITapGestureRecognizer) {
         print("push")
@@ -76,6 +78,15 @@ class HomeViewController: BaseViewController {
         self.playButton14.setCornerRadius(5)
         self.playButton15.setCornerRadius(5)
         self.playButton16.setCornerRadius(5)
+    }
+    func requestMicrophonePermission(){
+        AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+            if granted {
+                print("Mic: 권한 허용")
+            } else {
+                print("Mic: 권한 거부")
+            }
+        })
     }
 }
 
