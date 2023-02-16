@@ -1,0 +1,20 @@
+PODS:
+  - SnapKit (5.6.0)
+  - SwiftAudioPlayer (7.6.0)
+
+DEPENDENCIES:
+  - SnapKit (~> 5.6.0)
+  - SwiftAudioPlayer
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+    - SwiftAudioPlayer
+
+SPEC CHECKSUMS:
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
+
+PODFILE CHECKSUM: 54f93680e0b03670adcea516ed2e0224ed525fff
+
+COCOAPODS: 1.11.3

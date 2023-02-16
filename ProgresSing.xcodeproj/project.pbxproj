@@ -27,6 +27,8 @@
 		2F80C7C2299B67D600184398 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C1299B67D600184398 /* AudioController.swift */; };
 		2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C4299B70CA00184398 /* new_model.mlpackage */; };
 		2F80C7CE299BD08B00184398 /* new_model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CD299BD08B00184398 /* new_model2.mlmodel */; };
+		2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CF299CF4D100184398 /* LyricLabel.swift */; };
+		2F80C7D6299D391D00184398 /* Fine-Melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -67,6 +69,8 @@
 		2F80C7C8299BCB4200184398 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		2F80C7CA299BCB4B00184398 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2F80C7CD299BD08B00184398 /* new_model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = new_model2.mlmodel; path = "../../../../../../Downloads/13장/미션/Audio/new_model2.mlmodel"; sourceTree = "<group>"; };
+		2F80C7CF299CF4D100184398 /* LyricLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLabel.swift; sourceTree = "<group>"; };
+		2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Fine-Melody.mp3"; path = "../../../../../../Downloads/Fine-Melody.mp3"; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		2F80C7BD299A8F0400184398 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */,
 				2F80C7BE299A8F2700184398 /* Fine.mp3 */,
 			);
 			path = Audio;
@@ -194,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				2F80C7B7299A60B100184398 /* Device.swift */,
+				2F80C7CF299CF4D100184398 /* LyricLabel.swift */,
 				2FF389672992729F0034729D /* Extension */,
 			);
 			path = Util;
@@ -382,6 +388,7 @@
 				2FF3895529926BD70034729D /* Assets.xcassets in Resources */,
 				2FF3896A29927B580034729D /* HomeStoryboard.storyboard in Resources */,
 				2F80C79929957FBB00184398 /* ChartTableViewCell.xib in Resources */,
+				2F80C7D6299D391D00184398 /* Fine-Melody.mp3 in Resources */,
 				2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */,
 				2FF3897129927BD20034729D /* MyRecordStoryboard.storyboard in Resources */,
 				2FF3896E29927B860034729D /* SettingStoryboard.storyboard in Resources */,
@@ -459,6 +466,7 @@
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
+				2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */,
 				2F80C79D29958D3900184398 /* Search.swift in Sources */,
 				2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */,
 			);

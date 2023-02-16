@@ -11,23 +11,32 @@ import CoreML
 import Vision
 import AVKit
 import SoundAnalysis
+import SnapKit
 
 
 class VocalLessonViewController: BaseViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let audioController : AudioController = AudioController()
+    let lyrics : Lyrics = Lyrics()
     
     var audioPlayer : AVAudioPlayer!
     var audioFile : URL!
     let MAX_VOLUME : Float = 5.0
     var playTimer : Timer!
     let timePlayerSelector:Selector = #selector(VocalLessonViewController.updatePlayTime)
+    let referenceFrequency: Double = 440 // Hz
 
     var audioRecorder : AVAudioRecorder!
     var recordFile :URL!
     var recordTimer : Timer!
     let timeRecordSelector:Selector = #selector(VocalLessonViewController.updateRecordTime)
     
+    var progressTimer1 = Timer()
+    var secondsPassed1 : Float = 0
+    var totalTime1 : Float = 0
+    var progressTimer2 = Timer()
+    var secondsPassed2 : Float = 0
+    var totalTime2 : Float = 0
     
     // MARK: audio engine property
     private let audioEngine = AVAudioEngine()
@@ -36,21 +45,52 @@ class VocalLessonViewController: BaseViewController {
     //var resultsObserver = ResultsObserver()
     let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
     
-    
+    let strokeTextAttributes = [
+      NSAttributedString.Key.strokeColor : UIColor.white,
+      NSAttributedString.Key.foregroundColor : UIColor.blue,
+      NSAttributedString.Key.strokeWidth : -4.0,
+      NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+      as [NSAttributedString.Key : Any]
+    let defaultTextAttributes = [
+      NSAttributedString.Key.strokeColor : UIColor.white,
+      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeWidth : -4.0,
+      NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+      as [NSAttributedString.Key : Any]
+
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var koreanLirics1: UILabel!
     @IBOutlet weak var koreanLirics2: UILabel!
     
+    @IBOutlet weak var progress1: UIProgressView!
+    @IBOutlet weak var progress2: UIProgressView!
+    lazy var lyric1 = LyricLabel()
+    var timer = Timer()
+    var lyricSeconds : Float = 0
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
          }
+    /*
+    func setUI(){
+        self.view.addSubview(lyric1)
+        lyric1.snp.makeConstraints { make in
+            make.leading.equalTo(progress1)
+            make.top.equalToSuperview()
+        }
+        lyric1.textColor = .white
+        lyric1.font = .systemFont(ofSize: 50)
+        lyric1.color = .blue
+    }
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.setUI()
         self.navigationController?.navigationBar.isHidden = true
         self.backgroundImageView.image = UIImage(named: "lessonBackground")
         self.backgroundImageView.transform = self.backgroundImageView.transform.rotated(by: .pi/2 * 3)
+        self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[0], attributes: defaultTextAttributes)
+        self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[1], attributes: defaultTextAttributes)
         
         //resultsObserver.delegate = self
         //inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
@@ -65,7 +105,7 @@ class VocalLessonViewController: BaseViewController {
         self.startRecord()
         
         //self.startAudioEngine()
-        self.audioController.startCapturingAudio()
+        //xself.audioController.startCapturingAudio()
         
        
     }
@@ -86,21 +126,76 @@ class VocalLessonViewController: BaseViewController {
 
 extension VocalLessonViewController: AVAudioPlayerDelegate {
     func selectAudioFile() {
-        audioFile = Bundle.main.url(forResource: "Fine", withExtension: "mp3")
+        audioFile = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")
     }
     @objc func updatePlayTime() {
+        print("play time : \(audioPlayer.currentTime)")
         let currentTime = convertNSTimeInterval2String(audioPlayer.currentTime)
-        startTimeCheck(.time1, currentTime: currentTime)
-        endTimeCheck(.time1, currentTime: currentTime)
+        for i in 0..<lyrics.startLyricsTime1.count {
+            
+            self.startTimeCheck1(i, lyrics.startLyricsTime1[i], currentTime: currentTime)
+            self.endTimeCheck1(lyrics.endLyricsTime1[i], currentTime: currentTime)
+            self.startTimeCheck2(i, lyrics.startLyricsTime2[i], currentTime: currentTime)
+            self.endTimeCheck2(lyrics.endLyricsTime2[i], currentTime: currentTime)
+            
+        }
+        
     }
-    func startTimeCheck(_ lyricsTime: StartLyricsTime, currentTime : String) {
-        if (lyricsTime.rawValue == currentTime) {
-            self.koreanLirics1.textColor = .blue
+    func startTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
+        if (lyricsTime == currentTime) {
+            //self.koreanLirics1.textColor = .blue
+            
+            //self.koreanLirics1.text = lyrics.koreanLyrics[index*2]
+            //self.koreanLirics2.text = lyrics.koreanLyrics[index*2+1]
+            self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2], attributes: strokeTextAttributes)
+            self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: defaultTextAttributes)
+                                               
+            DispatchQueue.main.async { [self] in
+                self.progressTimer1.invalidate()
+                self.progress1.progress = 0.0
+                self.secondsPassed1 = 0
+                self.progressTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+                self.totalTime1 = self.convertString2Time(self.lyrics.endLyricsTime1[index]) - self.convertString2Time(lyricsTime)
+                /*
+                self.lyric1.text = self.lyrics.koreanLyrics[index*2]
+                let timer = Timer.scheduledTimer(timeInterval: 1.0/Double(totalTime1), target: self, selector: #selector(update), userInfo: nil, repeats: true)
+                 */
+            }
+            
+        
         }
     }
-    func endTimeCheck(_ lyricsTime: EndLyricsTime, currentTime : String) {
-        if (lyricsTime.rawValue == currentTime) {
-            self.koreanLirics1.textColor = .white
+    /*
+    @objc func update(){
+        lyric1.progress += 1
+       
+    }
+     */
+
+    @objc func updateTimer() {
+        if secondsPassed1 < totalTime1 {
+            secondsPassed1 += 0.1
+            progress1.progress = Float(secondsPassed1) / Float(totalTime1)
+        } else {
+            progressTimer1.invalidate()
+        }
+        
+    }
+    func endTimeCheck1(_ lyricsTime: String, currentTime : String) {
+        if (lyricsTime == currentTime) {
+            //self.koreanLirics1.textColor = .white
+        }
+    }
+    func startTimeCheck2(_ index : Int,_ lyricsTime: String, currentTime : String) {
+        if (lyricsTime == currentTime) {
+            //self.koreanLirics2.textColor = .blue
+            self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+2], attributes: defaultTextAttributes)
+            self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: strokeTextAttributes)
+        }
+    }
+    func endTimeCheck2(_ lyricsTime: String, currentTime : String) {
+        if (lyricsTime == currentTime) {
+            //self.koreanLirics2.textColor = .white
         }
     }
     func convertNSTimeInterval2String(_ time:TimeInterval) -> String {
@@ -109,12 +204,23 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         let strTime = String(format: "%02d:%02d", min, sec)
         return strTime
     }
+    func convertString2Time(_ time:String) -> Float {
+        let components = time.split { $0 == ":" } .map { (x) -> Float in return Float(String(x))! }
+
+        let hours = components[0]
+        let minutes = components[1]
+        let result = hours * 60 + minutes
+        print("real time : \(result)")
+        return result
+    }
     func initPlay() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioFile)
         } catch let error as NSError {
             print("Error-initPlay : \(error)")
         }
+        progress1.progress = 0
+        progress2.progress = 0
         
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
@@ -125,6 +231,12 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         audioPlayer.play()
         playTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timePlayerSelector, userInfo: nil, repeats: true)
     }
+    func getSongPitch() -> Double {
+        let power = audioPlayer?.averagePower(forChannel: 0) ?? -160.0 // default value if audio player is nil
+        let pitch = pow(10, (0.05 * Double(power))) * referenceFrequency
+        return pitch
+    }
+
 }
 
 

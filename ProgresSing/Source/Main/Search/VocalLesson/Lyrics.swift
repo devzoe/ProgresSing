@@ -6,17 +6,55 @@
 //
 
 import Foundation
-public enum StartLyricsTime: String {
+public enum StartLyricsTime1: String {
     case time1 = "00:05"
+    case time2 = "00:11"
+    case time3 = "00:20"
+    case time4 = "00:27"
+    case time5 = "00:38"
+    case time6 = "00:44"
+    case time7 = "00:52"
+    case time8 = "01:00"
 }
-public enum EndLyricsTime: String {
+public enum EndLyricsTime1: String {
     case time1 = "00:07"
+    case time2 = "00:15"
+    case time3 = "00:22"
+    case time4 = "00:33"
+    case time5 = "00:40"
+    case time6 = "00:49"
+    case time7 = "00:54"
+    case time8 = "01:10"
+}
+public enum StartLyricsTime2: String {
+    case time1 = "00:09"
+    case time2 = "00:16"
+    case time3 = "00:22"
+    case time4 = "00:33"
+    case time5 = "00:41"
+    case time6 = "00:49"
+    case time7 = "00:55"
+    case time8 = "01:10"
+}
+public enum EndLyricsTime2: String {
+    case time1 = "00:11"
+    case time2 = "00:19"
+    case time3 = "00:26"
+    case time4 = "00:38"
+    case time5 = "00:43"
+    case time6 = "00:51"
+    case time7 = "00:59"
+    case time8 = "01:12"
 }
 
 struct Lyrics {
     var koreanLyrics : [String]
     var englishLyrics : [String]
-    
+    var startLyricsTime1 : [String]
+    var endLyricsTime1 : [String]
+    var startLyricsTime2 : [String]
+    var endLyricsTime2 : [String]
+
     init() {
         self.koreanLyrics = [
             "찢어진 종잇조각에",
@@ -66,5 +104,48 @@ struct Lyrics {
             "It's not fine",
             "It's not fine"
         ]
-        self.englishLyrics = []    }
+        self.englishLyrics = []
+        
+        self.startLyricsTime1 = [
+            "00:05",
+            "00:11",
+            "00:20",
+            "00:27",
+            "00:38",
+            "00:44",
+            "00:52",
+            "01:00"
+        ]
+        self.endLyricsTime1 = [
+            "00:07",
+            "00:15",
+            "00:22",
+            "00:33",
+            "00:40",
+            "00:49",
+            "00:54",
+            "01:10"
+        ]
+        
+        self.startLyricsTime2 = [
+            "00:09",
+            "00:16",
+            "00:22",
+            "00:33",
+            "00:41",
+            "00:49",
+            "00:55",
+            "01:10"
+        ]
+        self.endLyricsTime2 = [
+            "00:11",
+            "00:19",
+            "00:26",
+            "00:38",
+            "00:43",
+            "00:51",
+            "00:59",
+            "01:12"
+        ]
+    }
 }
