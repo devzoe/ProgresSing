@@ -280,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF3896B29927B600034729D /* Home */,
+				2FF3897529927BFF0034729D /* Video */,
 				2FF3897229927BD80034729D /* Search */,
 				2FF3896F29927BBF0034729D /* MyRecord */,
 				2FF3896C29927B6F0034729D /* Setting */,
@@ -290,7 +291,6 @@
 		2FF3896B29927B600034729D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2FF3897529927BFF0034729D /* Video */,
 				2FF3896929927B580034729D /* HomeStoryboard.storyboard */,
 				2F80C78A2994E2BD00184398 /* HomeViewController.swift */,
 				2F80C7A229959E4B00184398 /* LessonVideoViewController.swift */,
