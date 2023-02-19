@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FAE29A1F79100F7B727 /* UIColor.swift */; };
+		2F126FB129A2157D00F7B727 /* vocal_training_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */; };
 		2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78A2994E2BD00184398 /* HomeViewController.swift */; };
 		2F80C78D2994E3C400184398 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78C2994E3C400184398 /* UIButton.swift */; };
 		2F80C78F2995741D00184398 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78E2995741D00184398 /* UIViewController.swift */; };
@@ -26,9 +28,14 @@
 		2F80C7BF299A8F2700184398 /* Fine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7BE299A8F2700184398 /* Fine.mp3 */; };
 		2F80C7C2299B67D600184398 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C1299B67D600184398 /* AudioController.swift */; };
 		2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C4299B70CA00184398 /* new_model.mlpackage */; };
-		2F80C7CE299BD08B00184398 /* new_model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CD299BD08B00184398 /* new_model2.mlmodel */; };
 		2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CF299CF4D100184398 /* LyricLabel.swift */; };
-		2F80C7D6299D391D00184398 /* Fine-Melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */; };
+		2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */; };
+		2F80C7DA299E676B00184398 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F80C7C8299BCB4200184398 /* CoreML.framework */; };
+		2F80C7DD299E759300184398 /* new_model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CD299BD08B00184398 /* new_model2.mlmodel */; };
+		2F80C7DF299E798600184398 /* Fine-Melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7DE299E798600184398 /* Fine-Melody.mp3 */; };
+		2F80C7E1299EA28800184398 /* YIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7E0299EA28800184398 /* YIN.swift */; };
+		2F80C7E5299EACB300184398 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7E4299EACB300184398 /* AudioPlayer.swift */; };
+		2F80C7EF29A11B0500184398 /* SignalProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7EE29A11B0500184398 /* SignalProcess.swift */; };
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
@@ -47,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		1AF971F8E11888E1DF845349 /* Pods-ProgresSing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgresSing.debug.xcconfig"; path = "Target Support Files/Pods-ProgresSing/Pods-ProgresSing.debug.xcconfig"; sourceTree = "<group>"; };
+		2F126FAE29A1F79100F7B727 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = vocal_training_model.mlmodel; sourceTree = "<group>"; };
 		2F80C78A2994E2BD00184398 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F80C78C2994E3C400184398 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		2F80C78E2995741D00184398 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -68,9 +77,13 @@
 		2F80C7C4299B70CA00184398 /* new_model.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = new_model.mlpackage; sourceTree = "<group>"; };
 		2F80C7C8299BCB4200184398 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		2F80C7CA299BCB4B00184398 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2F80C7CD299BD08B00184398 /* new_model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = new_model2.mlmodel; path = "../../../../../../Downloads/13장/미션/Audio/new_model2.mlmodel"; sourceTree = "<group>"; };
+		2F80C7CD299BD08B00184398 /* new_model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = new_model2.mlmodel; sourceTree = "<group>"; };
 		2F80C7CF299CF4D100184398 /* LyricLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLabel.swift; sourceTree = "<group>"; };
-		2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Fine-Melody.mp3"; path = "../../../../../../Downloads/Fine-Melody.mp3"; sourceTree = "<group>"; };
+		2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		2F80C7DE299E798600184398 /* Fine-Melody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fine-Melody.mp3"; sourceTree = "<group>"; };
+		2F80C7E0299EA28800184398 /* YIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YIN.swift; sourceTree = "<group>"; };
+		2F80C7E4299EACB300184398 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		2F80C7EE29A11B0500184398 /* SignalProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalProcess.swift; sourceTree = "<group>"; };
 		2FC5F70229928CC000631F1A /* Iceland-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Iceland-Regular.ttf"; sourceTree = "<group>"; };
 		2FC5F70329928E0D00631F1A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F80C7DA299E676B00184398 /* CoreML.framework in Frameworks */,
 				F38657105207C8B5CB55574C /* Pods_ProgresSing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,9 +130,11 @@
 		2F80C7B9299A895400184398 /* VocalLesson */ = {
 			isa = PBXGroup;
 			children = (
+				2F80C7D7299E2CB600184398 /* Feedback */,
 				2F80C7C0299B67AE00184398 /* Audio */,
 				2F80C7B5299A567700184398 /* VocalLessonViewController.swift */,
 				2F80C7BA299A89C800184398 /* Lyrics.swift */,
+				2F80C7E0299EA28800184398 /* YIN.swift */,
 			);
 			path = VocalLesson;
 			sourceTree = "<group>";
@@ -126,7 +142,7 @@
 		2F80C7BD299A8F0400184398 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				2F80C7D5299D391D00184398 /* Fine-Melody.mp3 */,
+				2F80C7DE299E798600184398 /* Fine-Melody.mp3 */,
 				2F80C7BE299A8F2700184398 /* Fine.mp3 */,
 			);
 			path = Audio;
@@ -136,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				2F80C7C1299B67D600184398 /* AudioController.swift */,
+				2F80C7EE29A11B0500184398 /* SignalProcess.swift */,
+				2F80C7E4299EACB300184398 /* AudioPlayer.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -143,10 +161,19 @@
 		2F80C7C3299B70AC00184398 /* AIModel */ = {
 			isa = PBXGroup;
 			children = (
+				2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */,
 				2F80C7C4299B70CA00184398 /* new_model.mlpackage */,
 				2F80C7CD299BD08B00184398 /* new_model2.mlmodel */,
 			);
 			path = AIModel;
+			sourceTree = "<group>";
+		};
+		2F80C7D7299E2CB600184398 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */,
+			);
+			path = Feedback;
 			sourceTree = "<group>";
 		};
 		2FF3893F29926BD50034729D = {
@@ -244,6 +271,7 @@
 				2FC5F70329928E0D00631F1A /* UIFont.swift */,
 				2F80C78C2994E3C400184398 /* UIButton.swift */,
 				2F80C78E2995741D00184398 /* UIViewController.swift */,
+				2F126FAE29A1F79100F7B727 /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -252,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				2FF3896B29927B600034729D /* Home */,
-				2FF3897529927BFF0034729D /* Video */,
 				2FF3897229927BD80034729D /* Search */,
 				2FF3896F29927BBF0034729D /* MyRecord */,
 				2FF3896C29927B6F0034729D /* Setting */,
@@ -263,6 +290,7 @@
 		2FF3896B29927B600034729D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2FF3897529927BFF0034729D /* Video */,
 				2FF3896929927B580034729D /* HomeStoryboard.storyboard */,
 				2F80C78A2994E2BD00184398 /* HomeViewController.swift */,
 				2F80C7A229959E4B00184398 /* LessonVideoViewController.swift */,
@@ -388,7 +416,7 @@
 				2FF3895529926BD70034729D /* Assets.xcassets in Resources */,
 				2FF3896A29927B580034729D /* HomeStoryboard.storyboard in Resources */,
 				2F80C79929957FBB00184398 /* ChartTableViewCell.xib in Resources */,
-				2F80C7D6299D391D00184398 /* Fine-Melody.mp3 in Resources */,
+				2F80C7DF299E798600184398 /* Fine-Melody.mp3 in Resources */,
 				2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */,
 				2FF3897129927BD20034729D /* MyRecordStoryboard.storyboard in Resources */,
 				2FF3896E29927B860034729D /* SettingStoryboard.storyboard in Resources */,
@@ -446,6 +474,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F80C7DD299E759300184398 /* new_model2.mlmodel in Sources */,
+				2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */,
 				2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */,
 				2F80C7BB299A89C800184398 /* Lyrics.swift in Sources */,
 				2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */,
@@ -453,22 +483,26 @@
 				2F80C7B8299A60B100184398 /* Device.swift in Sources */,
 				2F80C78D2994E3C400184398 /* UIButton.swift in Sources */,
 				2F80C7A329959E4B00184398 /* LessonVideoViewController.swift in Sources */,
+				2F80C7E5299EACB300184398 /* AudioPlayer.swift in Sources */,
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
 				2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */,
 				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
 				2F80C7C2299B67D600184398 /* AudioController.swift in Sources */,
+				2F80C7E1299EA28800184398 /* YIN.swift in Sources */,
 				2F80C79B2995836100184398 /* Chart.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */,
-				2F80C7CE299BD08B00184398 /* new_model2.mlmodel in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
 				2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
+				2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */,
+				2F126FB129A2157D00F7B727 /* vocal_training_model.mlmodel in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
 				2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */,
 				2F80C79D29958D3900184398 /* Search.swift in Sources */,
 				2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */,
+				2F80C7EF29A11B0500184398 /* SignalProcess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

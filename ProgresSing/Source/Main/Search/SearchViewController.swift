@@ -97,8 +97,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             appDelegate.shouldSupportAllOrientation = false
             self.navigationController?.pushViewController(vocalLessonVC, animated: true)
             
-            
-            
         }
     }
      
