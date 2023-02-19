@@ -1,20 +1,32 @@
 PODS:
+  - PlainPocketFFT (0.0.9)
+  - PocketFFT (0.0.1)
+  - RosaKit (0.0.11):
+    - PlainPocketFFT (~> 0.0.9)
+    - PocketFFT (~> 0.0.1)
   - SnapKit (5.6.0)
   - SwiftAudioPlayer (7.6.0)
 
 DEPENDENCIES:
+  - RosaKit
   - SnapKit (~> 5.6.0)
   - SwiftAudioPlayer
 
 SPEC REPOS:
   trunk:
+    - PlainPocketFFT
+    - PocketFFT
+    - RosaKit
     - SnapKit
     - SwiftAudioPlayer
 
 SPEC CHECKSUMS:
+  PlainPocketFFT: 3763f37fba0737e457ed1a3b9b7bfa70c00ff213
+  PocketFFT: cdbe7ef5b7cd08520655d85d03d701b5ba35fdec
+  RosaKit: 6e28b09f5eb990148a401e0c4b4ff0c207bd6569
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
 
-PODFILE CHECKSUM: 54f93680e0b03670adcea516ed2e0224ed525fff
+PODFILE CHECKSUM: 2f09334719aef7fb576d169250d5444069b4f9fc
 
 COCOAPODS: 1.11.3

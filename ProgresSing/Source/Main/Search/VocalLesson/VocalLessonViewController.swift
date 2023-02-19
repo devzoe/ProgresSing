@@ -13,6 +13,7 @@ import AVKit
 import SoundAnalysis
 import SnapKit
 import Accelerate
+import RosaKit
 
 
 class VocalLessonViewController: BaseViewController {
@@ -214,7 +215,7 @@ extension VocalLessonViewController {
         
         self.audioInputNode.installTap(onBus: bus, bufferSize: 1024, format: inputFormat) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
-            //let songPitch = self.processAudioData(buffer: audioBuffer!)
+            
             print("voice Pitch : \(voicePitch)")
             print("record time : \(time)")
             self.processBuffer(buffer)
@@ -222,8 +223,6 @@ extension VocalLessonViewController {
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
-            
-            
         }
         self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format: self.audioFormat) { (buffer, time) in
             let songPitch = self.processAudioData(buffer: buffer)
@@ -271,25 +270,30 @@ extension VocalLessonViewController {
     func processBuffer(_ buffer: AVAudioPCMBuffer) {
         // Prepare the input data for the model
         let audioData = buffer.floatChannelData![0]
+        //fft
+        //let fftMagnitudes = SignalProcessing.fft(data: audioData, setup: fftSetup!)
         let audioDataPtr = UnsafeMutablePointer<Float>(mutating: audioData)
         let input = try! MLMultiArray(dataPointer: audioDataPtr, shape: [1,128,87,1], dataType: .float32, strides: [1,1,1,1])
+        
         //for i in 0..<buffer.frameLength {
          //   input[i] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
         //}
         
         // Pass the input data to the model
-        let prediction = try! model.prediction(input: vocal_training_modelInput(conv2d_input: input))
+        //let prediction = try! model.prediction(input: vocal_training_modelInput(conv2d_input: input))
         
         // Get the output result
-        let output = prediction.Identity
+        //let output = prediction.Identity
         
         // Update the UI with the output result
         DispatchQueue.main.async {
             // Update the UI with the output value
-            print("model output : \(output)")
+            //print("model output : \(output)")
+            //print("fft magnitudes : \(fftMagnitudes)")
+            print("input : \(input)")
         }
     }
-    
+        
     func processAudioData(buffer: AVAudioPCMBuffer) -> Float{
         guard let channelData = buffer.floatChannelData?[0] else {return 0}
         let frames = buffer.frameLength
