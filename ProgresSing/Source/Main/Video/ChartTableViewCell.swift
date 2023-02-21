@@ -14,6 +14,7 @@ class ChartTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -42,5 +43,16 @@ class ChartTableViewCell: UITableViewCell {
         self.titleLabel.text = data.title
         self.artistLabel.text = data.artist
     }
+    public func get3(data: MyRecord) {
+        DispatchQueue.main.async {
+            self.playButton.setCornerRadius(5)
+            self.playButton.setTitle("듣기", for: .normal)
+        }
+        self.albumImageView.image = UIImage(named: data.imageName)
+        self.rankLabel.isHidden = true
+        self.titleLabel.text = data.title
+        self.artistLabel.text = data.artist
+    }
+
     
 }

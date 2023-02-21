@@ -15,41 +15,18 @@ import SnapKit
 import Accelerate
 import RosaKit
 
-
 class VocalLessonViewController: BaseViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // 레코드 객체 생성 - 데이터를 가져오기 위함
+    private var recordService: MyRecordViewModel = MyRecordViewModel.shared
     
     let lyrics : Lyrics = Lyrics()
     
-    var audioPlayer : AVAudioPlayer!
-    //var audioFile : URL!
     let MAX_VOLUME : Float = 5.0
-    //var playTimer : Timer!
-    //let timePlayerSelector:Selector = #selector(VocalLessonViewController.updatePlayTime)
-    let referenceFrequency: Double = 440 // Hz
-
-    var audioRecorder : AVAudioRecorder!
-    var recordFile :URL!
-    var recordTimer : Timer!
-    let timeRecordSelector:Selector = #selector(VocalLessonViewController.updateRecordTime)
-    
-    var progressTimer1 = Timer()
-    var secondsPassed1 : Float = 0
-    var totalTime1 : Float = 0
-    var progressTimer2 = Timer()
-    var secondsPassed2 : Float = 0
-    var totalTime2 : Float = 0
-    
-    // MARK: audio engine property
-    //private let audioEngine = AVAudioEngine()
-    var inputFormat: AVAudioFormat!
-    var analyzer: SNAudioStreamAnalyzer!
-    //var resultsObserver = ResultsObserver()
-    let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
-    
+        
     let strokeTextAttributes = [
-      NSAttributedString.Key.strokeColor : UIColor.progressingPuple,
-      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.strokeColor : UIColor.lyricSkyBlue,
+      NSAttributedString.Key.foregroundColor : UIColor.lyricSkyBlue,
       NSAttributedString.Key.strokeWidth : -4.0,
       NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
       as [NSAttributedString.Key : Any]
@@ -61,7 +38,7 @@ class VocalLessonViewController: BaseViewController {
       as [NSAttributedString.Key : Any]
     let pitchTextAttributes = [
       NSAttributedString.Key.strokeColor : UIColor.red,
-      NSAttributedString.Key.foregroundColor : UIColor.white,
+      NSAttributedString.Key.foregroundColor : UIColor.red,
       NSAttributedString.Key.strokeWidth : -4.0,
       NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
       as [NSAttributedString.Key : Any]
@@ -80,38 +57,45 @@ class VocalLessonViewController: BaseViewController {
     
     @IBOutlet weak var vocalFryButton: UIButton!
     @IBOutlet weak var vocalFryCountLabel: UILabel!
+    var vocalFryCount : Int = 0
+    
     @IBOutlet weak var BeltButton: UIButton!
     @IBOutlet weak var beltCountLabel: UILabel!
+    var beltCount : Int = 0
     
     @IBOutlet weak var vibratoButton: UIButton!
     @IBOutlet weak var vibratoCountLabel: UILabel!
-    lazy var lyric1 = LyricLabel()
-    var timer = Timer()
-    var lyricSeconds : Float = 0
+    var vibratoCount : Int = 0
+        
+    
+    @IBOutlet var vocalFryCollection : [UIButton]!
+    @IBOutlet var vibratoCollection : [UIButton]!
+    @IBOutlet var beltCollection : [UIButton]!
+    
     var songPitch : Float = 0
     var voicePitch : Float = 0
     
     
     let audioEngine = AVAudioEngine()
     let audioPlayerNode = AVAudioPlayerNode()
-
     var audioBuffer: AVAudioPCMBuffer?
-    var playTimer = Timer()
-    //let timePlayerSelector:Selector = #selector(VocalLessonViewController.updatePlayTime)
-    
-    let timePitchNode = AVAudioUnitTimePitch()
-    // Attach audio input node for voice recording
-    var audioInputNode : AVAudioInputNode!
-    var audioInputFormat : AVAudioFormat!
-    
     var audioFileURL : URL!
     var audioFile : AVAudioFile!
     var audioFormat :AVAudioFormat!
-    var prevRMSValue : Float = 0.3
+   
+    // Attach audio input node for voice recording
+    var audioInputNode : AVAudioInputNode!
+    var audioInputFormat : AVAudioFormat!
+    //Mixer to mix 1K with mic input during recording
+    var mixerNode : AVAudioMixerNode!
+    var recordPath : URL?
+    var recordFile : AVAudioFile!
     
+    
+    
+    var prevRMSValue : Float = 0.3
     //fft setup object for 1024 values going forward (time domain -> frequency domain)
     let fftSetup = vDSP_DFT_zop_CreateSetup(nil, 1024, vDSP_DFT_Direction.FORWARD)
-    
     let model = try! vocal_training_model(configuration: MLModelConfiguration())
    
     override func viewWillAppear(_ animated: Bool) {
@@ -127,61 +111,39 @@ class VocalLessonViewController: BaseViewController {
             self.vocalFryButton.setCornerRadius2(10)
             self.BeltButton.setCornerRadius2(10)
             self.vibratoButton.setCornerRadius2(10)
+            
+            for i in self.vocalFryCollection {
+                i.setCornerRadius2(10)
+            }
+            for i in self.vibratoCollection {
+                i.setCornerRadius2(10)
+            }
+            for i in self.beltCollection {
+                i.setCornerRadius2(10)
+            }
+
+
         }
     }
-    /*
-    func setUI(){
-        self.view.addSubview(lyric1)
-        lyric1.snp.makeConstraints { make in
-            make.leading.equalTo(progress1)
-            make.top.equalToSuperview()
-        }
-        lyric1.textColor = .white
-        lyric1.font = .systemFont(ofSize: 50)
-        lyric1.color = .blue
-    }
-     */
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setUI()
         
-                
-        //resultsObserver.delegate = self
-        //inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
-        //analyzer = SNAudioStreamAnalyzer(format: inputFormat)
-        
-        //self.selectAudioFile()
-        //let audioPlayer = AudioPlayer(audioFile: try! AVAudioFile(forReading: audioFile))
-        //audioPlayer.play()
-        //self.initPlay()
-        //self.playAudio()
         DispatchQueue.global().async {
             print("check2 : \(Thread.current)")
             self.initPlay()
         }
         
-        
-        //self.play()
-        
-        //self.recordAudioFile()
-        //self.initRecord()
-        //self.startRecord()
-        
-        //self.startAudioEngine()
-        //let audioController : AudioController = AudioController()
-        //audioController.startCapturingAudio()
-        
-       
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
         appDelegate.shouldSupportAllOrientation = true
     }
   
     // MARK: back button
     @IBAction func backButtonTouchUpInside(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        let mainTabBarController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(identifier: "MainTabBarController")
+        changeRootViewController(mainTabBarController)
     }
     
 }
@@ -191,28 +153,40 @@ class VocalLessonViewController: BaseViewController {
 extension VocalLessonViewController {
     func initPlay() {
         // Connect audio player and time pitch node to audio engine's output node
-        audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
-        audioFile = try! AVAudioFile(forReading: audioFileURL)
-        audioFormat = audioFile.processingFormat
-        audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
-        try! audioFile.read(into: audioBuffer!)
+        self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
+        self.audioFile = try! AVAudioFile(forReading: audioFileURL)
+        self.audioFormat = audioFile.processingFormat
+        self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+        try! self.audioFile.read(into: audioBuffer!)
         
-        audioEngine.attach(audioPlayerNode)
-        audioInputNode = audioEngine.inputNode
-        //audioEngine.attach(audioInputNode)
+        self.audioEngine.attach(audioPlayerNode)
+        self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
         
-        // Connect audio player and time pitch node to audio engine's output node
-        // audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: audioFormat)
-        audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
-        //audioEngine.connect(audioInputNode, to: audioEngine.mainMixerNode, format: audioInputNode.inputFormat(forBus: 0))
+        self.audioInputNode = audioEngine.inputNode
+        //self.mixerNode = AVAudioMixerNode()
+        //self.audioEngine.attach(mixerNode)
+        
+        // MARK: Set up Audio Session
+        let inputFormat = audioInputNode.inputFormat(forBus: 0)
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
+        try! AVAudioSession.sharedInstance().setActive(true)
+        //self.audioEngine.connect(audioInputNode, to: self.mixerNode, format: inputFormat)
+        //Connect mixer to mainMixer
+        //self.audioEngine.connect(self.mixerNode, to: self.audioEngine.mainMixerNode, format: inputFormat)
         
         // Start music playback
-        audioPlayerNode.scheduleBuffer(audioBuffer!)
+        audioPlayerNode.scheduleBuffer(audioBuffer!, completionHandler: { [weak self] in
+            self?.stop()
+            
+        })
+        
+        //Tap on the mixer output (MIXER HAS BOTH MICROPHONE AND 1K.mp3)
+       /* self.mixerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount((inputFormat.sampleRate)! * 0.4), format: inputFormat, block: { (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
+            
+            
+        })*/
         
         let bus = 0
-        let inputFormat = audioInputNode.inputFormat(forBus: bus)
-        
-        
         self.audioInputNode.installTap(onBus: bus, bufferSize: 1024, format: inputFormat) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
             
@@ -223,6 +197,24 @@ extension VocalLessonViewController {
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
+            do{
+                // Write the audio buffer to a file
+                if self.recordFile == nil {
+                    // Create an audio file and write the header
+                    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let fileName = "recordedAudioFile.wav"
+                    let fileURL = documentsURL.appendingPathComponent(fileName)
+                    self.recordPath = fileURL
+                    self.recordFile = try AVAudioFile(forWriting: fileURL, settings: inputFormat.settings)
+                    try self.recordFile?.write(from: buffer)
+                } else {
+                    // Append the buffer to the audio file
+                    try self.recordFile?.write(from: buffer)
+                }
+            } catch {
+                print("Error writing audio buffer: \(error.localizedDescription)")
+            }
+            
         }
         self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format: self.audioFormat) { (buffer, time) in
             let songPitch = self.processAudioData(buffer: buffer)
@@ -241,13 +233,13 @@ extension VocalLessonViewController {
                     
                     
                     for i in 0..<self.lyrics.startLyricsTime1.count {
-                        
                         self.startTimeCheck1(i, self.lyrics.startLyricsTime1[i], currentTime: currentTimeString)
-                        self.endTimeCheck1(self.lyrics.endLyricsTime1[i], currentTime: currentTimeString)
+                        self.endTimeCheck1(i,self.lyrics.endLyricsTime1[i], currentTime: currentTimeString)
                         self.pitchCheck1(index: i, startTime1: self.lyrics.startLyricsTime1[i], endTime1: self.lyrics.endLyricsTime1[i], currentTime: currentTimeString)
                         if (i < self.lyrics.startLyricsTime2.count) {
+                            
                             self.startTimeCheck2(i, self.lyrics.startLyricsTime2[i], currentTime: currentTimeString)
-                            self.endTimeCheck2(self.lyrics.endLyricsTime2[i], currentTime: currentTimeString)
+                            self.endTimeCheck2(i,self.lyrics.endLyricsTime2[i], currentTime: currentTimeString)
                             
                             self.pitchCheck2(index: i, startTime2:  self.lyrics.startLyricsTime2[i], endTime2: self.lyrics.endLyricsTime2[i], currentTime: currentTimeString)
                         }
@@ -258,15 +250,51 @@ extension VocalLessonViewController {
             
         }
         
-        //audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: audioBuffer!.format)
         try! audioEngine.start()
         audioPlayerNode.play()
         
         // Wait for music playback to finish
+        /*
         while audioPlayerNode.isPlaying {
             RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
+            print("run roop")
         }
+         */
     }
+    func returnVocalFryIndex(startTime : Float, endTime: Float) -> [Int] {
+        var index : [Int] = []
+        for (i,time) in self.lyrics.vocalFryTime.enumerated() {
+            if(startTime <= time && time <= endTime) {
+                index.append(i)
+                print("fry index : \(i) fry time : \(time)")
+            }
+            
+        }
+        return index
+    }
+    func returnVibratoIndex(startTime : Float, endTime: Float) -> [Int] {
+        var index : [Int] = []
+        for (i,time) in self.lyrics.vibratoTime.enumerated() {
+            if(startTime <= time && time <= endTime) {
+                index.append(i)
+                print("vibrato index : \(i) vibrato time : \(time)")
+            }
+            
+        }
+        return index
+    }
+    func returnBeltIndex(startTime : Float, endTime: Float) -> [Int] {
+        var index : [Int] = []
+        for (i,time) in self.lyrics.beltTime.enumerated() {
+            if(startTime <= time && time <= endTime) {
+                index.append(i)
+                print("belt index : \(i) belt time : \(time)")
+            }
+            
+        }
+        return index
+    }
+    
     func processBuffer(_ buffer: AVAudioPCMBuffer) {
         // Prepare the input data for the model
         let audioData = buffer.floatChannelData![0]
@@ -276,7 +304,7 @@ extension VocalLessonViewController {
         let input = try! MLMultiArray(dataPointer: audioDataPtr, shape: [1,128,87,1], dataType: .float32, strides: [1,1,1,1])
         
         //for i in 0..<buffer.frameLength {
-         //   input[i] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
+        //   input[i] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
         //}
         
         // Pass the input data to the model
@@ -310,8 +338,20 @@ extension VocalLessonViewController {
         return rmsValue
     }
     func stop() {
-        audioPlayerNode.stop()
-        playTimer.invalidate()
+        audioEngine.inputNode.removeTap(onBus: 0)
+        audioPlayerNode.removeTap(onBus: 0)
+        audioEngine.stop()
+        //audioPlayerNode.stop()
+        self.recordService.add(record: MyRecord(imageName: "fine", artist: "태연", title: "fine", recordURL: (self.recordPath!)))
+        print("recordpath1 :  \(self.recordPath!)")
+        DispatchQueue.main.async {
+            let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
+            feedbackVC.pitchCount = self.pitchCount
+            feedbackVC.vocalFryCount = self.vocalFryCount
+            feedbackVC.beltCount = self.beltCount
+            feedbackVC.vibratoCount = self.vibratoCount
+            self.navigationController?.pushViewController(feedbackVC, animated: true)
+        }
     }
     
     //토스트 메시지
@@ -329,53 +369,9 @@ extension VocalLessonViewController {
         UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: { toastLabel.alpha = 0.0 }, completion: {(isCompleted) in toastLabel.removeFromSuperview()})
         
     }
-    
-    /*
-    @objc func updatePlayTime() {
-        if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
-        {
-            var currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
-            let currentTimeString = convertNSTimeInterval2String(currentTime)
-            print("Current time: \(currentTime)")
-            
-            for i in 0..<lyrics.startLyricsTime1.count {
-                
-                self.startTimeCheck1(i, lyrics.startLyricsTime1[i], currentTime: currentTimeString)
-                self.endTimeCheck1(lyrics.endLyricsTime1[i], currentTime: currentTimeString)
-                if (i < lyrics.startLyricsTime2.count) {
-                    self.startTimeCheck2(i, lyrics.startLyricsTime2[i], currentTime: currentTimeString)
-                    self.endTimeCheck2(lyrics.endLyricsTime2[i], currentTime: currentTimeString)
-                }
-                
-            }
-        }
-    }
-     */
 }
 
 extension VocalLessonViewController: AVAudioPlayerDelegate {
-    /*
-     func selectAudioFile() {
-     audioFile = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")
-     }
-     */
-    /*
-     @objc func updatePlayTime() {
-     print("play time : \(audioPlayer.currentTime)")
-        let currentTime = convertNSTimeInterval2String(audioPlayer.currentTime)
-        for i in 0..<lyrics.startLyricsTime1.count {
-            
-            self.startTimeCheck1(i, lyrics.startLyricsTime1[i], currentTime: currentTime)
-            self.endTimeCheck1(lyrics.endLyricsTime1[i], currentTime: currentTime)
-            if (i < lyrics.startLyricsTime2.count) {
-                self.startTimeCheck2(i, lyrics.startLyricsTime2[i], currentTime: currentTime)
-                self.endTimeCheck2(lyrics.endLyricsTime2[i], currentTime: currentTime)
-            }
-            
-        }
-        
-    }
-     */
     func startTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics1.textColor = .blue
@@ -389,15 +385,40 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: defaultTextAttributes)
                 }
 
-                self.progressTimer1.invalidate()
                 self.progress1.progress = 0.0
-                self.secondsPassed1 = 0
-                self.progressTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-                self.totalTime1 = self.convertString2Time(self.lyrics.endLyricsTime1[index]) - self.convertString2Time(lyricsTime)
-                /*
-                self.lyric1.text = self.lyrics.koreanLyrics[index*2]
-                let timer = Timer.scheduledTimer(timeInterval: 1.0/Double(totalTime1), target: self, selector: #selector(update), userInfo: nil, repeats: true)
-                 */
+               
+                
+                
+                let startTime1 = self.convertString2Time(self.lyrics.startLyricsTime1[index])
+                let endTime2 : Float?
+                if(index < self.lyrics.startLyricsTime1.count - 1  ) {
+                    endTime2 = self.convertString2Time(self.lyrics.endLyricsTime2[index])
+                } else {
+                    endTime2 = self.convertString2Time(self.lyrics.endLyricsTime1[index])
+                }
+                let currentTime = self.convertString2Time(currentTime)
+                
+                let timeIndex1 = self.returnVocalFryIndex(startTime: startTime1, endTime: endTime2!)
+                for i in timeIndex1 {
+                    DispatchQueue.main.async {
+                        self.vocalFryCollection[i].isHidden = false
+                    }
+                }
+                let timeIndex2 = self.returnVibratoIndex(startTime: startTime1, endTime: endTime2!)
+                for i in timeIndex2 {
+                    DispatchQueue.main.async {
+                        self.vibratoCollection[i].isHidden = false
+                    }
+                }
+                let timeIndex3 = self.returnBeltIndex(startTime: startTime1, endTime: endTime2!)
+                for i in timeIndex3 {
+                    DispatchQueue.main.async {
+                        self.beltCollection[i].isHidden = false
+                    }
+                }
+
+                
+                
             }
         }
     }
@@ -415,13 +436,11 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                 }
 
             } else {
-                
                 DispatchQueue.main.async {
                     self.koreanLirics1.attributedText = NSMutableAttributedString(string: self.lyrics.koreanLyrics[index*2], attributes: self.strokeTextAttributes)
                 }
-                
-                
             }
+            
         }
     }
     func pitchCheck2(index : Int, startTime2: String, endTime2:String, currentTime : String) {
@@ -449,25 +468,39 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     }
                     
                 }
-                
-                
             }
         }
     }
 
 
-    @objc func updateTimer() {
-        if secondsPassed1 < totalTime1 {
-            secondsPassed1 += 0.1
-            progress1.progress = Float(secondsPassed1) / Float(totalTime1)
-        } else {
-            progressTimer1.invalidate()
-        }
-        
-    }
-    func endTimeCheck1(_ lyricsTime: String, currentTime : String) {
+    
+    func endTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics1.textColor = .white
+            let startTime1 = self.convertString2Time(self.lyrics.startLyricsTime1[index])
+            let endTime1 = self.convertString2Time(self.lyrics.endLyricsTime1[index])
+            let currentTime = self.convertString2Time(currentTime)
+            
+            let timeIndex1 = self.returnVocalFryIndex(startTime: startTime1, endTime: endTime1)
+            for i in timeIndex1 {
+                DispatchQueue.main.async {
+                    self.vocalFryCollection[i].isHidden = true
+                }
+            }
+            let timeIndex2 = self.returnVibratoIndex(startTime: startTime1, endTime: endTime1)
+            for i in timeIndex2 {
+                DispatchQueue.main.async {
+                    self.vibratoCollection[i].isHidden = true
+                }
+            }
+            let timeIndex3 = self.returnBeltIndex(startTime: startTime1, endTime: endTime1)
+            for i in timeIndex3 {
+                DispatchQueue.main.async {
+                    self.beltCollection[i].isHidden = true
+                }
+            }
+
+
         }
     }
     func startTimeCheck2(_ index : Int,_ lyricsTime: String, currentTime : String) {
@@ -477,12 +510,60 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                 self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+2], attributes: defaultTextAttributes)
                 self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: strokeTextAttributes)
                 
+                let startTime2 = self.convertString2Time(self.lyrics.startLyricsTime2[index])
+                let endTime3 = self.convertString2Time(self.lyrics.endLyricsTime1[index+1])
+                let currentTime = self.convertString2Time(currentTime)
+                
+                let timeIndex1 = self.returnVocalFryIndex(startTime: startTime2, endTime: endTime3)
+                for i in timeIndex1 {
+                    DispatchQueue.main.async {
+                        self.vocalFryCollection[i].isHidden = false
+                    }
+                }
+                let timeIndex2 = self.returnVibratoIndex(startTime: startTime2, endTime: endTime3)
+                for i in timeIndex2 {
+                    DispatchQueue.main.async {
+                        self.vibratoCollection[i].isHidden = false
+                    }
+                }
+                let timeIndex3 = self.returnBeltIndex(startTime: startTime2, endTime: endTime3)
+                for i in timeIndex3 {
+                    DispatchQueue.main.async {
+                        self.beltCollection[i].isHidden = false
+                    }
+                }
+
+                
             }
         }
     }
-    func endTimeCheck2(_ lyricsTime: String, currentTime : String) {
+    func endTimeCheck2(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics2.textColor = .white
+            
+            let startTime2 = self.convertString2Time(self.lyrics.startLyricsTime2[index])
+            let endTime2 = self.convertString2Time(self.lyrics.endLyricsTime2[index])
+            let currentTime = self.convertString2Time(currentTime)
+            
+            let timeIndex1 = self.returnVocalFryIndex(startTime: startTime2, endTime: endTime2)
+            for i in timeIndex1 {
+                DispatchQueue.main.async {
+                    self.vocalFryCollection[i].isHidden = true
+                }
+            }
+            let timeIndex2 = self.returnVibratoIndex(startTime: startTime2, endTime: endTime2)
+            for i in timeIndex2 {
+                DispatchQueue.main.async {
+                    self.vibratoCollection[i].isHidden = true
+                }
+            }
+            let timeIndex3 = self.returnBeltIndex(startTime: startTime2, endTime: endTime2)
+            for i in timeIndex3 {
+                DispatchQueue.main.async {
+                    self.beltCollection[i].isHidden = true
+                }
+            }
+
         }
     }
     func convertNSTimeInterval2String(_ time:Float
@@ -501,83 +582,5 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         //print("real time : \(result)")
         return result
     }
-    /*
-    func initPlay() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFile)
-        } catch let error as NSError {
-            print("Error-initPlay : \(error)")
-        }
-        progress1.progress = 0
-        progress2.progress = 0
-        
-        audioPlayer.delegate = self
-        audioPlayer.prepareToPlay()
-        audioPlayer.volume = 1.0
-        
-    }
-     */
-    func playAudio() {
-        audioPlayer.play()
-        //playTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timePlayerSelector, userInfo: nil, repeats: true)
-    }
-    func getSongPitch() -> Double {
-        let power = audioPlayer?.averagePower(forChannel: 0) ?? -160.0 // default value if audio player is nil
-        let pitch = pow(10, (0.05 * Double(power))) * referenceFrequency
-        return pitch
-    }
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
-        self.navigationController?.pushViewController(feedbackVC, animated: true)
-    }
-
-}
-
-
-// MARK: Record
-
-extension VocalLessonViewController: AVAudioRecorderDelegate {
-    func recordAudioFile() {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        recordFile = documentDirectory.appendingPathComponent("recordFile.m4a")
-    }
     
-    func initRecord() {
-        let recordSettings = [
-        AVFormatIDKey : NSNumber(value: kAudioFormatAppleLossless as UInt32),
-        AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue,
-        AVEncoderBitRateKey : 320000,
-        AVNumberOfChannelsKey : 2,
-        AVSampleRateKey : 44100.0] as [String : Any]
-        do {
-            audioRecorder = try AVAudioRecorder(url: recordFile, settings: recordSettings)
-        } catch let error as NSError {
-            print("Error-initRecord : \(error)")
-        }
-        audioRecorder.delegate = self
-        
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch let error as NSError {
-            print(" Error-setCategory : \(error)")
-        }
-        do {
-            try session.setActive(true)
-        } catch let error as NSError {
-            print(" Error-setActive : \(error)")
-        }
-    }
-    func startRecord() {
-        audioRecorder.isMeteringEnabled = true
-        audioRecorder.record()
-        recordTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: timeRecordSelector, userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateRecordTime() {
-        let currentTime = convertNSTimeInterval2String(Float(audioRecorder.currentTime))
-        print("record time : \(currentTime)")
-        
-    }
 }

@@ -22,4 +22,21 @@ extension UIColor {
     // MARK: 메인 테마 색 또는 자주 쓰는 색을 정의
     // ex. label.textColor = .mainOrange
     class var progressingPuple: UIColor { UIColor(hex: 0x7667E6) }
+    
+    class var lyricSkyBlue : UIColor { UIColor(hex: 0x51E3EC)}
+    
+    class var labelFalse : UIColor { UIColor(hex: 0x262626)}
+    
+    class var belt : UIColor { UIColor(hex: 0xED9837)}
+    
+    class var beltEnableFalse : UIColor { UIColor(hex: 0x241603)}
+    
+    class var vibratoEnableFalse : UIColor { UIColor(hex: 0x1B1F0D)}
+    
+    class var vibrato : UIColor { UIColor(hex: 0xB7D25B)}
+    
+    class var vocalFry : UIColor { UIColor(hex: 0x9E8CCC)}
+    
+    class var vocalFryEnableFalse : UIColor { UIColor(hex: 0x18151F)}
+    
 }

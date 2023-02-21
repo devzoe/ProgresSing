@@ -90,14 +90,14 @@
                                     <action selector="backButtonTouchUpInside:" destination="u7z-6c-QYp" eventType="touchUpInside" id="2nm-eS-tUN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찢어진 종잇조각에" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22c-sk-auT">
-                                <rect key="frame" x="0.0" y="175" width="356.33333333333331" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바보처럼 되뇌는 그 말" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22c-sk-auT">
+                                <rect key="frame" x="0.0" y="205" width="680" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="담아낸 나의 진심에" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81D-D9-W53">
-                                <rect key="frame" x="465.33333333333326" y="285" width="366.66666666666674" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직은 아니야" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81D-D9-W53">
+                                <rect key="frame" x="344" y="315" width="488" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -108,17 +108,17 @@
                                 <state key="normal" image="record"/>
                             </button>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P0u-p7-Vg4">
-                                <rect key="frame" x="0.0" y="235" width="356.33333333333331" height="4"/>
+                                <rect key="frame" x="0.0" y="265" width="680" height="4"/>
                             </progressView>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pu2-cw-YcR">
-                                <rect key="frame" x="465.33333333333326" y="345" width="366.66666666666674" height="4"/>
+                                <rect key="frame" x="344" y="375" width="488" height="4"/>
                             </progressView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Qd-g8-26m">
                                 <rect key="frame" x="168.66666666666663" y="82" width="515" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FW-iO-IEd">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
-                                        <color key="backgroundColor" red="0.46274509803921571" green="0.40392156862745099" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="Pitch"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="   음정   ">
@@ -132,41 +132,41 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ov-Ws-hm1">
-                                        <rect key="frame" x="105.00000000000003" y="0.0" width="135" height="40"/>
-                                        <color key="backgroundColor" red="0.46461272240000001" green="0.40479743480000002" blue="0.90200620890000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="   보컬 프라이   ">
-                                            <color key="titleColor" name="textColor"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-4u-XZl">
-                                        <rect key="frame" x="250" y="0.0" width="15" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeY-Gw-CRU">
-                                        <rect key="frame" x="275" y="0.0" width="70" height="40"/>
-                                        <color key="backgroundColor" red="0.46461272240000001" green="0.40479743480000002" blue="0.90200620890000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="105.00000000000003" y="0.0" width="70" height="40"/>
+                                        <color key="backgroundColor" name="Belt"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="   벨팅   ">
                                             <color key="titleColor" name="textColor"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ4-4u-XZl">
+                                        <rect key="frame" x="185.00000000000003" y="0.0" width="15" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeY-Gw-CRU">
+                                        <rect key="frame" x="210" y="0.0" width="110" height="40"/>
+                                        <color key="backgroundColor" name="Vibrato"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   비브라토   ">
+                                            <color key="titleColor" name="textColor"/>
+                                        </state>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ2-Rj-aha">
-                                        <rect key="frame" x="355" y="0.0" width="15" height="40"/>
+                                        <rect key="frame" x="330" y="0.0" width="15" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8i-Kp-5FP">
-                                        <rect key="frame" x="380" y="0.0" width="110" height="40"/>
-                                        <color key="backgroundColor" red="0.46461272240000001" green="0.40479743480000002" blue="0.90200620890000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="355" y="0.0" width="135" height="40"/>
+                                        <color key="backgroundColor" name="VocalFry"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="   비브라토   ">
+                                        <state key="normal" title="   보컬 프라이   ">
                                             <color key="titleColor" name="textColor"/>
                                         </state>
                                     </button>
@@ -178,49 +178,781 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czz-NE-JO1">
+                                <rect key="frame" x="0.0" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f62-7G-gEn">
+                                <rect key="frame" x="0.0" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mo-r6-bJM">
+                                <rect key="frame" x="425" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uis-dG-TXc">
+                                <rect key="frame" x="0.0" y="175" width="65" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ol8-rX-bEF">
+                                <rect key="frame" x="100" y="175" width="65" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzj-Qm-LN9">
+                                <rect key="frame" x="0.0" y="175" width="123.66666666666667" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxG-aQ-Mmw">
+                                <rect key="frame" x="305" y="175" width="65" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLK-yw-XVG" userLabel="벨팅">
+                                <rect key="frame" x="555" y="285" width="127" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSl-cU-PWG" userLabel="벨팅">
+                                <rect key="frame" x="502" y="285" width="285" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7q-AD-m3G">
+                                <rect key="frame" x="0.0" y="175" width="171" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MS-7d-WWm">
+                                <rect key="frame" x="135" y="175" width="94" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1M-fV-F8q" userLabel="벨팅">
+                                <rect key="frame" x="345" y="175" width="47" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="벨팅"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-08-f4H" userLabel="벨팅">
+                                <rect key="frame" x="564" y="285" width="128" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="벨팅"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxS-io-m5e" userLabel="벨팅">
+                                <rect key="frame" x="0.0" y="175" width="171" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="벨팅"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-1o-4g7" userLabel="벨팅">
+                                <rect key="frame" x="0.0" y="175" width="92" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="벨팅"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhF-7Q-ej4">
+                                <rect key="frame" x="185" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-sD-NMW">
+                                <rect key="frame" x="190" y="175" width="128" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YY6-43-5Hz" userLabel="보컬 프라이">
+                                <rect key="frame" x="465" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6o-sL-32H" userLabel="보컬 프라이">
+                                <rect key="frame" x="605" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVn-XW-8xb">
+                                <rect key="frame" x="280" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZoN-zN-L85">
+                                <rect key="frame" x="325" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKQ-YL-5ir">
+                                <rect key="frame" x="240" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQi-1V-a8J">
+                                <rect key="frame" x="0.0" y="175" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tic-rk-v3V">
+                                <rect key="frame" x="405" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XC-ic-W7O">
+                                <rect key="frame" x="390" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bg-1K-naq">
+                                <rect key="frame" x="754" y="285" width="78" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svx-6V-604" userLabel="비브라토">
+                                <rect key="frame" x="764" y="285" width="68" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRz-U8-xqt">
+                                <rect key="frame" x="400" y="175" width="75" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybk-xA-CA5">
+                                <rect key="frame" x="0.0" y="175" width="76.666666666666671" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGv-nc-jag">
+                                <rect key="frame" x="325" y="175" width="118" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-FE-0TC">
+                                <rect key="frame" x="650" y="174" width="68" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHh-nf-osi" userLabel="비브라토">
+                                <rect key="frame" x="755" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whu-Mw-jLi" userLabel="비브라토">
+                                <rect key="frame" x="650" y="175" width="68" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKu-eV-hvL" userLabel="비브라토">
+                                <rect key="frame" x="470" y="175" width="91" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnN-al-4Yc" userLabel="비브라토">
+                                <rect key="frame" x="400" y="285" width="82" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijF-dD-ptW" userLabel="비브라토">
+                                <rect key="frame" x="720" y="285" width="82" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nU-U1-730">
+                                <rect key="frame" x="480" y="175" width="85" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-OL-lXg">
+                                <rect key="frame" x="755" y="285" width="77" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rp-Ix-P4N" userLabel="벨팅">
+                                <rect key="frame" x="767" y="285" width="65" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xY-b2-xbc" userLabel="벨팅">
+                                <rect key="frame" x="0.0" y="175" width="65" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92N-h9-dkk" userLabel="벨팅">
+                                <rect key="frame" x="410" y="285" width="187" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Mf-70-MIy" userLabel="벨팅">
+                                <rect key="frame" x="552" y="285" width="145" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aN1-bj-8b7" userLabel="벨팅">
+                                <rect key="frame" x="0.0" y="175" width="177" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="     벨팅     "/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="deB-0T-OQd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="92N-h9-dkk" secondAttribute="bottom" id="0VW-3i-AU1"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="YY6-43-5Hz" secondAttribute="bottom" id="2Mz-4m-EmZ"/>
+                            <constraint firstItem="FLK-yw-XVG" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.149061" id="2vP-Pf-pKv"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="tic-rk-v3V" secondAttribute="bottom" id="39d-Wy-wGk"/>
+                            <constraint firstItem="Rzj-Qm-LN9" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="39q-Ef-OOH"/>
+                            <constraint firstItem="x7q-AD-m3G" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="3u1-b2-Mpp"/>
+                            <constraint firstItem="PVn-XW-8xb" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-475" id="5u6-64-513"/>
+                            <constraint firstItem="6Rp-Ix-P4N" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" id="6CL-VH-JLS"/>
+                            <constraint firstItem="8nU-U1-730" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0997653" id="6ay-WZ-Gft"/>
                             <constraint firstItem="deB-0T-OQd" firstAttribute="trailing" secondItem="nhZ-Dd-U8C" secondAttribute="trailing" constant="20" id="6ip-35-cDM"/>
+                            <constraint firstItem="qnN-al-4Yc" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0962441" id="8WJ-wj-UuN"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Xzt-FE-0TC" secondAttribute="bottom" constant="1" id="8ZV-A6-aOX"/>
                             <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="22c-sk-auT" secondAttribute="bottom" constant="50" id="8u1-M1-Xpd"/>
                             <constraint firstItem="deB-0T-OQd" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="20" id="96D-Cs-gFq"/>
-                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="nhZ-Dd-U8C" secondAttribute="bottom" constant="50" id="Bus-AD-aA1"/>
+                            <constraint firstItem="ZoN-zN-L85" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-430" id="96V-iq-NL6"/>
+                            <constraint firstItem="fKu-eV-hvL" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.106808" id="99E-7d-yc1"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="f62-7G-gEn" secondAttribute="bottom" id="AJS-Wo-QhJ"/>
+                            <constraint firstItem="GQi-1V-a8J" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="AZ9-Fu-t1b"/>
+                            <constraint firstItem="Qa0-1o-4g7" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="Agd-ND-ulh"/>
+                            <constraint firstItem="fxS-io-m5e" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.200704" id="BhU-bw-fo7"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="nhZ-Dd-U8C" secondAttribute="bottom" constant="80" id="Bus-AD-aA1"/>
+                            <constraint firstItem="aN1-bj-8b7" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="C7a-V9-LbX"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="kMt-OL-lXg" secondAttribute="bottom" id="ChP-qa-lo3"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="GQi-1V-a8J" secondAttribute="bottom" id="Csx-QV-Qgt"/>
+                            <constraint firstItem="YGv-nc-jag" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="325" id="DTe-4b-ZFL"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="8mo-r6-bJM" secondAttribute="bottom" id="DZt-ox-LEj"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="qnN-al-4Yc" secondAttribute="bottom" id="Dib-Om-N1G"/>
+                            <constraint firstItem="CHh-nf-osi" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" id="H4C-HH-I6M"/>
+                            <constraint firstItem="Svx-6V-604" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" id="HBo-eL-h64"/>
+                            <constraint firstItem="UhF-7Q-ej4" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="185" id="IC9-ha-JhS"/>
+                            <constraint firstItem="n6o-sL-32H" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-150" id="IGG-tX-J9H"/>
+                            <constraint firstItem="MSl-cU-PWG" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.334507" id="IdB-Vj-gJX"/>
+                            <constraint firstItem="ijF-dD-ptW" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-30" id="IdB-rs-cPH"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="3Mf-70-MIy" secondAttribute="bottom" id="Ieb-Rf-OT8"/>
                             <constraint firstItem="pu2-cw-YcR" firstAttribute="width" secondItem="81D-D9-W53" secondAttribute="width" id="Iug-8z-3YY"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="UhF-7Q-ej4" secondAttribute="bottom" id="Izo-cQ-wfv"/>
+                            <constraint firstItem="3Mf-70-MIy" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.170188" id="JWZ-IS-ChI"/>
                             <constraint firstItem="P0u-p7-Vg4" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="KsK-w1-gth"/>
+                            <constraint firstItem="Czz-NE-JO1" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="M4x-GB-Xm0"/>
+                            <constraint firstItem="Whu-Mw-jLi" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="650" id="Mbf-hO-pqY"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Czz-NE-JO1" secondAttribute="bottom" id="NJS-dS-Ggq"/>
+                            <constraint firstItem="qnN-al-4Yc" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-350" id="NVS-MD-5ka"/>
+                            <constraint firstItem="FLK-yw-XVG" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-150" id="Obg-PC-Xfe"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="OxG-aQ-Mmw" secondAttribute="bottom" id="Ond-63-Ggn"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="fKu-eV-hvL" secondAttribute="bottom" id="Onz-u2-gku"/>
+                            <constraint firstItem="2XC-ic-W7O" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-365" id="PQ8-VE-07K"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Ybk-xA-CA5" secondAttribute="bottom" id="Pma-I8-BjE"/>
                             <constraint firstItem="F6z-b2-UFi" firstAttribute="centerY" secondItem="mxh-m8-8qK" secondAttribute="centerY" id="Q03-aB-W8k"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Uis-dG-TXc" secondAttribute="bottom" id="QAq-1q-avM"/>
+                            <constraint firstItem="Xzt-FE-0TC" firstAttribute="width" secondItem="22c-sk-auT" secondAttribute="width" multiplier="0.1" id="QPr-GP-tXk"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="x7q-AD-m3G" secondAttribute="bottom" id="Ro9-1y-XLG"/>
+                            <constraint firstItem="8MS-7d-WWm" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="135" id="RrH-Io-5eu"/>
+                            <constraint firstItem="OxG-aQ-Mmw" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="305" id="TCt-tc-mAg"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="ZoN-zN-L85" secondAttribute="bottom" id="TUY-6a-DvM"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="YKQ-YL-5ir" secondAttribute="bottom" id="TbW-tO-dCo"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="8MS-7d-WWm" secondAttribute="bottom" id="TpV-nm-bv9"/>
+                            <constraint firstItem="92N-h9-dkk" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.219484" id="Ubb-cf-OT8"/>
+                            <constraint firstItem="tic-rk-v3V" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-350" id="VM0-Me-zAD"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="2XC-ic-W7O" secondAttribute="bottom" id="W0r-TR-AMp"/>
+                            <constraint firstItem="kMt-OL-lXg" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" id="WXl-Ec-pQn"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="1xY-b2-xbc" secondAttribute="bottom" id="XKz-xz-NzQ"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Whu-Mw-jLi" secondAttribute="bottom" id="XMc-CC-Usy"/>
+                            <constraint firstItem="Ynj-sD-NMW" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="190" id="Xm1-00-1bH"/>
+                            <constraint firstItem="pRz-U8-xqt" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="400" id="Y7b-S7-gtY"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="YGv-nc-jag" secondAttribute="bottom" id="YBh-vc-mdF"/>
                             <constraint firstItem="F6z-b2-UFi" firstAttribute="centerX" secondItem="mxh-m8-8qK" secondAttribute="centerX" id="YJQ-vQ-vkd"/>
+                            <constraint firstItem="fxS-io-m5e" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="YoX-ri-OvX"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="Svx-6V-604" secondAttribute="bottom" id="ZCM-d8-o2Z"/>
+                            <constraint firstItem="pRz-U8-xqt" firstAttribute="width" secondItem="22c-sk-auT" secondAttribute="width" multiplier="0.110294" id="ZS2-Nh-yxh"/>
                             <constraint firstItem="4sP-fZ-Qas" firstAttribute="leading" secondItem="deB-0T-OQd" secondAttribute="leading" id="ZSI-7f-SYL"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="n6o-sL-32H" secondAttribute="bottom" id="ZWS-Vs-pXH"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Qa0-1o-4g7" secondAttribute="bottom" id="aDl-O1-hfr"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="aN1-bj-8b7" secondAttribute="bottom" id="aZX-oJ-ATT"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Ol8-rX-bEF" secondAttribute="bottom" id="as8-rQ-xUV"/>
                             <constraint firstItem="nhZ-Dd-U8C" firstAttribute="top" secondItem="4sP-fZ-Qas" secondAttribute="top" id="b1L-Gq-Dsi"/>
+                            <constraint firstItem="aN1-bj-8b7" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.207746" id="bkP-U5-A6L"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="PVn-XW-8xb" secondAttribute="bottom" id="c46-mp-5SS"/>
+                            <constraint firstItem="JWO-08-f4H" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.150235" id="clY-Wy-uCs"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Rzj-Qm-LN9" secondAttribute="bottom" id="csP-cB-cAN"/>
                             <constraint firstItem="pu2-cw-YcR" firstAttribute="leading" secondItem="81D-D9-W53" secondAttribute="leading" id="ctb-pz-hv4"/>
+                            <constraint firstItem="f62-7G-gEn" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="dW2-EJ-eK8"/>
+                            <constraint firstItem="x7q-AD-m3G" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.200704" id="dwI-V2-8K1"/>
+                            <constraint firstItem="YY6-43-5Hz" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-290" id="dxl-UP-a4y"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="pRz-U8-xqt" secondAttribute="bottom" id="eFd-kp-d5I"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Ynj-sD-NMW" secondAttribute="bottom" id="eWC-Cr-ezt"/>
                             <constraint firstItem="22c-sk-auT" firstAttribute="leading" secondItem="4sP-fZ-Qas" secondAttribute="leading" id="epk-PA-lsz"/>
+                            <constraint firstItem="Rzj-Qm-LN9" firstAttribute="width" secondItem="22c-sk-auT" secondAttribute="width" multiplier="0.181624" id="ewB-D1-PVu"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="fxS-io-m5e" secondAttribute="bottom" id="fCD-AJ-6z7"/>
+                            <constraint firstItem="5Bg-1K-naq" firstAttribute="leading" secondItem="81D-D9-W53" secondAttribute="leading" constant="410" id="fF1-uK-Cu1"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="CHh-nf-osi" secondAttribute="bottom" id="fJQ-56-aBW"/>
+                            <constraint firstItem="Ynj-sD-NMW" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.150235" id="fcB-1O-Jzq"/>
+                            <constraint firstItem="JWO-08-f4H" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-140" id="fk8-pa-ZPz"/>
+                            <constraint firstItem="1xY-b2-xbc" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="gfa-DP-Fno"/>
+                            <constraint firstItem="fKu-eV-hvL" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="470" id="h3y-Qp-Evc"/>
+                            <constraint firstItem="ijF-dD-ptW" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0962441" id="h44-Id-Q6c"/>
+                            <constraint firstItem="CHh-nf-osi" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0903756" id="hWG-Aj-mGx"/>
+                            <constraint firstItem="Ol8-rX-bEF" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="100" id="hlS-ZV-rT4"/>
+                            <constraint firstItem="kMt-OL-lXg" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0903756" id="iPT-2P-cKn"/>
                             <constraint firstItem="pu2-cw-YcR" firstAttribute="top" secondItem="81D-D9-W53" secondAttribute="bottom" id="isn-c7-wfn"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="MSl-cU-PWG" secondAttribute="bottom" id="jYW-2v-zbv"/>
+                            <constraint firstItem="8mo-r6-bJM" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="425" id="kCO-D6-5K7"/>
+                            <constraint firstItem="Z1M-fV-F8q" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0551643" id="kc5-mz-tJa"/>
+                            <constraint firstItem="Ybk-xA-CA5" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="lHH-aY-zZy"/>
+                            <constraint firstItem="Z1M-fV-F8q" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="345" id="mQS-v4-E5Y"/>
+                            <constraint firstItem="8MS-7d-WWm" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.110329" id="n0O-jS-FPi"/>
                             <constraint firstItem="P0u-p7-Vg4" firstAttribute="width" secondItem="22c-sk-auT" secondAttribute="width" id="nI8-dX-lz8"/>
+                            <constraint firstItem="Qa0-1o-4g7" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.107981" id="oIk-CZ-0Tb"/>
+                            <constraint firstItem="Svx-6V-604" firstAttribute="leading" secondItem="81D-D9-W53" secondAttribute="leading" constant="420" id="opt-dQ-IBS"/>
+                            <constraint firstItem="YGv-nc-jag" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.138498" id="pKr-KK-fr0"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="5Bg-1K-naq" secondAttribute="bottom" id="pdb-FC-XYa"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="JWO-08-f4H" secondAttribute="bottom" id="qCJ-1n-Iph"/>
+                            <constraint firstItem="Xzt-FE-0TC" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="650" id="qES-YA-snh"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="ijF-dD-ptW" secondAttribute="bottom" id="qNv-Z8-bev"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="6Rp-Ix-P4N" secondAttribute="bottom" id="qzf-Ys-bRf"/>
+                            <constraint firstItem="MSl-cU-PWG" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-45" id="rR3-VP-dYS"/>
+                            <constraint firstItem="3Mf-70-MIy" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-135" id="sET-0U-5Sv"/>
+                            <constraint firstItem="Uis-dG-TXc" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" id="sjb-ru-Se3"/>
+                            <constraint firstItem="92N-h9-dkk" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" constant="-235" id="t3n-xs-Cr2"/>
                             <constraint firstItem="nhZ-Dd-U8C" firstAttribute="leading" secondItem="3Qd-g8-26m" secondAttribute="trailing" constant="82.333333333333371" id="t8l-6c-uMA"/>
+                            <constraint firstItem="YKQ-YL-5ir" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="240" id="tNt-Ca-Q8j"/>
                             <constraint firstItem="P0u-p7-Vg4" firstAttribute="top" secondItem="22c-sk-auT" secondAttribute="bottom" id="u7g-kY-dI5"/>
                             <constraint firstItem="3Qd-g8-26m" firstAttribute="centerY" secondItem="nhZ-Dd-U8C" secondAttribute="centerY" id="uUP-eD-jEB"/>
+                            <constraint firstItem="81D-D9-W53" firstAttribute="top" secondItem="FLK-yw-XVG" secondAttribute="bottom" id="v4U-YC-Olf"/>
                             <constraint firstItem="4sP-fZ-Qas" firstAttribute="top" secondItem="deB-0T-OQd" secondAttribute="top" constant="20" id="vMP-0H-Ytl"/>
+                            <constraint firstItem="Ybk-xA-CA5" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.09" id="wOo-7J-Auk"/>
+                            <constraint firstItem="5Bg-1K-naq" firstAttribute="trailing" secondItem="81D-D9-W53" secondAttribute="trailing" id="xLA-Oi-Qbv"/>
+                            <constraint firstItem="8nU-U1-730" firstAttribute="leading" secondItem="22c-sk-auT" secondAttribute="leading" constant="480" id="zKX-T7-hTy"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="8nU-U1-730" secondAttribute="bottom" id="zTe-dY-war"/>
+                            <constraint firstItem="YKQ-YL-5ir" firstAttribute="width" secondItem="mxh-m8-8qK" secondAttribute="width" multiplier="0.0903756" id="zbM-w5-Mf7"/>
+                            <constraint firstItem="22c-sk-auT" firstAttribute="top" secondItem="Z1M-fV-F8q" secondAttribute="bottom" id="zbe-65-39C"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="BeltButton" destination="SeY-Gw-CRU" id="SQa-Gc-3sT"/>
+                        <outlet property="BeltButton" destination="1Ov-Ws-hm1" id="Q3d-7F-Cfp"/>
                         <outlet property="backgroundImageView" destination="F6z-b2-UFi" id="0lO-Bt-CHJ"/>
-                        <outlet property="beltCountLabel" destination="UQ2-Rj-aha" id="3YD-Af-gja"/>
+                        <outlet property="beltCountLabel" destination="FQ4-4u-XZl" id="OLl-MM-saw"/>
                         <outlet property="koreanLirics1" destination="22c-sk-auT" id="p7i-7e-Mb7"/>
                         <outlet property="koreanLirics2" destination="81D-D9-W53" id="kH5-2I-Gc4"/>
                         <outlet property="pitchButton" destination="0FW-iO-IEd" id="fgM-ee-LNL"/>
                         <outlet property="pitchCountLabel" destination="Khq-Lh-iRh" id="95y-of-6eg"/>
                         <outlet property="progress1" destination="P0u-p7-Vg4" id="Qru-ZG-9Lz"/>
                         <outlet property="progress2" destination="pu2-cw-YcR" id="sqp-EN-pTg"/>
-                        <outlet property="vibratoButton" destination="u8i-Kp-5FP" id="AJO-EC-D0H"/>
-                        <outlet property="vibratoCountLabel" destination="mju-3l-eo6" id="5bh-jo-lGr"/>
-                        <outlet property="vocalFryButton" destination="1Ov-Ws-hm1" id="Qc6-sP-CCR"/>
-                        <outlet property="vocalFryCountLabel" destination="FQ4-4u-XZl" id="uIL-iW-wGa"/>
+                        <outlet property="vibratoButton" destination="SeY-Gw-CRU" id="uGf-M3-3Tt"/>
+                        <outlet property="vibratoCountLabel" destination="UQ2-Rj-aha" id="Htm-Om-u80"/>
+                        <outlet property="vocalFryButton" destination="u8i-Kp-5FP" id="xu4-Pf-4JF"/>
+                        <outlet property="vocalFryCountLabel" destination="mju-3l-eo6" id="jEs-2c-woD"/>
+                        <outletCollection property="vocalFryCollection" destination="Czz-NE-JO1" collectionClass="NSMutableArray" id="zds-jO-l9P"/>
+                        <outletCollection property="vocalFryCollection" destination="YY6-43-5Hz" collectionClass="NSMutableArray" id="a9r-ja-m9d"/>
+                        <outletCollection property="vocalFryCollection" destination="UhF-7Q-ej4" collectionClass="NSMutableArray" id="hUG-Ri-jeW"/>
+                        <outletCollection property="vocalFryCollection" destination="PVn-XW-8xb" collectionClass="NSMutableArray" id="gQo-cD-WMh"/>
+                        <outletCollection property="vocalFryCollection" destination="tic-rk-v3V" collectionClass="NSMutableArray" id="aUe-O4-gE3"/>
+                        <outletCollection property="vocalFryCollection" destination="f62-7G-gEn" collectionClass="NSMutableArray" id="0WB-BC-KhO"/>
+                        <outletCollection property="vibratoCollection" destination="5Bg-1K-naq" collectionClass="NSMutableArray" id="kUm-Hf-vib"/>
+                        <outletCollection property="beltCollection" destination="Uis-dG-TXc" collectionClass="NSMutableArray" id="xne-LX-yYK"/>
+                        <outletCollection property="vibratoCollection" destination="pRz-U8-xqt" collectionClass="NSMutableArray" id="IPj-BT-zXE"/>
+                        <outletCollection property="beltCollection" destination="Ol8-rX-bEF" collectionClass="NSMutableArray" id="SQ3-1c-Y4j"/>
+                        <outletCollection property="beltCollection" destination="OxG-aQ-Mmw" collectionClass="NSMutableArray" id="Q2C-yD-tKY"/>
+                        <outletCollection property="vibratoCollection" destination="Svx-6V-604" collectionClass="NSMutableArray" id="kLn-rk-jsW"/>
+                        <outletCollection property="beltCollection" destination="Rzj-Qm-LN9" collectionClass="NSMutableArray" id="sHu-gW-Uk2"/>
+                        <outletCollection property="vibratoCollection" destination="Xzt-FE-0TC" collectionClass="NSMutableArray" id="XPu-fO-p7I"/>
+                        <outletCollection property="beltCollection" destination="FLK-yw-XVG" collectionClass="NSMutableArray" id="x9U-S1-Vvb"/>
+                        <outletCollection property="beltCollection" destination="x7q-AD-m3G" collectionClass="NSMutableArray" id="VbZ-b2-Kxf"/>
+                        <outletCollection property="vibratoCollection" destination="kMt-OL-lXg" collectionClass="NSMutableArray" id="COM-qO-ERj"/>
+                        <outletCollection property="vocalFryCollection" destination="2XC-ic-W7O" collectionClass="NSMutableArray" id="3Hm-cJ-jSR"/>
+                        <outletCollection property="vocalFryCollection" destination="Ynj-sD-NMW" collectionClass="NSMutableArray" id="HYd-oM-Gid"/>
+                        <outletCollection property="vibratoCollection" destination="YGv-nc-jag" collectionClass="NSMutableArray" id="UjA-fJ-m0L"/>
+                        <outletCollection property="vocalFryCollection" destination="GQi-1V-a8J" collectionClass="NSMutableArray" id="dib-Hd-aBO"/>
+                        <outletCollection property="vocalFryCollection" destination="n6o-sL-32H" collectionClass="NSMutableArray" id="u5p-pJ-b7d"/>
+                        <outletCollection property="vibratoCollection" destination="Ybk-xA-CA5" collectionClass="NSMutableArray" id="m7F-fa-BCq"/>
+                        <outletCollection property="beltCollection" destination="8MS-7d-WWm" collectionClass="NSMutableArray" id="Gge-Wi-fY8"/>
+                        <outletCollection property="vocalFryCollection" destination="YKQ-YL-5ir" collectionClass="NSMutableArray" id="HXd-iU-qd1"/>
+                        <outletCollection property="beltCollection" destination="Z1M-fV-F8q" collectionClass="NSMutableArray" id="1fT-rv-EPa"/>
+                        <outletCollection property="vibratoCollection" destination="8nU-U1-730" collectionClass="NSMutableArray" id="Krj-zU-Zy4"/>
+                        <outletCollection property="vocalFryCollection" destination="ZoN-zN-L85" collectionClass="NSMutableArray" id="ZbL-br-1RC"/>
+                        <outletCollection property="beltCollection" destination="6Rp-Ix-P4N" collectionClass="NSMutableArray" id="v9e-fK-GWL"/>
+                        <outletCollection property="beltCollection" destination="1xY-b2-xbc" collectionClass="NSMutableArray" id="3og-jP-EMp"/>
+                        <outletCollection property="beltCollection" destination="MSl-cU-PWG" collectionClass="NSMutableArray" id="KCr-dv-3Rd"/>
+                        <outletCollection property="vibratoCollection" destination="Whu-Mw-jLi" collectionClass="NSMutableArray" id="azb-E4-QYb"/>
+                        <outletCollection property="beltCollection" destination="JWO-08-f4H" collectionClass="NSMutableArray" id="CDF-SZ-Nlo"/>
+                        <outletCollection property="beltCollection" destination="fxS-io-m5e" collectionClass="NSMutableArray" id="fRl-5M-QhY"/>
+                        <outletCollection property="vibratoCollection" destination="CHh-nf-osi" collectionClass="NSMutableArray" id="xLF-ce-SwS"/>
+                        <outletCollection property="vocalFryCollection" destination="8mo-r6-bJM" collectionClass="NSMutableArray" id="9na-0G-v8q"/>
+                        <outletCollection property="vibratoCollection" destination="qnN-al-4Yc" collectionClass="NSMutableArray" id="j4F-9c-fHM"/>
+                        <outletCollection property="vibratoCollection" destination="ijF-dD-ptW" collectionClass="NSMutableArray" id="vO4-Lr-cqf"/>
+                        <outletCollection property="beltCollection" destination="Qa0-1o-4g7" collectionClass="NSMutableArray" id="i7e-dh-rdb"/>
+                        <outletCollection property="vibratoCollection" destination="fKu-eV-hvL" collectionClass="NSMutableArray" id="1YX-IA-8PS"/>
+                        <outletCollection property="beltCollection" destination="92N-h9-dkk" collectionClass="NSMutableArray" id="JFf-nB-Coh"/>
+                        <outletCollection property="beltCollection" destination="3Mf-70-MIy" collectionClass="NSMutableArray" id="x7x-be-JDL"/>
+                        <outletCollection property="beltCollection" destination="aN1-bj-8b7" collectionClass="NSMutableArray" id="eJR-iZ-2Xy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wu-UM-63I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="-65"/>
+            <point key="canvasLocation" x="702" y="-2"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="TUj-J4-ejA">
+            <objects>
+                <viewController storyboardIdentifier="TutorialViewController" id="Hpc-YK-zot" customClass="TutorialViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vl5-Sd-teR">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OcV-E4-hd8">
+                                <rect key="frame" x="168.66666666666663" y="79" width="515" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEW-Gq-wC3">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                                        <color key="backgroundColor" name="PitchEnableFalse"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   음정   ">
+                                            <color key="titleColor" name="pitchLabelFalse"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHL-6r-rzV">
+                                        <rect key="frame" x="80" y="0.0" width="15" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <color key="textColor" name="pitchLabelFalse"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O40-on-e0G">
+                                        <rect key="frame" x="105.00000000000003" y="0.0" width="70" height="40"/>
+                                        <color key="backgroundColor" red="0.92941176470588238" green="0.59607843137254901" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   벨팅   ">
+                                            <color key="titleColor" name="textColor"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-fc-l8T">
+                                        <rect key="frame" x="185.00000000000003" y="0.0" width="15" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <color key="textColor" name="pitchLabelFalse"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oZ-SU-lFL">
+                                        <rect key="frame" x="210" y="0.0" width="110" height="40"/>
+                                        <color key="backgroundColor" name="VibratoEnableFalse"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   비브라토   ">
+                                            <color key="titleColor" name="pitchLabelFalse"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZE-Uv-75U">
+                                        <rect key="frame" x="330" y="0.0" width="15" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <color key="textColor" name="pitchLabelFalse"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJd-NH-0tV">
+                                        <rect key="frame" x="355" y="0.0" width="135" height="40"/>
+                                        <color key="backgroundColor" name="VocalFryEnableFalse"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="   보컬 프라이   ">
+                                            <color key="titleColor" name="pitchLabelFalse"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXE-D8-MLG">
+                                        <rect key="frame" x="500" y="0.0" width="15" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                        <color key="textColor" name="pitchLabelFalse"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-0w-0Ya">
+                                <rect key="frame" x="0.0" y="79" width="12.666666666666666" height="22"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonTouchUpInside:" destination="Hpc-YK-zot" eventType="touchUpInside" id="6CZ-cB-lrQ"/>
+                                    <action selector="backButtonTouchUpInside:" destination="u7z-6c-QYp" eventType="touchUpInside" id="PYJ-rH-Vw9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A99-9J-pNY">
+                                <rect key="frame" x="762" y="79" width="70" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="SKIP">
+                                    <color key="titleColor" name="textColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonTouchUpInside:" destination="Hpc-YK-zot" eventType="touchUpInside" id="vhd-Gs-9wD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루 한 달 일 년쯤 되면" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHR-6r-9Y7">
+                                <rect key="frame" x="205.33333333333334" y="179" width="441.33333333333326" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t74-P3-8px">
+                                <rect key="frame" x="205.33333333333334" y="247" width="36" height="36"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="beltPlay"/>
+                                <connections>
+                                    <action selector="playButtonTouchUpInside:" destination="Hpc-YK-zot" eventType="touchUpInside" id="fzG-7x-rMF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uz1-Hr-vNe">
+                                <rect key="frame" x="377" y="251" width="98" height="98"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="beltRecord"/>
+                                <connections>
+                                    <action selector="recordButtonTouchUpInside:" destination="Hpc-YK-zot" eventType="touchUpInside" id="AjZ-IF-Nux"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-fg-uqd">
+                                <rect key="frame" x="762" y="309" width="70" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="다음 단계">
+                                    <color key="titleColor" name="textColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonTouchUpInside:" destination="Hpc-YK-zot" eventType="touchUpInside" id="iwK-d1-Yvs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoH-h1-bGT" userLabel="벨팅">
+                                <rect key="frame" x="205.33333333333334" y="153" width="39" height="30"/>
+                                <color key="backgroundColor" name="Belt"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="벨팅">
+                                    <color key="titleColor" name="textColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;하&quot; 부분에 벨팅을 적용해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fue-W6-CnI">
+                                <rect key="frame" x="259.33333333333331" y="161.33333333333334" width="147.33333333333331" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" name="secondTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;일&quot; 부분에 보컬 프라이를 적용해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19k-o9-UW8">
+                                <rect key="frame" x="507.33333333333326" y="161.33333333333334" width="179" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" name="secondTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXk-Z1-3yB">
+                                <rect key="frame" x="415.33333333333331" y="153" width="77" height="30"/>
+                                <color key="backgroundColor" name="VocalFry"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 보컬 프라이 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sh-ho-emp" userLabel="비브라토">
+                                <rect key="frame" x="605.33333333333337" y="153" width="68" height="30"/>
+                                <color key="backgroundColor" name="Vibrato"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="tintColor" name="textColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  비브라토  "/>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;면~&quot; 부분에 비브라토를 적용해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbF-x0-KOJ">
+                                <rect key="frame" x="653" y="183" width="173.33333333333337" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" name="secondTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Uh-dx-pfq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fue-W6-CnI" firstAttribute="leading" secondItem="SoH-h1-bGT" secondAttribute="trailing" constant="15" id="1MQ-dE-9vP"/>
+                            <constraint firstItem="SoH-h1-bGT" firstAttribute="leading" secondItem="iHR-6r-9Y7" secondAttribute="leading" id="2JU-LE-J3E"/>
+                            <constraint firstItem="9Uh-dx-pfq" firstAttribute="trailing" secondItem="A99-9J-pNY" secondAttribute="trailing" constant="20" id="872-Tr-zFV"/>
+                            <constraint firstItem="Vqi-0w-0Ya" firstAttribute="top" secondItem="9Uh-dx-pfq" secondAttribute="top" constant="20" id="CuF-LO-5ZS"/>
+                            <constraint firstItem="19k-o9-UW8" firstAttribute="centerY" secondItem="dXk-Z1-3yB" secondAttribute="centerY" id="DVa-So-jfo"/>
+                            <constraint firstItem="2sh-ho-emp" firstAttribute="top" secondItem="SoH-h1-bGT" secondAttribute="top" id="Hm9-Wz-NyT"/>
+                            <constraint firstItem="AMk-fg-uqd" firstAttribute="trailing" secondItem="A99-9J-pNY" secondAttribute="trailing" id="JXZ-Hx-Rw0"/>
+                            <constraint firstItem="OcV-E4-hd8" firstAttribute="top" secondItem="Vqi-0w-0Ya" secondAttribute="top" id="Lwx-Gs-dBr"/>
+                            <constraint firstItem="fue-W6-CnI" firstAttribute="centerY" secondItem="SoH-h1-bGT" secondAttribute="centerY" id="OEw-tj-zBb"/>
+                            <constraint firstItem="2sh-ho-emp" firstAttribute="leading" secondItem="iHR-6r-9Y7" secondAttribute="leading" constant="400" id="P3m-ql-1Y2"/>
+                            <constraint firstItem="uz1-Hr-vNe" firstAttribute="centerX" secondItem="Vl5-Sd-teR" secondAttribute="centerX" id="SrL-Bd-Hhg"/>
+                            <constraint firstItem="AMk-fg-uqd" firstAttribute="bottom" secondItem="9Uh-dx-pfq" secondAttribute="bottom" constant="-20" id="U0n-gb-7ir"/>
+                            <constraint firstItem="Vqi-0w-0Ya" firstAttribute="leading" secondItem="9Uh-dx-pfq" secondAttribute="leading" id="U1F-Lt-xKX"/>
+                            <constraint firstItem="JbF-x0-KOJ" firstAttribute="leading" secondItem="2sh-ho-emp" secondAttribute="trailing" constant="-20.333333333333371" id="VeV-uu-gGM"/>
+                            <constraint firstItem="19k-o9-UW8" firstAttribute="leading" secondItem="dXk-Z1-3yB" secondAttribute="trailing" constant="15" id="Vlb-Oc-n6j"/>
+                            <constraint firstItem="iHR-6r-9Y7" firstAttribute="top" secondItem="SoH-h1-bGT" secondAttribute="bottom" constant="-4" id="bTm-IN-pW0"/>
+                            <constraint firstItem="t74-P3-8px" firstAttribute="leading" secondItem="iHR-6r-9Y7" secondAttribute="leading" id="kHf-dK-g9e"/>
+                            <constraint firstItem="t74-P3-8px" firstAttribute="top" secondItem="iHR-6r-9Y7" secondAttribute="bottom" constant="8" symbolic="YES" id="law-S4-eeQ"/>
+                            <constraint firstItem="dXk-Z1-3yB" firstAttribute="top" secondItem="SoH-h1-bGT" secondAttribute="top" id="nAt-IA-DPv"/>
+                            <constraint firstItem="SoH-h1-bGT" firstAttribute="width" secondItem="Vl5-Sd-teR" secondAttribute="width" multiplier="0.0457746" id="oen-kf-0cE"/>
+                            <constraint firstItem="iHR-6r-9Y7" firstAttribute="centerX" secondItem="Vl5-Sd-teR" secondAttribute="centerX" id="s1X-h8-sMu"/>
+                            <constraint firstItem="dXk-Z1-3yB" firstAttribute="leading" secondItem="iHR-6r-9Y7" secondAttribute="leading" constant="210" id="skW-ua-BnI"/>
+                            <constraint firstItem="9Uh-dx-pfq" firstAttribute="bottom" secondItem="uz1-Hr-vNe" secondAttribute="bottom" constant="10" id="tTW-b5-CwT"/>
+                            <constraint firstItem="OcV-E4-hd8" firstAttribute="centerX" secondItem="Vl5-Sd-teR" secondAttribute="centerX" id="tXa-44-Yaz"/>
+                            <constraint firstItem="iHR-6r-9Y7" firstAttribute="top" secondItem="OcV-E4-hd8" secondAttribute="bottom" constant="60" id="tfv-X7-p71"/>
+                            <constraint firstItem="A99-9J-pNY" firstAttribute="width" secondItem="O40-on-e0G" secondAttribute="width" id="u1B-53-jlF"/>
+                            <constraint firstItem="A99-9J-pNY" firstAttribute="height" secondItem="OcV-E4-hd8" secondAttribute="height" id="vDT-gM-dvh"/>
+                            <constraint firstItem="AMk-fg-uqd" firstAttribute="width" secondItem="Vl5-Sd-teR" secondAttribute="width" multiplier="0.0821596" id="wfs-om-uXx"/>
+                            <constraint firstItem="A99-9J-pNY" firstAttribute="centerY" secondItem="OcV-E4-hd8" secondAttribute="centerY" id="wrs-mO-S4V"/>
+                            <constraint firstItem="JbF-x0-KOJ" firstAttribute="top" secondItem="2sh-ho-emp" secondAttribute="bottom" id="zAt-w9-OHX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beltButton" destination="O40-on-e0G" id="mLb-cr-H82"/>
+                        <outlet property="beltCountLabel" destination="9YT-fc-l8T" id="5UF-Ob-x93"/>
+                        <outlet property="beltExample" destination="SoH-h1-bGT" id="8uf-v9-m4w"/>
+                        <outlet property="beltExampleLabel" destination="fue-W6-CnI" id="zW0-UO-oXH"/>
+                        <outlet property="lyricLabel" destination="iHR-6r-9Y7" id="D2R-BK-zp0"/>
+                        <outlet property="nextButton" destination="AMk-fg-uqd" id="taf-KC-9my"/>
+                        <outlet property="pitchButton" destination="SEW-Gq-wC3" id="g9r-n9-ftD"/>
+                        <outlet property="pitchCountLabel" destination="vHL-6r-rzV" id="Hcr-Ba-1O0"/>
+                        <outlet property="playButton" destination="t74-P3-8px" id="8AU-M6-5AY"/>
+                        <outlet property="recordButton" destination="uz1-Hr-vNe" id="Ha0-MN-xPW"/>
+                        <outlet property="skipButton" destination="A99-9J-pNY" id="17e-L3-kC8"/>
+                        <outlet property="vibratoButton" destination="9oZ-SU-lFL" id="pXy-JQ-Yql"/>
+                        <outlet property="vibratoCountLabel" destination="lZE-Uv-75U" id="490-eK-TV9"/>
+                        <outlet property="vibratoExample" destination="2sh-ho-emp" id="3Jd-nX-Q0G"/>
+                        <outlet property="vibratoExampleLabel" destination="JbF-x0-KOJ" id="DnW-DU-trT"/>
+                        <outlet property="vocalFryButton" destination="nJd-NH-0tV" id="w0P-fm-DAa"/>
+                        <outlet property="vocalFryCountLabel" destination="bXE-D8-MLG" id="SS7-dR-bH1"/>
+                        <outlet property="vocalFryExample" destination="dXk-Z1-3yB" id="ctZ-1H-QXh"/>
+                        <outlet property="vocalFryExampleLabel" destination="19k-o9-UW8" id="obA-QD-fbR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iag-k7-FgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="692.25352112676057" y="756.48854961832058"/>
         </scene>
         <!--Feedback View Controller-->
         <scene sceneID="QpU-UE-IHV">
@@ -312,10 +1044,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DB-dG-EoO">
+                                                <rect key="frame" x="15" y="1343" width="363" height="42"/>
+                                                <color key="backgroundColor" name="secondBackgroundColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="홈으로 돌아가기">
+                                                    <color key="titleColor" name="textColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homeButtonTouchUpInside:" destination="Def-Qu-AxQ" eventType="touchUpInside" id="Tk7-ud-LiT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="NPg-Le-0ts" firstAttribute="top" secondItem="Fpq-r6-E9e" secondAttribute="bottom" constant="240" id="0hj-8e-Nsh"/>
+                                            <constraint firstAttribute="bottom" secondItem="2DB-dG-EoO" secondAttribute="bottom" constant="15" id="183-If-yVw"/>
                                             <constraint firstItem="ewt-I5-emf" firstAttribute="leading" secondItem="34H-qX-f1r" secondAttribute="leading" id="1s2-8J-lCH"/>
                                             <constraint firstItem="wDj-JL-dXu" firstAttribute="leading" secondItem="34H-qX-f1r" secondAttribute="leading" id="3cp-Ox-paL"/>
                                             <constraint firstAttribute="trailing" secondItem="ewt-I5-emf" secondAttribute="trailing" constant="15" id="53N-yJ-j3O"/>
@@ -323,6 +1067,7 @@
                                             <constraint firstItem="NPg-Le-0ts" firstAttribute="leading" secondItem="Fpq-r6-E9e" secondAttribute="leading" id="8lU-DB-oHn"/>
                                             <constraint firstItem="34H-qX-f1r" firstAttribute="top" secondItem="0a5-f3-cUZ" secondAttribute="bottom" constant="20" id="ClE-pC-aCD"/>
                                             <constraint firstAttribute="trailing" secondItem="0a5-f3-cUZ" secondAttribute="trailing" id="DFx-bo-dBw"/>
+                                            <constraint firstAttribute="trailing" secondItem="2DB-dG-EoO" secondAttribute="trailing" constant="15" id="Sef-tF-D3s"/>
                                             <constraint firstAttribute="trailing" secondItem="NPg-Le-0ts" secondAttribute="trailing" constant="15" id="Sxr-K7-SC5"/>
                                             <constraint firstAttribute="trailing" secondItem="wDj-JL-dXu" secondAttribute="trailing" constant="15" id="Ttv-SL-E7b"/>
                                             <constraint firstAttribute="height" constant="1400" id="WI7-du-5dz"/>
@@ -335,6 +1080,8 @@
                                             <constraint firstItem="wDj-JL-dXu" firstAttribute="top" secondItem="34H-qX-f1r" secondAttribute="bottom" constant="240" id="lIx-2n-uSB"/>
                                             <constraint firstItem="S0Z-BO-qkC" firstAttribute="leading" secondItem="34H-qX-f1r" secondAttribute="leading" id="ma0-q6-MSm"/>
                                             <constraint firstItem="ewt-I5-emf" firstAttribute="top" secondItem="1vV-eB-NNb" secondAttribute="bottom" constant="240" id="pBC-v1-b5R"/>
+                                            <constraint firstItem="2DB-dG-EoO" firstAttribute="height" secondItem="cU9-kH-GmU" secondAttribute="height" multiplier="0.03" id="qZa-M1-W9m"/>
+                                            <constraint firstItem="2DB-dG-EoO" firstAttribute="leading" secondItem="cU9-kH-GmU" secondAttribute="leading" constant="15" id="rcN-fA-HBm"/>
                                             <constraint firstItem="0a5-f3-cUZ" firstAttribute="top" secondItem="cU9-kH-GmU" secondAttribute="top" id="ttD-mZ-Kww"/>
                                             <constraint firstItem="1vV-eB-NNb" firstAttribute="top" secondItem="wDj-JL-dXu" secondAttribute="bottom" constant="20" id="wJx-xX-NmE"/>
                                             <constraint firstItem="0a5-f3-cUZ" firstAttribute="leading" secondItem="cU9-kH-GmU" secondAttribute="leading" id="xD3-Kb-j8L"/>
@@ -363,6 +1110,9 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="393" height="1600"/>
+                    <connections>
+                        <outlet property="homeButton" destination="2DB-dG-EoO" id="bMp-fn-kqw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIw-dL-RhN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -370,12 +1120,41 @@
         </scene>
     </scenes>
     <resources>
+        <image name="beltPlay" width="36" height="36"/>
+        <image name="beltRecord" width="98" height="98"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="record" width="66" height="46"/>
         <image name="scoreBackground" width="390" height="200"/>
+        <namedColor name="Belt">
+            <color red="0.93000000715255737" green="0.59700000286102295" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Pitch">
+            <color red="0.89099997282028198" green="0.23000000417232513" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="PitchEnableFalse">
+            <color red="0.1289999932050705" green="0.024000000208616257" blue="0.016000000759959221" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Vibrato">
+            <color red="0.71399998664855957" green="0.82400000095367432" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="VibratoEnableFalse">
+            <color red="0.10599999874830246" green="0.12200000137090683" blue="0.050999999046325684" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="VocalFry">
+            <color red="0.62099999189376831" green="0.55400002002716064" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="VocalFryEnableFalse">
+            <color red="0.093999996781349182" green="0.082000002264976501" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="pitchLabelFalse">
+            <color red="0.14900000393390656" green="0.14900000393390656" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="secondBackgroundColor">
             <color red="0.85100001096725464" green="0.85100001096725464" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="secondTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
