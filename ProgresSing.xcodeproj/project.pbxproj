@@ -42,6 +42,7 @@
 		2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F70329928E0D00631F1A /* UIFont.swift */; };
 		2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC5F7052993863000631F1A /* SearchViewController.swift */; };
 		2FD7F31B29A5535500B99CAA /* fine_tutorial.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */; };
+		2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
 		2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894D29926BD50034729D /* SceneDelegate.swift */; };
 		2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3895129926BD50034729D /* MainStoryboard.storyboard */; };
@@ -96,6 +97,7 @@
 		2FC5F7052993863000631F1A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2FC5F7072993987C00631F1A /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
 		2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fine_tutorial.wav; sourceTree = "<group>"; };
+		2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = vocal_trained_model.mlmodel; sourceTree = "<group>"; };
 		2FF3894829926BD50034729D /* ProgresSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgresSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF3894B29926BD50034729D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF3894D29926BD50034729D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		2F80C7C3299B70AC00184398 /* AIModel */ = {
 			isa = PBXGroup;
 			children = (
+				2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */,
 				2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */,
 				2F80C7C4299B70CA00184398 /* new_model.mlpackage */,
 				2F80C7CD299BD08B00184398 /* new_model2.mlmodel */,
@@ -516,6 +519,7 @@
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
+				2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */,
 				2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */,
@@ -672,6 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
@@ -690,7 +695,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KyoungminNam.ProgresSing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.ProgresSing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -707,6 +712,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
@@ -725,7 +731,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KyoungminNam.ProgresSing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.ProgresSing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

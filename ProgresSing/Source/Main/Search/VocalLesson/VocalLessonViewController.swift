@@ -13,7 +13,7 @@ import AVKit
 import SoundAnalysis
 import SnapKit
 import Accelerate
-import RosaKit
+
 
 class VocalLessonViewController: BaseViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -22,28 +22,26 @@ class VocalLessonViewController: BaseViewController {
     
     let lyrics : Lyrics = Lyrics()
     
-    let MAX_VOLUME : Float = 5.0
-        
     let strokeTextAttributes = [
-      NSAttributedString.Key.strokeColor : UIColor.lyricSkyBlue,
-      NSAttributedString.Key.foregroundColor : UIColor.lyricSkyBlue,
-      NSAttributedString.Key.strokeWidth : -4.0,
-      NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
-      as [NSAttributedString.Key : Any]
+        NSAttributedString.Key.strokeColor : UIColor.lyricSkyBlue,
+        NSAttributedString.Key.foregroundColor : UIColor.lyricSkyBlue,
+        NSAttributedString.Key.strokeWidth : -4.0,
+        NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+    as [NSAttributedString.Key : Any]
     let defaultTextAttributes = [
-      NSAttributedString.Key.strokeColor : UIColor.white,
-      NSAttributedString.Key.foregroundColor : UIColor.white,
-      NSAttributedString.Key.strokeWidth : -4.0,
-      NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
-      as [NSAttributedString.Key : Any]
+        NSAttributedString.Key.strokeColor : UIColor.white,
+        NSAttributedString.Key.foregroundColor : UIColor.white,
+        NSAttributedString.Key.strokeWidth : -4.0,
+        NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+    as [NSAttributedString.Key : Any]
     let pitchTextAttributes = [
-      NSAttributedString.Key.strokeColor : UIColor.red,
-      NSAttributedString.Key.foregroundColor : UIColor.red,
-      NSAttributedString.Key.strokeWidth : -4.0,
-      NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
-      as [NSAttributedString.Key : Any]
-
-
+        NSAttributedString.Key.strokeColor : UIColor.red,
+        NSAttributedString.Key.foregroundColor : UIColor.red,
+        NSAttributedString.Key.strokeWidth : -4.0,
+        NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
+    as [NSAttributedString.Key : Any]
+    
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var koreanLirics1: UILabel!
     @IBOutlet weak var koreanLirics2: UILabel!
@@ -66,7 +64,7 @@ class VocalLessonViewController: BaseViewController {
     @IBOutlet weak var vibratoButton: UIButton!
     @IBOutlet weak var vibratoCountLabel: UILabel!
     var vibratoCount : Int = 0
-        
+    
     
     @IBOutlet var vocalFryCollection : [UIButton]!
     @IBOutlet var vibratoCollection : [UIButton]!
@@ -82,7 +80,7 @@ class VocalLessonViewController: BaseViewController {
     var audioFileURL : URL!
     var audioFile : AVAudioFile!
     var audioFormat :AVAudioFormat!
-   
+    
     // Attach audio input node for voice recording
     var audioInputNode : AVAudioInputNode!
     var audioInputFormat : AVAudioFormat!
@@ -91,13 +89,13 @@ class VocalLessonViewController: BaseViewController {
     var recordPath : URL?
     var recordFile : AVAudioFile!
     
-    
+    var labelArray : [Int] = []
     
     var prevRMSValue : Float = 0.3
     //fft setup object for 1024 values going forward (time domain -> frequency domain)
     let fftSetup = vDSP_DFT_zop_CreateSetup(nil, 1024, vDSP_DFT_Direction.FORWARD)
-    let model = try! vocal_training_model(configuration: MLModelConfiguration())
-   
+    let model = try! vocal_trained_model(configuration: MLModelConfiguration())
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
@@ -121,11 +119,11 @@ class VocalLessonViewController: BaseViewController {
             for i in self.beltCollection {
                 i.setCornerRadius2(10)
             }
-
-
+            
+            
         }
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -139,7 +137,7 @@ class VocalLessonViewController: BaseViewController {
         super.viewWillDisappear(animated)
         appDelegate.shouldSupportAllOrientation = true
     }
-  
+    
     // MARK: back button
     @IBAction func backButtonTouchUpInside(_ sender: UIButton) {
         let mainTabBarController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(identifier: "MainTabBarController")
@@ -153,6 +151,7 @@ class VocalLessonViewController: BaseViewController {
 extension VocalLessonViewController {
     func initPlay() {
         // Connect audio player and time pitch node to audio engine's output node
+        
         self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
         self.audioFile = try! AVAudioFile(forReading: audioFileURL)
         self.audioFormat = audioFile.processingFormat
@@ -160,31 +159,38 @@ extension VocalLessonViewController {
         try! self.audioFile.read(into: audioBuffer!)
         
         self.audioEngine.attach(audioPlayerNode)
+        //self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
         self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
+        print("audio format : \(audioFormat)" )
         
         self.audioInputNode = audioEngine.inputNode
+        let inputFormat = audioInputNode.inputFormat(forBus: 0)
+        print(inputFormat)
+
+        
         //self.mixerNode = AVAudioMixerNode()
         //self.audioEngine.attach(mixerNode)
         
         // MARK: Set up Audio Session
-        let inputFormat = audioInputNode.inputFormat(forBus: 0)
-        try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
-        try! AVAudioSession.sharedInstance().setActive(true)
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: .defaultToSpeaker)
+        //audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        try! audioSession.setActive(true)
+        //audioPlayerNode.volume = 1.0
         //self.audioEngine.connect(audioInputNode, to: self.mixerNode, format: inputFormat)
         //Connect mixer to mainMixer
         //self.audioEngine.connect(self.mixerNode, to: self.audioEngine.mainMixerNode, format: inputFormat)
         
         // Start music playback
-        audioPlayerNode.scheduleBuffer(audioBuffer!, completionHandler: { [weak self] in
-            self?.stop()
-            
-        })
+        
+        
+        
         
         //Tap on the mixer output (MIXER HAS BOTH MICROPHONE AND 1K.mp3)
-       /* self.mixerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount((inputFormat.sampleRate)! * 0.4), format: inputFormat, block: { (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
-            
-            
-        })*/
+        /* self.mixerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount((inputFormat.sampleRate)! * 0.4), format: inputFormat, block: { (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
+         
+         
+         })*/
         
         let bus = 0
         self.audioInputNode.installTap(onBus: bus, bufferSize: 1024, format: inputFormat) { [self] (buffer, time) in
@@ -192,11 +198,73 @@ extension VocalLessonViewController {
             
             print("voice Pitch : \(voicePitch)")
             print("record time : \(time)")
-            self.processBuffer(buffer)
             
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
+            if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
+            {
+                let currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
+                let currentTime1 = Int(currentTime)
+                for i in self.lyrics.vocalFryTime {
+                    if (Int(i) == currentTime1) {
+                        DispatchQueue.global().async {
+                            self.processBuffer(buffer)
+                        }
+                    }
+                }
+                for i in self.lyrics.vocalFryTime {
+                    if (Int(i)+1 == currentTime1) {
+                            DispatchQueue.main.async {
+                                if( self.labelArray.contains(3) ){
+                                    self.vocalFryCount += 1
+                                    self.vocalFryCountLabel.text = String(vocalFryCount)
+                                    self.labelArray = []
+                                }
+                            }
+                        
+                    }
+                }
+                for i in self.lyrics.vibratoTime {
+                    if (Int(i) == currentTime1) {
+                        DispatchQueue.global().async {
+                            self.processBuffer(buffer)
+                        }
+                    }
+                }
+                for i in self.lyrics.vibratoTime {
+                    if (Int(i)+1 == currentTime1) {
+                        DispatchQueue.main.async {
+                            if( self.labelArray.contains(2) ){
+                                self.vibratoCount += 1
+                                self.vibratoCountLabel.text = String(vibratoCount)
+                                self.labelArray = []
+                            }
+                        }
+                    }
+                }
+                
+                for i in self.lyrics.beltTime {
+                    if (Int(i) == currentTime1) {
+                        DispatchQueue.global().async {
+                            self.processBuffer(buffer)
+                        }
+                    }
+                }
+                for i in self.lyrics.beltTime {
+                    if (Int(i)+1 == currentTime1) {
+                        DispatchQueue.main.async {
+                            if( self.labelArray.contains(1) ){
+                                self.beltCount += 1
+                                self.beltCountLabel.text = String(beltCount)
+                                self.labelArray = []
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
             do{
                 // Write the audio buffer to a file
                 if self.recordFile == nil {
@@ -214,16 +282,15 @@ extension VocalLessonViewController {
             } catch {
                 print("Error writing audio buffer: \(error.localizedDescription)")
             }
-            
         }
-        self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format: self.audioFormat) { (buffer, time) in
+        
+        self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format : audioFormat) { (buffer, time) in
             let songPitch = self.processAudioData(buffer: buffer)
             print("song Pitch : \(songPitch)")
             print("play time : \(time)")
             DispatchQueue.main.async {
                 self.songPitch = songPitch
             }
-            
             DispatchQueue.global().async {
                 if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
                 {
@@ -231,6 +298,9 @@ extension VocalLessonViewController {
                     let currentTimeString = self.convertNSTimeInterval2String(currentTime)
                     print("Current time: \(currentTime)")
                     
+                    if(currentTime > 206) {
+                        self.stop()
+                    }
                     
                     for i in 0..<self.lyrics.startLyricsTime1.count {
                         self.startTimeCheck1(i, self.lyrics.startLyricsTime1[i], currentTime: currentTimeString)
@@ -247,20 +317,35 @@ extension VocalLessonViewController {
                     }
                 }
             }
-            
         }
         
         try! audioEngine.start()
         audioPlayerNode.play()
+        // Observe changes to the system's audio output volume
+        
         
         // Wait for music playback to finish
         /*
-        while audioPlayerNode.isPlaying {
-            RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
-            print("run roop")
-        }
+         while audioPlayerNode.isPlaying {
+         RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
+         print("run roop")
+         }
          */
+        audioPlayerNode.scheduleBuffer(audioBuffer!, completionHandler: { [weak self] in
+            self?.stop()
+        })
     }
+    // Handle changes to the system's audio output volume
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "outputVolume" {
+            // Get the new volume value
+            let volume = change?[.newKey] as? Float ?? 0.0
+            
+            // Set the player node's volume to the new value
+            audioPlayerNode.volume = volume
+        }
+    }
+    
     func returnVocalFryIndex(startTime : Float, endTime: Float) -> [Int] {
         var index : [Int] = []
         for (i,time) in self.lyrics.vocalFryTime.enumerated() {
@@ -295,33 +380,123 @@ extension VocalLessonViewController {
         return index
     }
     
+    
+    
     func processBuffer(_ buffer: AVAudioPCMBuffer) {
+        
+        guard let recordingFormat = AVAudioFormat(
+            commonFormat: .pcmFormatFloat32,
+            sampleRate: Double(44100),
+            channels: 1,
+            interleaved: true
+        ), let formatConverter = AVAudioConverter(from:audioEngine.inputNode.inputFormat(forBus: 0), to: recordingFormat) else { return }
+        guard let pcmBuffer = AVAudioPCMBuffer(
+            pcmFormat: recordingFormat,
+            frameCapacity: AVAudioFrameCount(recordingFormat.sampleRate)
+        ) else { return }
+        
+        var error: NSError?
+        let inputBlock: AVAudioConverterInputBlock = { _, outStatus in
+            outStatus.pointee = AVAudioConverterInputStatus.haveData
+            return buffer
+        }
+        
+        formatConverter.convert(to: pcmBuffer, error: &error, withInputFrom: inputBlock)
+        
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        if let channelData = pcmBuffer.floatChannelData {
+            let channelDataValue = channelData.pointee
+            let channelDataValueArray = stride(
+                from: 0,
+                to: Int(pcmBuffer.frameLength),
+                by: buffer.stride
+            ).map { channelDataValue[$0] }
+            
+            //print("channelDataValue : \(channelDataValueArray)")
+            let mean = Float(channelDataValueArray.reduce(0,+))/Float(channelDataValueArray.count)
+            let std = self.standardDeviation(arr: channelDataValueArray)
+            
+            var newArray = stride(
+                from: 0,
+                to: Int(pcmBuffer.frameLength),
+                by: 1
+            ).map { channelDataValue[$0] - mean / std }
+            
+            var p : UnsafeMutableRawPointer = UnsafeMutableRawPointer(&newArray)
+            
+            //var input : [Float]
+            let input = try! MLMultiArray(dataPointer: p, shape: [1,44100,1], dataType: .float32, strides: [1,1,1])
+            let prediction = try! model.prediction(conv1d_33_input: input)
+            // Pass the input data to the model
+            
+            // Get the output result
+            let output = prediction.Identity
+            
+            let maxIndex = self.getMaxIndex(output)
+            print("max Index: \(maxIndex)")
+            self.labelArray.append(maxIndex)
+            
+            // Update the UI with the output result
+            DispatchQueue.main.async {
+                // Update the UI with the output value
+                //print("model output : \(output)")
+                //print("fft magnitudes : \(fftMagnitudes)")
+                //print("input : \(input)")
+                print(output)
+                switch maxIndex {
+                case 0: print("belt")
+                case 1: print("straight")
+                case 2: print("vibrato")
+                case 3: print("vocal fry")
+                default:
+                    print("default")
+                }
+                
+            }
+            
+            
+        }
+        
         // Prepare the input data for the model
-        let audioData = buffer.floatChannelData![0]
+        //let audioData = buffer.floatChannelData![0]
         //fft
         //let fftMagnitudes = SignalProcessing.fft(data: audioData, setup: fftSetup!)
-        let audioDataPtr = UnsafeMutablePointer<Float>(mutating: audioData)
-        let input = try! MLMultiArray(dataPointer: audioDataPtr, shape: [1,128,87,1], dataType: .float32, strides: [1,1,1,1])
+        //let audioDataPtr = UnsafeMutablePointer<Float>(mutating: audioData)
         
-        //for i in 0..<buffer.frameLength {
-        //   input[i] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
-        //}
+        //var input : [Float]
+        //let input = try! MLMultiArray(dataPointer: audioDataPtr, shape: [1,44100,1], dataType: .float32, strides: [1,1,1])
         
-        // Pass the input data to the model
-        //let prediction = try! model.prediction(input: vocal_training_modelInput(conv2d_input: input))
+        /*
+         for i in 0..<buffer.frameLength {
+         input[Int(i)] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
+         }
+         */
         
-        // Get the output result
-        //let output = prediction.Identity
-        
-        // Update the UI with the output result
-        DispatchQueue.main.async {
-            // Update the UI with the output value
-            //print("model output : \(output)")
-            //print("fft magnitudes : \(fftMagnitudes)")
-            print("input : \(input)")
-        }
     }
-        
+    
+    func getMaxIndex(_ array: MLMultiArray) -> Int {
+        var maxIndex = 0
+        var maxValue = 0.0
+        for i in 0..<array.count {
+            if let value = array[i] as? Double, value > maxValue {
+                maxValue = value
+                maxIndex = i
+            }
+        }
+        return maxIndex
+    }
+    
+    func standardDeviation(arr : [Float]) -> Float
+    {
+        let length = Float(arr.count)
+        let avg = arr.reduce(0, {$0 + $1}) / length
+        let sumOfSquaredAvgDiff = arr.map { pow($0 - avg, 2.0)}.reduce(0, {$0 + $1})
+        return sqrt(sumOfSquaredAvgDiff / length)
+    }
+    
     func processAudioData(buffer: AVAudioPCMBuffer) -> Float{
         guard let channelData = buffer.floatChannelData?[0] else {return 0}
         let frames = buffer.frameLength
@@ -378,15 +553,15 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
             
             //self.koreanLirics1.text = lyrics.koreanLyrics[index*2]
             //self.koreanLirics2.text = lyrics.koreanLyrics[index*2+1]
-                                                           
+            
             DispatchQueue.main.async { [self] in
                 self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2], attributes: strokeTextAttributes)
                 if (index < lyrics.startLyricsTime1.count - 1 ) {
                     self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: defaultTextAttributes)
                 }
-
+                
                 self.progress1.progress = 0.0
-               
+                
                 
                 
                 let startTime1 = self.convertString2Time(self.lyrics.startLyricsTime1[index])
@@ -416,7 +591,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                         self.beltCollection[i].isHidden = false
                     }
                 }
-
+                
                 
                 
             }
@@ -427,14 +602,14 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         let endTime1 = self.convertString2Time(endTime1)
         let currentTime = self.convertString2Time(currentTime)
         if (currentTime < endTime1 && currentTime > startTime1) {
-            if(self.voicePitch - self.songPitch > 0.01) {
+            if(self.voicePitch - self.songPitch > 0.1) {
                 DispatchQueue.main.async {
                     self.koreanLirics1.attributedText = NSMutableAttributedString(string: self.lyrics.koreanLyrics[index*2], attributes: self.pitchTextAttributes)
                     self.pitchCount -= 1
                     self.pitchCountLabel.text = String(self.pitchCount)
                     self.showToast(message: "음정을 틀리셨어요🥲")
                 }
-
+                
             } else {
                 DispatchQueue.main.async {
                     self.koreanLirics1.attributedText = NSMutableAttributedString(string: self.lyrics.koreanLyrics[index*2], attributes: self.strokeTextAttributes)
@@ -444,12 +619,12 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         }
     }
     func pitchCheck2(index : Int, startTime2: String, endTime2:String, currentTime : String) {
-       
+        
         let startTime2 = self.convertString2Time(startTime2)
         let endTime2 = self.convertString2Time(endTime2)
         let currentTime = self.convertString2Time(currentTime)
         if (currentTime < endTime2 && currentTime > startTime2) {
-            if(self.voicePitch - self.songPitch > 0.01) {
+            if(self.voicePitch - self.songPitch > 0.1) {
                 DispatchQueue.main.async {
                     if (index < self.lyrics.startLyricsTime1.count - 1 ) {
                         self.koreanLirics2.attributedText = NSMutableAttributedString(string: self.lyrics.koreanLyrics[index*2+1], attributes: self.pitchTextAttributes)
@@ -457,9 +632,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                         self.pitchCountLabel.text = String(self.pitchCount)
                         self.showToast(message: "음정을 틀리셨어요🥲")
                     }
-
                 }
-
             } else {
                 
                 DispatchQueue.main.async {
@@ -471,8 +644,8 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
             }
         }
     }
-
-
+    
+    
     
     func endTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
@@ -499,8 +672,8 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     self.beltCollection[i].isHidden = true
                 }
             }
-
-
+            
+            
         }
     }
     func startTimeCheck2(_ index : Int,_ lyricsTime: String, currentTime : String) {
@@ -532,7 +705,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                         self.beltCollection[i].isHidden = false
                     }
                 }
-
+                
                 
             }
         }
@@ -563,7 +736,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     self.beltCollection[i].isHidden = true
                 }
             }
-
+            
         }
     }
     func convertNSTimeInterval2String(_ time:Float
@@ -575,7 +748,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
     }
     func convertString2Time(_ time:String) -> Float {
         let components = time.split { $0 == ":" } .map { (x) -> Float in return Float(String(x))! }
-
+        
         let hours = components[0]
         let minutes = components[1]
         let result = hours * 60 + minutes

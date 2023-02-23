@@ -31,6 +31,7 @@ class FeedbackViewController: BaseViewController {
         // Do any additional setup after loading the view.
         
         self.homeButton.setCornerRadius2(10)
+        self.calculateScore()
     }
     
     func calculateScore() {
@@ -39,18 +40,19 @@ class FeedbackViewController: BaseViewController {
         let vibratoTotalCount = self.lyric.vibratoTime.count
         let vocalFryTotalCount = self.lyric.vocalFryTime.count
         
+
         let pitchScore = Float(pitchTotalCount+pitchCount)/Float(pitchTotalCount) * 100
         let beltScore = Float(beltCount)/Float(beltTotalCount) * 100
         let vibratoScore = Float(vibratoCount)/Float(vibratoTotalCount) * 100
         let vocalFryScore = Float(vocalFryCount)/Float(vocalFryTotalCount) * 100
         
-        self.pitchScoreLabel.text = String(pitchScore)
-        self.beltScoreLabel.text = String(beltScore)
-        self.vibratoScoreLabel.text = String(vibratoScore)
-        self.vocalFryScoreLabel.text = String(vocalFryScore)
+        self.pitchScoreLabel.text = String(format: "%.2f", pitchScore)
+        self.beltScoreLabel.text = String(format: "%.2f",beltScore)
+        self.vibratoScoreLabel.text = String(format: "%.2f",vibratoScore)
+        self.vocalFryScoreLabel.text = String(format: "%.2f",vocalFryScore)
         
         let finalScore = (pitchScore+beltScore+vibratoScore+vocalFryScore) / 4
-        self.finalScoreLabel.text = String(finalScore)
+        self.finalScoreLabel.text = String(format: "%.2f",finalScore)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

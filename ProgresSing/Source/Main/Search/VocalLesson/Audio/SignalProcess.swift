@@ -29,7 +29,6 @@ class SignalProcessing {
         } else if (adjustedVal > 0.6) {
             adjustedVal = 0.6
         }
-        
         return adjustedVal
     }
     
