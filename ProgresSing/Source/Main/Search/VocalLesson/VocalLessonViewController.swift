@@ -9,9 +9,6 @@ import UIKit
 import AVFoundation
 import CoreML
 import Vision
-import AVKit
-import SoundAnalysis
-import SnapKit
 import Accelerate
 
 
@@ -119,8 +116,7 @@ class VocalLessonViewController: BaseViewController {
             for i in self.beltCollection {
                 i.setCornerRadius2(10)
             }
-            
-            
+  
         }
     }
     
@@ -136,6 +132,7 @@ class VocalLessonViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         appDelegate.shouldSupportAllOrientation = true
+        self.stop()
     }
     
     // MARK: back button
@@ -152,21 +149,6 @@ extension VocalLessonViewController {
     func initPlay() {
         // Connect audio player and time pitch node to audio engine's output node
         
-        self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
-        self.audioFile = try! AVAudioFile(forReading: audioFileURL)
-        self.audioFormat = audioFile.processingFormat
-        self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
-        try! self.audioFile.read(into: audioBuffer!)
-        
-        self.audioEngine.attach(audioPlayerNode)
-        //self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
-        self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
-        print("audio format : \(audioFormat)" )
-        
-        self.audioInputNode = audioEngine.inputNode
-        let inputFormat = audioInputNode.inputFormat(forBus: 0)
-        print(inputFormat)
-
         
         //self.mixerNode = AVAudioMixerNode()
         //self.audioEngine.attach(mixerNode)
@@ -182,16 +164,26 @@ extension VocalLessonViewController {
         //self.audioEngine.connect(self.mixerNode, to: self.audioEngine.mainMixerNode, format: inputFormat)
         
         // Start music playback
-        
-        
-        
-        
+
         //Tap on the mixer output (MIXER HAS BOTH MICROPHONE AND 1K.mp3)
         /* self.mixerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount((inputFormat.sampleRate)! * 0.4), format: inputFormat, block: { (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
          
          
          })*/
+        self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
+        self.audioFile = try! AVAudioFile(forReading: audioFileURL)
+        self.audioFormat = audioFile.processingFormat
+        self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+        try! self.audioFile.read(into: audioBuffer!)
         
+        self.audioEngine.attach(audioPlayerNode)
+        self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
+        
+        self.audioInputNode = audioEngine.inputNode
+        let inputFormat = audioInputNode.inputFormat(forBus: 0)
+        audioPlayerNode.scheduleBuffer(audioBuffer!) {
+            self.stop()
+        }
         let bus = 0
         self.audioInputNode.installTap(onBus: bus, bufferSize: 1024, format: inputFormat) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
@@ -204,6 +196,7 @@ extension VocalLessonViewController {
             }
             if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
             {
+                
                 let currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
                 let currentTime1 = Int(currentTime)
                 for i in self.lyrics.vocalFryTime {
@@ -282,6 +275,8 @@ extension VocalLessonViewController {
             } catch {
                 print("Error writing audio buffer: \(error.localizedDescription)")
             }
+            
+            
         }
         
         self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format : audioFormat) { (buffer, time) in
@@ -325,15 +320,14 @@ extension VocalLessonViewController {
         
         
         // Wait for music playback to finish
+        
+        
         /*
          while audioPlayerNode.isPlaying {
          RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
-         print("run roop")
+         //print("run roop")
          }
          */
-        audioPlayerNode.scheduleBuffer(audioBuffer!, completionHandler: { [weak self] in
-            self?.stop()
-        })
     }
     // Handle changes to the system's audio output volume
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -379,11 +373,7 @@ extension VocalLessonViewController {
         }
         return index
     }
-    
-    
-    
     func processBuffer(_ buffer: AVAudioPCMBuffer) {
-        
         guard let recordingFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
             sampleRate: Double(44100),
@@ -459,21 +449,6 @@ extension VocalLessonViewController {
             
             
         }
-        
-        // Prepare the input data for the model
-        //let audioData = buffer.floatChannelData![0]
-        //fft
-        //let fftMagnitudes = SignalProcessing.fft(data: audioData, setup: fftSetup!)
-        //let audioDataPtr = UnsafeMutablePointer<Float>(mutating: audioData)
-        
-        //var input : [Float]
-        //let input = try! MLMultiArray(dataPointer: audioDataPtr, shape: [1,44100,1], dataType: .float32, strides: [1,1,1])
-        
-        /*
-         for i in 0..<buffer.frameLength {
-         input[Int(i)] = Float(buffer.floatChannelData!.pointee[Int(i)]) / 32768.0
-         }
-         */
         
     }
     
@@ -713,7 +688,6 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
     func endTimeCheck2(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics2.textColor = .white
-            
             let startTime2 = self.convertString2Time(self.lyrics.startLyricsTime2[index])
             let endTime2 = self.convertString2Time(self.lyrics.endLyricsTime2[index])
             let currentTime = self.convertString2Time(currentTime)
@@ -736,7 +710,6 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     self.beltCollection[i].isHidden = true
                 }
             }
-            
         }
     }
     func convertNSTimeInterval2String(_ time:Float
