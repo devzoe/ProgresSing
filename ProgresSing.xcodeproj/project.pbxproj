@@ -44,6 +44,9 @@
 		2FD7F31B29A5535500B99CAA /* fine_tutorial.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */; };
 		2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */; };
 		2FD7F31F29A7667C00B99CAA /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD7F31E29A7667B00B99CAA /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2FD7F32129A7A27400B99CAA /* final_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32029A7A27400B99CAA /* final_model.mlmodel */; };
+		2FD7F32329A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */; };
+		2FD7F32529A7B3B400B99CAA /* best_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
 		2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894D29926BD50034729D /* SceneDelegate.swift */; };
 		2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3895129926BD50034729D /* MainStoryboard.storyboard */; };
@@ -100,6 +103,9 @@
 		2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fine_tutorial.wav; sourceTree = "<group>"; };
 		2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = vocal_trained_model.mlmodel; sourceTree = "<group>"; };
 		2FD7F31E29A7667B00B99CAA /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		2FD7F32029A7A27400B99CAA /* final_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = final_model.mlmodel; path = ../../../../../../Downloads/final_model.mlmodel; sourceTree = "<group>"; };
+		2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = vocal_trained_model_best.mlmodel; path = ../../../../../../Downloads/vocal_trained_model_best.mlmodel; sourceTree = "<group>"; };
+		2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = best_model.mlmodel; path = ../../../../../../Downloads/best_model.mlmodel; sourceTree = "<group>"; };
 		2FF3894829926BD50034729D /* ProgresSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgresSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF3894B29926BD50034729D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF3894D29926BD50034729D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +190,9 @@
 		2F80C7C3299B70AC00184398 /* AIModel */ = {
 			isa = PBXGroup;
 			children = (
+				2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */,
+				2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */,
+				2FD7F32029A7A27400B99CAA /* final_model.mlmodel */,
 				2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */,
 				2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */,
 				2F80C7C4299B70CA00184398 /* new_model.mlpackage */,
@@ -518,6 +527,7 @@
 				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
 				2F80C7C2299B67D600184398 /* AudioController.swift in Sources */,
 				2F126FB529A506B100F7B727 /* MyRecord.swift in Sources */,
+				2FD7F32529A7B3B400B99CAA /* best_model.mlmodel in Sources */,
 				2F80C7E1299EA28800184398 /* YIN.swift in Sources */,
 				2F80C79B2995836100184398 /* Chart.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
@@ -529,8 +539,10 @@
 				2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */,
+				2FD7F32129A7A27400B99CAA /* final_model.mlmodel in Sources */,
 				2F126FB129A2157D00F7B727 /* vocal_training_model.mlmodel in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
+				2FD7F32329A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel in Sources */,
 				2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */,
 				2F80C79D29958D3900184398 /* Search.swift in Sources */,
 				2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */,

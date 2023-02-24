@@ -185,19 +185,19 @@ extension VocalLessonViewController {
             self.stop()
         }
         let bus = 0
-        self.audioInputNode.installTap(onBus: bus, bufferSize: 1024, format: inputFormat) { [self] (buffer, time) in
+        self.audioInputNode.installTap(onBus: bus, bufferSize: UInt32(44100*0.2), format: inputFormat) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
             
             print("voice Pitch : \(voicePitch)")
-            print("record time : \(time)")
+            //print("record time : \(time)")
             
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
             if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
             {
-                
                 let currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
+                print("record time : \(currentTime)")
                 let currentTime1 = Int(currentTime)
                 for i in self.lyrics.vocalFryTime {
                     if (Int(i) == currentTime1) {
@@ -207,7 +207,9 @@ extension VocalLessonViewController {
                     }
                 }
                 for i in self.lyrics.vocalFryTime {
-                    if (Int(i)+1 == currentTime1) {
+                    
+                    if( Int(i)+1 != 18 ){
+                        if (Int(i)+1 == currentTime1) {
                             DispatchQueue.main.async {
                                 if( self.labelArray.contains(3) ){
                                     self.vocalFryCount += 1
@@ -215,7 +217,7 @@ extension VocalLessonViewController {
                                     self.labelArray = []
                                 }
                             }
-                        
+                        }
                     }
                 }
                 for i in self.lyrics.vibratoTime {
@@ -247,7 +249,7 @@ extension VocalLessonViewController {
                 for i in self.lyrics.beltTime {
                     if (Int(i)+1 == currentTime1) {
                         DispatchQueue.main.async {
-                            if( self.labelArray.contains(1) ){
+                            if( self.labelArray.contains(0) ){
                                 self.beltCount += 1
                                 self.beltCountLabel.text = String(beltCount)
                                 self.labelArray = []
@@ -358,7 +360,6 @@ extension VocalLessonViewController {
                 index.append(i)
                 print("vibrato index : \(i) vibrato time : \(time)")
             }
-            
         }
         return index
     }
@@ -424,11 +425,19 @@ extension VocalLessonViewController {
             
             // Get the output result
             let output = prediction.Identity
+            //var outputArray : [Double] = []
+            //for i in 0..<output.count {
+            //    outputArray.append(output[i].doubleValue)
+            //}
             
             let maxIndex = self.getMaxIndex(output)
-            print("max Index: \(maxIndex)")
-            self.labelArray.append(maxIndex)
+            //print("max Index: \(maxIndex)")
             
+            //outputArray.remove(at: maxIndex)
+            //let secondMax = outputArray.max()
+            //let secondIndex = outputArray.firstIndex(of: secondMax!)
+            self.labelArray.append(maxIndex)
+            //self.labelArray.append(secondIndex!)
             // Update the UI with the output result
             DispatchQueue.main.async {
                 // Update the UI with the output value
@@ -444,12 +453,8 @@ extension VocalLessonViewController {
                 default:
                     print("default")
                 }
-                
             }
-            
-            
         }
-        
     }
     
     func getMaxIndex(_ array: MLMultiArray) -> Int {
@@ -590,7 +595,6 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                     self.koreanLirics1.attributedText = NSMutableAttributedString(string: self.lyrics.koreanLyrics[index*2], attributes: self.strokeTextAttributes)
                 }
             }
-            
         }
     }
     func pitchCheck2(index : Int, startTime2: String, endTime2:String, currentTime : String) {

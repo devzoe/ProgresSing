@@ -38,7 +38,7 @@ class FeedbackViewController: BaseViewController {
         let pitchTotalCount = 469
         let beltTotalCount = self.lyric.beltTime.count
         let vibratoTotalCount = self.lyric.vibratoTime.count
-        let vocalFryTotalCount = self.lyric.vocalFryTime.count
+        let vocalFryTotalCount = self.lyric.vocalFryTime.count + 7
         
 
         let pitchScore = Float(pitchTotalCount+pitchCount)/Float(pitchTotalCount) * 100
