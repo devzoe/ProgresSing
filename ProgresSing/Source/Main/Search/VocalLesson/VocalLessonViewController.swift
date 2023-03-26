@@ -13,6 +13,7 @@ import Accelerate
 
 
 class VocalLessonViewController: BaseViewController {
+    lazy var vocalLessonDataManager = VocalLessonDataManager()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     // 레코드 객체 생성 - 데이터를 가져오기 위함
     private var recordService: MyRecordViewModel = MyRecordViewModel.shared
@@ -86,7 +87,7 @@ class VocalLessonViewController: BaseViewController {
     var recordPath : URL?
     var recordFile : AVAudioFile!
     
-    var labelArray : [Int] = []
+    var labelArray : [String] = []
     
     var prevRMSValue : Float = 0.3
     //fft setup object for 1024 values going forward (time domain -> frequency domain)
@@ -96,7 +97,7 @@ class VocalLessonViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
-            print("Check1 : \(Thread.current)")
+            //print("Check1 : \(Thread.current)")
             self.navigationController?.navigationBar.isHidden = true
             self.backgroundImageView.image = UIImage(named: "lessonBackground")
             self.backgroundImageView.transform = self.backgroundImageView.transform.rotated(by: .pi/2 * 3)
@@ -124,7 +125,7 @@ class VocalLessonViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.global().async {
-            print("check2 : \(Thread.current)")
+            //print("check2 : \(Thread.current)")
             self.initPlay()
         }
         
@@ -173,6 +174,7 @@ extension VocalLessonViewController {
         self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
         self.audioFile = try! AVAudioFile(forReading: audioFileURL)
         self.audioFormat = audioFile.processingFormat
+        print("play format : \(audioFormat)")
         self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
         try! self.audioFile.read(into: audioBuffer!)
         
@@ -185,24 +187,47 @@ extension VocalLessonViewController {
             self.stop()
         }
         let bus = 0
-        self.audioInputNode.installTap(onBus: bus, bufferSize: UInt32(44100*0.2), format: inputFormat) { [self] (buffer, time) in
+        let sampleRate = audioEngine.inputNode.inputFormat(forBus: 0).sampleRate
+        let timeInterval = 1.0
+        print("sample rate :\(UInt32(audioEngine.inputNode.inputFormat(forBus: 0).sampleRate))")
+        print("format : \(audioEngine.inputNode.inputFormat(forBus: 0))")
+        print("input data : \(audioEngine.inputNode.inputFormat(forBus: 0).formatDescription)")
+        let bufferSize = AVAudioFrameCount(sampleRate * timeInterval)
+        print("buffer size : \(bufferSize)")
+        let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)
+        self.audioInputNode.installTap(onBus: 1, bufferSize: bufferSize, format: format) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
             
-            print("voice Pitch : \(voicePitch)")
-            //print("record time : \(time)")
             
+            //print("voice Pitch : \(voicePitch)")
+            //print("buffer : \(buffer.stride)")
+            print("buffer : \(buffer.frameLength)")
+            print("buffer : \(buffer.frameCapacity)")
+            
+            var pointer = buffer.floatChannelData?.pointee
+            
+            //for i in 0...buffer.frameLength {
+            //    print("buffer : \(pointer![Int(i)])")
+            //}
+            print("record time : \(time)")
+
+            print("record time : \(time.sampleRate)")
+            //print("record time : \(time.audioTimeStamp)")
+           // print("record time : \(time.sampleTime)")
+            //print("record time : \(self.audioInputNode.lastRenderTime)")
+
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
             if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
             {
                 let currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
-                print("record time : \(currentTime)")
+                //print("record time : \(currentTime)")
                 let currentTime1 = Int(currentTime)
                 for i in self.lyrics.vocalFryTime {
                     if (Int(i) == currentTime1) {
                         DispatchQueue.global().async {
-                            self.processBuffer(buffer)
+                            self.processBuffer("vocal_fry",buffer)
                         }
                     }
                 }
@@ -211,7 +236,7 @@ extension VocalLessonViewController {
                     if( Int(i)+1 != 18 ){
                         if (Int(i)+1 == currentTime1) {
                             DispatchQueue.main.async {
-                                if( self.labelArray.contains(3) ){
+                                if( self.labelArray.contains("True") ){
                                     self.vocalFryCount += 1
                                     self.vocalFryCountLabel.text = String(vocalFryCount)
                                     self.labelArray = []
@@ -223,14 +248,14 @@ extension VocalLessonViewController {
                 for i in self.lyrics.vibratoTime {
                     if (Int(i) == currentTime1) {
                         DispatchQueue.global().async {
-                            self.processBuffer(buffer)
+                            self.processBuffer("vibrato",buffer)
                         }
                     }
                 }
                 for i in self.lyrics.vibratoTime {
                     if (Int(i)+1 == currentTime1) {
                         DispatchQueue.main.async {
-                            if( self.labelArray.contains(2) ){
+                            if( self.labelArray.contains("True") ){
                                 self.vibratoCount += 1
                                 self.vibratoCountLabel.text = String(vibratoCount)
                                 self.labelArray = []
@@ -242,14 +267,14 @@ extension VocalLessonViewController {
                 for i in self.lyrics.beltTime {
                     if (Int(i) == currentTime1) {
                         DispatchQueue.global().async {
-                            self.processBuffer(buffer)
+                            self.processBuffer("belt",buffer)
                         }
                     }
                 }
                 for i in self.lyrics.beltTime {
                     if (Int(i)+1 == currentTime1) {
                         DispatchQueue.main.async {
-                            if( self.labelArray.contains(0) ){
+                            if( self.labelArray.contains("True") ){
                                 self.beltCount += 1
                                 self.beltCountLabel.text = String(beltCount)
                                 self.labelArray = []
@@ -283,8 +308,8 @@ extension VocalLessonViewController {
         
         self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format : audioFormat) { (buffer, time) in
             let songPitch = self.processAudioData(buffer: buffer)
-            print("song Pitch : \(songPitch)")
-            print("play time : \(time)")
+            //print("song Pitch : \(songPitch)")
+            //print("play time : \(time)")
             DispatchQueue.main.async {
                 self.songPitch = songPitch
             }
@@ -293,7 +318,7 @@ extension VocalLessonViewController {
                 {
                     var currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
                     let currentTimeString = self.convertNSTimeInterval2String(currentTime)
-                    print("Current time: \(currentTime)")
+                    //print("Current time: \(currentTime)")
                     
                     if(currentTime > 206) {
                         self.stop()
@@ -347,7 +372,7 @@ extension VocalLessonViewController {
         for (i,time) in self.lyrics.vocalFryTime.enumerated() {
             if(startTime <= time && time <= endTime) {
                 index.append(i)
-                print("fry index : \(i) fry time : \(time)")
+                //print("fry index : \(i) fry time : \(time)")
             }
             
         }
@@ -358,7 +383,7 @@ extension VocalLessonViewController {
         for (i,time) in self.lyrics.vibratoTime.enumerated() {
             if(startTime <= time && time <= endTime) {
                 index.append(i)
-                print("vibrato index : \(i) vibrato time : \(time)")
+                //print("vibrato index : \(i) vibrato time : \(time)")
             }
         }
         return index
@@ -368,16 +393,17 @@ extension VocalLessonViewController {
         for (i,time) in self.lyrics.beltTime.enumerated() {
             if(startTime <= time && time <= endTime) {
                 index.append(i)
-                print("belt index : \(i) belt time : \(time)")
+                //print("belt index : \(i) belt time : \(time)")
             }
             
         }
         return index
     }
-    func processBuffer(_ buffer: AVAudioPCMBuffer) {
+    func processBuffer(_ label : String, _ buffer: AVAudioPCMBuffer) {
+        print("process buffer : \(buffer.frameLength)")
         guard let recordingFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
-            sampleRate: Double(44100),
+            sampleRate: Double(17640),
             channels: 1,
             interleaved: true
         ), let formatConverter = AVAudioConverter(from:audioEngine.inputNode.inputFormat(forBus: 0), to: recordingFormat) else { return }
@@ -405,10 +431,15 @@ extension VocalLessonViewController {
                 to: Int(pcmBuffer.frameLength),
                 by: buffer.stride
             ).map { channelDataValue[$0] }
+            let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label)
+            
+            self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
             
             //print("channelDataValue : \(channelDataValueArray)")
+            /*
             let mean = Float(channelDataValueArray.reduce(0,+))/Float(channelDataValueArray.count)
             let std = self.standardDeviation(arr: channelDataValueArray)
+            print("converted buffer : \(channelDataValueArray.count)")
             
             var newArray = stride(
                 from: 0,
@@ -425,10 +456,10 @@ extension VocalLessonViewController {
             
             // Get the output result
             let output = prediction.Identity
-            //var outputArray : [Double] = []
-            //for i in 0..<output.count {
-            //    outputArray.append(output[i].doubleValue)
-            //}
+            var outputArray : [Double] = []
+            for i in 0..<output.count {
+                outputArray.append(output[i].doubleValue)
+            }
             
             let maxIndex = self.getMaxIndex(output)
             //print("max Index: \(maxIndex)")
@@ -444,17 +475,35 @@ extension VocalLessonViewController {
                 //print("model output : \(output)")
                 //print("fft magnitudes : \(fftMagnitudes)")
                 //print("input : \(input)")
-                print(output)
+                //print(output)
                 switch maxIndex {
-                case 0: print("belt")
-                case 1: print("straight")
-                case 2: print("vibrato")
-                case 3: print("vocal fry")
+                case 0:
+                    print("label : \(label), prediction : belt, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
+                    print("\n")
+                case 1:
+                    print("label : \(label), prediction : straight, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
+                    print("\n")
+                case 2:
+                    print("label : \(label), prediction : vibrato, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
+                    print("\n")
+                case 3:
+                    print("label : \(label), prediction : vocal fry, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
+                    print("\n")
                 default:
                     print("default")
                 }
             }
+             */
         }
+    }
+    func didSuccessPredict(_ response : VocalLessonResponse) {
+        self.labelArray.append(response.result)
+        print(labelArray)
+        print("성공")
+    }
+    func failedToRequest(message: String) {
+        //self.presentAlert(title: message)
+        print(message)
     }
     
     func getMaxIndex(_ array: MLMultiArray) -> Int {
@@ -498,7 +547,7 @@ extension VocalLessonViewController {
         audioEngine.stop()
         //audioPlayerNode.stop()
         self.recordService.add(record: MyRecord(imageName: "fine", artist: "태연", title: "fine", recordURL: (self.recordPath!)))
-        print("recordpath1 :  \(self.recordPath!)")
+        //print("recordpath1 :  \(self.recordPath!)")
         DispatchQueue.main.async {
             let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
             feedbackVC.pitchCount = self.pitchCount
@@ -522,7 +571,6 @@ extension VocalLessonViewController {
         toastLabel.clipsToBounds = true
         self.view.addSubview(toastLabel)
         UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: { toastLabel.alpha = 0.0 }, completion: {(isCompleted) in toastLabel.removeFromSuperview()})
-        
     }
 }
 

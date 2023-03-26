@@ -45,7 +45,7 @@ class AudioController {
     var audioEngine: AVAudioEngine!
     var inputNode: AVAudioInputNode!
     //var model: MLModel!
-    let model = try! new_model2(configuration: MLModelConfiguration())
+    //let model = try! new_model2(configuration: MLModelConfiguration())
     var bufferSize: AVAudioFrameCount = 1024
     var analysisFormat: AVAudioFormat!
     var analysisQueue: DispatchQueue!
@@ -83,15 +83,15 @@ class AudioController {
         //}
         
         // Pass the input data to the model
-        let prediction = try! model.prediction(input: new_model2Input(conv2d_4_input: input))
+        //let prediction = try! model.prediction(input: new_model2Input(conv2d_4_input: input))
         
         // Get the output result
-        let output = prediction.Identity
+        //let output = prediction.Identity
         
         // Update the UI with the output result
         DispatchQueue.main.async {
             // Update the UI with the output value
-            print("model output : \(output)")
+           // print("model output : \(output)")
         }
     }
     

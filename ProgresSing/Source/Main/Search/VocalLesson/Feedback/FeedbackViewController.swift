@@ -24,6 +24,7 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var vibratoScoreLabel: UILabel!
     @IBOutlet weak var vocalFryScoreLabel: UILabel!
     
+    @IBOutlet weak var shareView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,5 +65,16 @@ class FeedbackViewController: BaseViewController {
         let mainTabBarController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(identifier: "MainTabBarController")
         changeRootViewController(mainTabBarController)
     }
+    
+    @IBAction func shareButtonTouchUpInside(_ sender: Any) {
+        let bottomSheetVC = self.storyboard?.instantiateViewController(withIdentifier: "BottomSheetViewController") as! BottomSheetViewController
+        // 1
+        bottomSheetVC.modalPresentationStyle = .overFullScreen
+        bottomSheetVC.shareView = self.shareView
+        // 2
+        self.present(bottomSheetVC, animated: false, completion: nil)
+        
+    }
+    
     
 }

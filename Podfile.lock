@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.6.4)
   - PlainPocketFFT (0.0.9)
   - PocketFFT (0.0.1)
   - RosaKit (0.0.11):
@@ -8,12 +9,14 @@ PODS:
   - SwiftAudioPlayer (7.6.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.6.1)
   - RosaKit
   - SnapKit (~> 5.6.0)
   - SwiftAudioPlayer
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - PlainPocketFFT
     - PocketFFT
     - RosaKit
@@ -21,12 +24,13 @@ SPEC REPOS:
     - SwiftAudioPlayer
 
 SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   PlainPocketFFT: 3763f37fba0737e457ed1a3b9b7bfa70c00ff213
   PocketFFT: cdbe7ef5b7cd08520655d85d03d701b5ba35fdec
   RosaKit: 6e28b09f5eb990148a401e0c4b4ff0c207bd6569
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
 
-PODFILE CHECKSUM: 2f09334719aef7fb576d169250d5444069b4f9fc
+PODFILE CHECKSUM: bf79c8466e0366961ce74dec10c68c8c6a8ea695
 
 COCOAPODS: 1.11.3

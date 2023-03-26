@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FAE29A1F79100F7B727 /* UIColor.swift */; };
-		2F126FB129A2157D00F7B727 /* vocal_training_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */; };
 		2F126FB529A506B100F7B727 /* MyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB429A506B100F7B727 /* MyRecord.swift */; };
 		2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB629A52A8300F7B727 /* PlayRecordingViewController.swift */; };
 		2F126FBA29A53E6400F7B727 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB929A53E6400F7B727 /* TutorialViewController.swift */; };
@@ -28,13 +27,10 @@
 		2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7B5299A567700184398 /* VocalLessonViewController.swift */; };
 		2F80C7B8299A60B100184398 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7B7299A60B100184398 /* Device.swift */; };
 		2F80C7BB299A89C800184398 /* Lyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7BA299A89C800184398 /* Lyrics.swift */; };
-		2F80C7BF299A8F2700184398 /* Fine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7BE299A8F2700184398 /* Fine.mp3 */; };
 		2F80C7C2299B67D600184398 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C1299B67D600184398 /* AudioController.swift */; };
-		2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7C4299B70CA00184398 /* new_model.mlpackage */; };
 		2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CF299CF4D100184398 /* LyricLabel.swift */; };
 		2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */; };
 		2F80C7DA299E676B00184398 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F80C7C8299BCB4200184398 /* CoreML.framework */; };
-		2F80C7DD299E759300184398 /* new_model2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7CD299BD08B00184398 /* new_model2.mlmodel */; };
 		2F80C7DF299E798600184398 /* Fine-Melody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F80C7DE299E798600184398 /* Fine-Melody.mp3 */; };
 		2F80C7E1299EA28800184398 /* YIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7E0299EA28800184398 /* YIN.swift */; };
 		2F80C7E5299EACB300184398 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C7E4299EACB300184398 /* AudioPlayer.swift */; };
@@ -44,9 +40,10 @@
 		2FD7F31B29A5535500B99CAA /* fine_tutorial.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */; };
 		2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */; };
 		2FD7F31F29A7667C00B99CAA /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD7F31E29A7667B00B99CAA /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
-		2FD7F32129A7A27400B99CAA /* final_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32029A7A27400B99CAA /* final_model.mlmodel */; };
-		2FD7F32329A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */; };
-		2FD7F32529A7B3B400B99CAA /* best_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */; };
+		2FEA2BC229C085EC00DE8E54 /* VocalLessonDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2BC129C085EC00DE8E54 /* VocalLessonDataManager.swift */; };
+		2FEA2BC429C093E200DE8E54 /* VocalLessonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2BC329C093E200DE8E54 /* VocalLessonRequest.swift */; };
+		2FEA2BC629C0944100DE8E54 /* VocalLessonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2BC529C0944100DE8E54 /* VocalLessonResponse.swift */; };
+		2FEA2BC929C1D4F400DE8E54 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA2BC829C1D4F400DE8E54 /* BottomSheetViewController.swift */; };
 		2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894B29926BD50034729D /* AppDelegate.swift */; };
 		2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF3894D29926BD50034729D /* SceneDelegate.swift */; };
 		2FF3895329926BD50034729D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3895129926BD50034729D /* MainStoryboard.storyboard */; };
@@ -64,7 +61,6 @@
 /* Begin PBXFileReference section */
 		1AF971F8E11888E1DF845349 /* Pods-ProgresSing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgresSing.debug.xcconfig"; path = "Target Support Files/Pods-ProgresSing/Pods-ProgresSing.debug.xcconfig"; sourceTree = "<group>"; };
 		2F126FAE29A1F79100F7B727 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = vocal_training_model.mlmodel; sourceTree = "<group>"; };
 		2F126FB429A506B100F7B727 /* MyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecord.swift; sourceTree = "<group>"; };
 		2F126FB629A52A8300F7B727 /* PlayRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRecordingViewController.swift; sourceTree = "<group>"; };
 		2F126FB929A53E6400F7B727 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -84,12 +80,9 @@
 		2F80C7B5299A567700184398 /* VocalLessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonViewController.swift; sourceTree = "<group>"; };
 		2F80C7B7299A60B100184398 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		2F80C7BA299A89C800184398 /* Lyrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyrics.swift; sourceTree = "<group>"; };
-		2F80C7BE299A8F2700184398 /* Fine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fine.mp3; sourceTree = "<group>"; };
 		2F80C7C1299B67D600184398 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
-		2F80C7C4299B70CA00184398 /* new_model.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = new_model.mlpackage; sourceTree = "<group>"; };
 		2F80C7C8299BCB4200184398 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		2F80C7CA299BCB4B00184398 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2F80C7CD299BD08B00184398 /* new_model2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = new_model2.mlmodel; sourceTree = "<group>"; };
 		2F80C7CF299CF4D100184398 /* LyricLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLabel.swift; sourceTree = "<group>"; };
 		2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		2F80C7DE299E798600184398 /* Fine-Melody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Fine-Melody.mp3"; sourceTree = "<group>"; };
@@ -103,9 +96,10 @@
 		2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fine_tutorial.wav; sourceTree = "<group>"; };
 		2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = vocal_trained_model.mlmodel; sourceTree = "<group>"; };
 		2FD7F31E29A7667B00B99CAA /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
-		2FD7F32029A7A27400B99CAA /* final_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = final_model.mlmodel; path = ../../../../../../Downloads/final_model.mlmodel; sourceTree = "<group>"; };
-		2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = vocal_trained_model_best.mlmodel; path = ../../../../../../Downloads/vocal_trained_model_best.mlmodel; sourceTree = "<group>"; };
-		2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = best_model.mlmodel; path = ../../../../../../Downloads/best_model.mlmodel; sourceTree = "<group>"; };
+		2FEA2BC129C085EC00DE8E54 /* VocalLessonDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonDataManager.swift; sourceTree = "<group>"; };
+		2FEA2BC329C093E200DE8E54 /* VocalLessonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonRequest.swift; sourceTree = "<group>"; };
+		2FEA2BC529C0944100DE8E54 /* VocalLessonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonResponse.swift; sourceTree = "<group>"; };
+		2FEA2BC829C1D4F400DE8E54 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		2FF3894829926BD50034729D /* ProgresSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgresSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF3894B29926BD50034729D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF3894D29926BD50034729D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +155,8 @@
 				2F80C7D7299E2CB600184398 /* Feedback */,
 				2F80C7C0299B67AE00184398 /* Audio */,
 				2F80C7B5299A567700184398 /* VocalLessonViewController.swift */,
+				2FEA2BC129C085EC00DE8E54 /* VocalLessonDataManager.swift */,
+				2FEA2BC729C0946B00DE8E54 /* Entity */,
 				2F80C7BA299A89C800184398 /* Lyrics.swift */,
 				2F80C7E0299EA28800184398 /* YIN.swift */,
 			);
@@ -172,7 +168,6 @@
 			children = (
 				2F80C7DE299E798600184398 /* Fine-Melody.mp3 */,
 				2FD7F31A29A5535500B99CAA /* fine_tutorial.wav */,
-				2F80C7BE299A8F2700184398 /* Fine.mp3 */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -190,13 +185,7 @@
 		2F80C7C3299B70AC00184398 /* AIModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FD7F32429A7B3B400B99CAA /* best_model.mlmodel */,
-				2FD7F32229A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel */,
-				2FD7F32029A7A27400B99CAA /* final_model.mlmodel */,
 				2FD7F31C29A6654F00B99CAA /* vocal_trained_model.mlmodel */,
-				2F126FB029A2157D00F7B727 /* vocal_training_model.mlmodel */,
-				2F80C7C4299B70CA00184398 /* new_model.mlpackage */,
-				2F80C7CD299BD08B00184398 /* new_model2.mlmodel */,
 			);
 			path = AIModel;
 			sourceTree = "<group>";
@@ -205,8 +194,18 @@
 			isa = PBXGroup;
 			children = (
 				2F80C7D8299E2CDA00184398 /* FeedbackViewController.swift */,
+				2FEA2BC829C1D4F400DE8E54 /* BottomSheetViewController.swift */,
 			);
 			path = Feedback;
+			sourceTree = "<group>";
+		};
+		2FEA2BC729C0946B00DE8E54 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA2BC329C093E200DE8E54 /* VocalLessonRequest.swift */,
+				2FEA2BC529C0944100DE8E54 /* VocalLessonResponse.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		2FF3893F29926BD50034729D = {
@@ -458,7 +457,6 @@
 				2FF3897129927BD20034729D /* MyRecordStoryboard.storyboard in Resources */,
 				2FF3896E29927B860034729D /* SettingStoryboard.storyboard in Resources */,
 				2F80C7A12995931200184398 /* SearchTableViewCell.xib in Resources */,
-				2F80C7BF299A8F2700184398 /* Fine.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,12 +509,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F80C7DD299E759300184398 /* new_model2.mlmodel in Sources */,
 				2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */,
 				2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */,
 				2F80C7BB299A89C800184398 /* Lyrics.swift in Sources */,
 				2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */,
 				2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */,
+				2FEA2BC429C093E200DE8E54 /* VocalLessonRequest.swift in Sources */,
 				2F80C7B8299A60B100184398 /* Device.swift in Sources */,
 				2F80C78D2994E3C400184398 /* UIButton.swift in Sources */,
 				2F80C7A329959E4B00184398 /* LessonVideoViewController.swift in Sources */,
@@ -527,23 +525,21 @@
 				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
 				2F80C7C2299B67D600184398 /* AudioController.swift in Sources */,
 				2F126FB529A506B100F7B727 /* MyRecord.swift in Sources */,
-				2FD7F32529A7B3B400B99CAA /* best_model.mlmodel in Sources */,
 				2F80C7E1299EA28800184398 /* YIN.swift in Sources */,
 				2F80C79B2995836100184398 /* Chart.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
+				2FEA2BC629C0944100DE8E54 /* VocalLessonResponse.swift in Sources */,
 				2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
 				2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */,
-				2F80C7C5299B70CA00184398 /* new_model.mlpackage in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
 				2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */,
-				2FD7F32129A7A27400B99CAA /* final_model.mlmodel in Sources */,
-				2F126FB129A2157D00F7B727 /* vocal_training_model.mlmodel in Sources */,
 				2FF38966299272930034729D /* Constant.swift in Sources */,
-				2FD7F32329A7AC2B00B99CAA /* vocal_trained_model_best.mlmodel in Sources */,
 				2F80C7D0299CF4D100184398 /* LyricLabel.swift in Sources */,
+				2FEA2BC929C1D4F400DE8E54 /* BottomSheetViewController.swift in Sources */,
+				2FEA2BC229C085EC00DE8E54 /* VocalLessonDataManager.swift in Sources */,
 				2F80C79D29958D3900184398 /* Search.swift in Sources */,
 				2F80C7B6299A567700184398 /* VocalLessonViewController.swift in Sources */,
 				2F80C7EF29A11B0500184398 /* SignalProcess.swift in Sources */,

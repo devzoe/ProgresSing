@@ -9,4 +9,5 @@ target 'ProgresSing' do
 	pod 'SwiftAudioPlayer'
 	pod 'SnapKit', '~> 5.6.0'
 	pod 'RosaKit'
+	pod 'Alamofire', '~> 5.6.1'
 end
