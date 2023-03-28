@@ -9,6 +9,7 @@ import UIKit
 import AVFAudio
 
 class HomeViewController: BaseViewController {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var popularityButton: UIButton!
     @IBOutlet weak var balladButton: UIButton!
@@ -35,6 +36,9 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var lessonLabel: UILabel!
     
+    @IBOutlet weak var practiceView: UIView!
+    @IBOutlet weak var practicePlayButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -47,6 +51,9 @@ class HomeViewController: BaseViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .white
         self.navigationItem.backBarButtonItem = backBarButtonItem
+        
+        var practice = UITapGestureRecognizer(target: self, action: #selector(self.practice(gesture:)))
+        self.practiceView.addGestureRecognizer(practice)
 
         self.requestMicrophonePermission()
     }
@@ -78,6 +85,7 @@ class HomeViewController: BaseViewController {
         self.playButton14.setCornerRadius(5)
         self.playButton15.setCornerRadius(5)
         self.playButton16.setCornerRadius(5)
+        self.practicePlayButton.setCornerRadius(5)
     }
     func requestMicrophonePermission(){
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
@@ -87,6 +95,15 @@ class HomeViewController: BaseViewController {
                 print("Mic: 권한 거부")
             }
         })
+    }
+    
+    @objc func practice(gesture: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "SearchStoryboard", bundle: Bundle.main)
+        let tutorialVC = storyboard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+        self.tabBarController?.tabBar.isHidden = true
+        appDelegate.shouldSupportAllOrientation = false
+        self.navigationController?.pushViewController(tutorialVC, animated: true)
+        
     }
 }
 
