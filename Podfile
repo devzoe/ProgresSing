@@ -10,4 +10,6 @@ target 'ProgresSing' do
 	pod 'SnapKit', '~> 5.6.0'
 	pod 'RosaKit'
 	pod 'Alamofire', '~> 5.6.1'
+  	pod 'Then'
+ 	pod 'FloatingPanel'
 end

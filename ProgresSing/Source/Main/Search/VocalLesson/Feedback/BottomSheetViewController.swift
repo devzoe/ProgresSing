@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FloatingPanel
+import Then
 
 class BottomSheetViewController: UIViewController {
     
@@ -16,11 +18,18 @@ class BottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         var shareInstagram = UITapGestureRecognizer(target: self, action: #selector(self.shareInstagram(gesture:)))
         self.shareInstagramView.addGestureRecognizer(shareInstagram)
         
         var shareKakao = UITapGestureRecognizer(target: self, action: #selector(self.shareKakao(gesture:)))
         self.shareKakaoView.addGestureRecognizer(shareKakao)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func shareInstagram(gesture: UITapGestureRecognizer) {

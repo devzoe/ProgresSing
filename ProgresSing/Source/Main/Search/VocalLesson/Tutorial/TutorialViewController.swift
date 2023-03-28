@@ -83,7 +83,8 @@ class TutorialViewController: UIViewController, AVAudioPlayerDelegate {
     }
 
     @IBAction func skipButtonTouchUpInside(_ sender: Any) {
-        let vocalLessonVC = self.storyboard?.instantiateViewController(withIdentifier: "VocalLessonViewController") as! VocalLessonViewController
+        //let vocalLessonVC = self.storyboard?.instantiateViewController(withIdentifier: "VocalLessonViewController") as! VocalLessonViewController
+        let vocalLessonVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
         self.navigationController?.pushViewController(vocalLessonVC, animated: true)
         
     }

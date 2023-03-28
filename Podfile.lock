@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.6.4)
+  - FloatingPanel (2.6.1)
   - PlainPocketFFT (0.0.9)
   - PocketFFT (0.0.1)
   - RosaKit (0.0.11):
@@ -7,30 +8,37 @@ PODS:
     - PocketFFT (~> 0.0.1)
   - SnapKit (5.6.0)
   - SwiftAudioPlayer (7.6.0)
+  - Then (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.6.1)
+  - FloatingPanel
   - RosaKit
   - SnapKit (~> 5.6.0)
   - SwiftAudioPlayer
+  - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FloatingPanel
     - PlainPocketFFT
     - PocketFFT
     - RosaKit
     - SnapKit
     - SwiftAudioPlayer
+    - Then
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  FloatingPanel: de6bb891912ede28da7b1140f7b583c474fec28a
   PlainPocketFFT: 3763f37fba0737e457ed1a3b9b7bfa70c00ff213
   PocketFFT: cdbe7ef5b7cd08520655d85d03d701b5ba35fdec
   RosaKit: 6e28b09f5eb990148a401e0c4b4ff0c207bd6569
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: bf79c8466e0366961ce74dec10c68c8c6a8ea695
+PODFILE CHECKSUM: 3fa45a3f5af3f484a5db4edc1d3545e04087cfe5
 
 COCOAPODS: 1.11.3
