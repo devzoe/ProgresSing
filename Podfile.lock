@@ -1,11 +1,22 @@
 PODS:
   - Alamofire (5.6.4)
   - FloatingPanel (2.6.1)
-  - PlainPocketFFT (0.0.9)
-  - PocketFFT (0.0.1)
-  - RosaKit (0.0.11):
-    - PlainPocketFFT (~> 0.0.9)
-    - PocketFFT (~> 0.0.1)
+  - KakaoSDKAuth (2.14.0):
+    - KakaoSDKCommon (= 2.14.0)
+  - KakaoSDKCommon (2.14.0):
+    - KakaoSDKCommon/Common (= 2.14.0)
+    - KakaoSDKCommon/Network (= 2.14.0)
+  - KakaoSDKCommon/Common (2.14.0)
+  - KakaoSDKCommon/Network (2.14.0):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.14.0)
+  - KakaoSDKShare (2.14.0):
+    - KakaoSDKCommon (= 2.14.0)
+    - KakaoSDKTemplate (= 2.14.0)
+  - KakaoSDKTemplate (2.14.0):
+    - KakaoSDKCommon/Common (= 2.14.0)
+  - KakaoSDKUser (2.14.0):
+    - KakaoSDKAuth (= 2.14.0)
   - SnapKit (5.6.0)
   - SwiftAudioPlayer (7.6.0)
   - Then (3.0.0)
@@ -13,7 +24,10 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.6.1)
   - FloatingPanel
-  - RosaKit
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKShare
+  - KakaoSDKUser
   - SnapKit (~> 5.6.0)
   - SwiftAudioPlayer
   - Then
@@ -22,9 +36,11 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - FloatingPanel
-    - PlainPocketFFT
-    - PocketFFT
-    - RosaKit
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKShare
+    - KakaoSDKTemplate
+    - KakaoSDKUser
     - SnapKit
     - SwiftAudioPlayer
     - Then
@@ -32,13 +48,15 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   FloatingPanel: de6bb891912ede28da7b1140f7b583c474fec28a
-  PlainPocketFFT: 3763f37fba0737e457ed1a3b9b7bfa70c00ff213
-  PocketFFT: cdbe7ef5b7cd08520655d85d03d701b5ba35fdec
-  RosaKit: 6e28b09f5eb990148a401e0c4b4ff0c207bd6569
+  KakaoSDKAuth: 8fca87815de22062a23297983f327613b087b8bb
+  KakaoSDKCommon: 0ce638f7a2e49704943c0b74a087a9f8067bba1c
+  KakaoSDKShare: 342acc83d47a26c73855555ce070c6d55db37f83
+  KakaoSDKTemplate: 37fe90573759d54843da54fa66b8e21023b41fea
+  KakaoSDKUser: 2ca18314ce72e6690f76cb1f6f9fbc771d31a803
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftAudioPlayer: a546709faf47f3ab0cb59e41ba4432e6bb61db0a
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 3fa45a3f5af3f484a5db4edc1d3545e04087cfe5
+PODFILE CHECKSUM: 6ec12139474036642c89e6210b939f9977657021
 
 COCOAPODS: 1.11.3

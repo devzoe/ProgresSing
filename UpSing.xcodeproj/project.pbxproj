@@ -55,11 +55,10 @@
 		2FF3897129927BD20034729D /* MyRecordStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3897029927BD20034729D /* MyRecordStoryboard.storyboard */; };
 		2FF3897429927BFA0034729D /* SearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3897329927BFA0034729D /* SearchStoryboard.storyboard */; };
 		2FF3897729927C300034729D /* VideoStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FF3897629927C300034729D /* VideoStoryboard.storyboard */; };
-		F38657105207C8B5CB55574C /* Pods_ProgresSing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6039642E4E0FB6137C005D /* Pods_ProgresSing.framework */; };
+		31A9401F5F7EBCB602A06A96 /* Pods_UpSing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F967923D14EF6A2D70C699 /* Pods_UpSing.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1AF971F8E11888E1DF845349 /* Pods-ProgresSing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgresSing.debug.xcconfig"; path = "Target Support Files/Pods-ProgresSing/Pods-ProgresSing.debug.xcconfig"; sourceTree = "<group>"; };
 		2F126FAE29A1F79100F7B727 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		2F126FB429A506B100F7B727 /* MyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecord.swift; sourceTree = "<group>"; };
 		2F126FB629A52A8300F7B727 /* PlayRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRecordingViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +99,7 @@
 		2FEA2BC329C093E200DE8E54 /* VocalLessonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonRequest.swift; sourceTree = "<group>"; };
 		2FEA2BC529C0944100DE8E54 /* VocalLessonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocalLessonResponse.swift; sourceTree = "<group>"; };
 		2FEA2BC829C1D4F400DE8E54 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
-		2FF3894829926BD50034729D /* ProgresSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgresSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FF3894829926BD50034729D /* UpSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF3894B29926BD50034729D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FF3894D29926BD50034729D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2FF3895229926BD50034729D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -113,8 +112,9 @@
 		2FF3897029927BD20034729D /* MyRecordStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyRecordStoryboard.storyboard; sourceTree = "<group>"; };
 		2FF3897329927BFA0034729D /* SearchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchStoryboard.storyboard; sourceTree = "<group>"; };
 		2FF3897629927C300034729D /* VideoStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoStoryboard.storyboard; sourceTree = "<group>"; };
-		7E6039642E4E0FB6137C005D /* Pods_ProgresSing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProgresSing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC9D3BAF0628A620FC38AF7A /* Pods-ProgresSing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProgresSing.release.xcconfig"; path = "Target Support Files/Pods-ProgresSing/Pods-ProgresSing.release.xcconfig"; sourceTree = "<group>"; };
+		4F93E1598E9CD7D7BE7D0371 /* Pods-UpSing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpSing.release.xcconfig"; path = "Target Support Files/Pods-UpSing/Pods-UpSing.release.xcconfig"; sourceTree = "<group>"; };
+		B8F967923D14EF6A2D70C699 /* Pods_UpSing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UpSing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0958623C736CB9D3ADDDD6F /* Pods-UpSing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UpSing.debug.xcconfig"; path = "Target Support Files/Pods-UpSing/Pods-UpSing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 			files = (
 				2FD7F31F29A7667C00B99CAA /* libswift_Concurrency.tbd in Frameworks */,
 				2F80C7DA299E676B00184398 /* CoreML.framework in Frameworks */,
-				F38657105207C8B5CB55574C /* Pods_ProgresSing.framework in Frameworks */,
+				31A9401F5F7EBCB602A06A96 /* Pods_UpSing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,8 @@
 		0C66BDF2368D1DEA090E8D1C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1AF971F8E11888E1DF845349 /* Pods-ProgresSing.debug.xcconfig */,
-				FC9D3BAF0628A620FC38AF7A /* Pods-ProgresSing.release.xcconfig */,
+				F0958623C736CB9D3ADDDD6F /* Pods-UpSing.debug.xcconfig */,
+				4F93E1598E9CD7D7BE7D0371 /* Pods-UpSing.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 		2FF3893F29926BD50034729D = {
 			isa = PBXGroup;
 			children = (
-				2FF3894A29926BD50034729D /* ProgresSing */,
+				2FF3894A29926BD50034729D /* UpSing */,
 				2FF3894929926BD50034729D /* Products */,
 				0C66BDF2368D1DEA090E8D1C /* Pods */,
 				832AFE930B443B7AAC5C4F04 /* Frameworks */,
@@ -221,12 +221,12 @@
 		2FF3894929926BD50034729D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2FF3894829926BD50034729D /* ProgresSing.app */,
+				2FF3894829926BD50034729D /* UpSing.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2FF3894A29926BD50034729D /* ProgresSing */ = {
+		2FF3894A29926BD50034729D /* UpSing */ = {
 			isa = PBXGroup;
 			children = (
 				2FF3895F2992721E0034729D /* Configuration */,
@@ -238,7 +238,7 @@
 				2FF3895629926BD70034729D /* LaunchScreen.storyboard */,
 				2FF3895929926BD70034729D /* Info.plist */,
 			);
-			path = ProgresSing;
+			path = UpSing;
 			sourceTree = "<group>";
 		};
 		2FF3895F2992721E0034729D /* Configuration */ = {
@@ -380,7 +380,7 @@
 				2FD7F31E29A7667B00B99CAA /* libswift_Concurrency.tbd */,
 				2F80C7CA299BCB4B00184398 /* AVFoundation.framework */,
 				2F80C7C8299BCB4200184398 /* CoreML.framework */,
-				7E6039642E4E0FB6137C005D /* Pods_ProgresSing.framework */,
+				B8F967923D14EF6A2D70C699 /* Pods_UpSing.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,23 +388,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2FF3894729926BD50034729D /* ProgresSing */ = {
+		2FF3894729926BD50034729D /* UpSing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2FF3895C29926BD70034729D /* Build configuration list for PBXNativeTarget "ProgresSing" */;
+			buildConfigurationList = 2FF3895C29926BD70034729D /* Build configuration list for PBXNativeTarget "UpSing" */;
 			buildPhases = (
-				F917B1874B6E837F380C856C /* [CP] Check Pods Manifest.lock */,
+				04E74C8F6D028A984678FDDD /* [CP] Check Pods Manifest.lock */,
 				2FF3894429926BD50034729D /* Sources */,
 				2FF3894529926BD50034729D /* Frameworks */,
 				2FF3894629926BD50034729D /* Resources */,
-				FABDAE56A9CA22A205DE3F90 /* [CP] Embed Pods Frameworks */,
+				9A8229AC5630BEC19DE1E3FB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ProgresSing;
+			name = UpSing;
 			productName = Javis;
-			productReference = 2FF3894829926BD50034729D /* ProgresSing.app */;
+			productReference = 2FF3894829926BD50034729D /* UpSing.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -422,7 +422,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2FF3894329926BD50034729D /* Build configuration list for PBXProject "ProgresSing" */;
+			buildConfigurationList = 2FF3894329926BD50034729D /* Build configuration list for PBXProject "UpSing" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -435,7 +435,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2FF3894729926BD50034729D /* ProgresSing */,
+				2FF3894729926BD50034729D /* UpSing */,
 			);
 		};
 /* End PBXProject section */
@@ -463,7 +463,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F917B1874B6E837F380C856C /* [CP] Check Pods Manifest.lock */ = {
+		04E74C8F6D028A984678FDDD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,28 +478,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ProgresSing-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-UpSing-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FABDAE56A9CA22A205DE3F90 /* [CP] Embed Pods Frameworks */ = {
+		9A8229AC5630BEC19DE1E3FB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProgresSing/Pods-ProgresSing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-UpSing/Pods-UpSing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProgresSing/Pods-ProgresSing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-UpSing/Pods-UpSing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProgresSing/Pods-ProgresSing-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UpSing/Pods-UpSing-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -687,7 +687,7 @@
 		};
 		2FF3895D29926BD70034729D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AF971F8E11888E1DF845349 /* Pods-ProgresSing.debug.xcconfig */;
+			baseConfigurationReference = F0958623C736CB9D3ADDDD6F /* Pods-UpSing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -697,7 +697,7 @@
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ProgresSing/Info.plist;
+				INFOPLIST_FILE = UpSing/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "사용자의 음성 인식을 위한 마이크 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -715,7 +715,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.ProgresSing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.UpSing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -728,7 +728,7 @@
 		};
 		2FF3895E29926BD70034729D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC9D3BAF0628A620FC38AF7A /* Pods-ProgresSing.release.xcconfig */;
+			baseConfigurationReference = 4F93E1598E9CD7D7BE7D0371 /* Pods-UpSing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -738,7 +738,7 @@
 				DEVELOPMENT_TEAM = 6B2F2JB38S;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ProgresSing/Info.plist;
+				INFOPLIST_FILE = UpSing/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "사용자의 음성 인식을 위한 마이크 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -756,7 +756,7 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.ProgresSing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KyoungminNam.UpSing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -770,7 +770,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2FF3894329926BD50034729D /* Build configuration list for PBXProject "ProgresSing" */ = {
+		2FF3894329926BD50034729D /* Build configuration list for PBXProject "UpSing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2FF3895A29926BD70034729D /* Debug */,
@@ -779,7 +779,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2FF3895C29926BD70034729D /* Build configuration list for PBXNativeTarget "ProgresSing" */ = {
+		2FF3895C29926BD70034729D /* Build configuration list for PBXNativeTarget "UpSing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2FF3895D29926BD70034729D /* Debug */,
