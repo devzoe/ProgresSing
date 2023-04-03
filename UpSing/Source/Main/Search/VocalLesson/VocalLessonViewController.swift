@@ -12,6 +12,7 @@ import Vision
 import Accelerate
 
 
+
 class VocalLessonViewController: BaseViewController {
     lazy var vocalLessonDataManager = VocalLessonDataManager()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -151,13 +152,14 @@ extension VocalLessonViewController {
         // Connect audio player and time pitch node to audio engine's output node
         
         
-        //self.mixerNode = AVAudioMixerNode()
-        //self.audioEngine.attach(mixerNode)
+        
         
         // MARK: Set up Audio Session
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: .defaultToSpeaker)
+        
         //audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        
         try! audioSession.setActive(true)
         //audioPlayerNode.volume = 1.0
         //self.audioEngine.connect(audioInputNode, to: self.mixerNode, format: inputFormat)
@@ -174,48 +176,48 @@ extension VocalLessonViewController {
         self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
         self.audioFile = try! AVAudioFile(forReading: audioFileURL)
         self.audioFormat = audioFile.processingFormat
-        print("play format : \(audioFormat)")
+        //print("play format : \(audioFormat)")
         self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
         try! self.audioFile.read(into: audioBuffer!)
         
+        // Set up a band-pass filter
+        let bandPassFilter = AVAudioUnitEQ(numberOfBands: 1)
+        let filterParameters = bandPassFilter.bands[0]
+        filterParameters.filterType = .bandPass
+        filterParameters.frequency = 100.0 // Center frequency
+        filterParameters.bandwidth = 2.0 // Bandwidth in octaves
+        filterParameters.gain = 0.0 // Gain in dB
+        filterParameters.bypass = false
+        
+
+        audioEngine.attach(bandPassFilter)
         self.audioEngine.attach(audioPlayerNode)
-        self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
         
         self.audioInputNode = audioEngine.inputNode
         let inputFormat = audioInputNode.inputFormat(forBus: 0)
+        let format = audioInputNode.outputFormat(forBus: 0)
+        
+        audioEngine.connect(audioInputNode, to: bandPassFilter, format: format)
+        
+        audioEngine.connect(bandPassFilter, to: audioEngine.outputNode, format:audioEngine.outputNode.outputFormat(forBus: 0))
+        self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
+    
         audioPlayerNode.scheduleBuffer(audioBuffer!) {
             self.stop()
         }
         let bus = 0
         let sampleRate = audioEngine.inputNode.inputFormat(forBus: 0).sampleRate
         let timeInterval = 1.0
-        print("sample rate :\(UInt32(audioEngine.inputNode.inputFormat(forBus: 0).sampleRate))")
-        print("format : \(audioEngine.inputNode.inputFormat(forBus: 0))")
-        print("input data : \(audioEngine.inputNode.inputFormat(forBus: 0).formatDescription)")
+        //print("sample rate :\(UInt32(audioEngine.inputNode.inputFormat(forBus: 0).sampleRate))")
+        //print("format : \(audioEngine.inputNode.inputFormat(forBus: 0))")
+        //print("input data : \(audioEngine.inputNode.inputFormat(forBus: 0).formatDescription)")
         let bufferSize = AVAudioFrameCount(sampleRate * timeInterval)
-        print("buffer size : \(bufferSize)")
-        let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)
-        self.audioInputNode.installTap(onBus: 1, bufferSize: bufferSize, format: format) { [self] (buffer, time) in
+        //print("buffer size : \(bufferSize)")
+        let format2 = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)
+        self.audioInputNode.installTap(onBus: 0, bufferSize: bufferSize, format: format2) { [self] (buffer, time) in
             let voicePitch = self.processAudioData(buffer: buffer)
+            //let isolatedBuffer = self.isolateVoice(from: buffer)
             
-            
-            //print("voice Pitch : \(voicePitch)")
-            //print("buffer : \(buffer.stride)")
-            print("buffer : \(buffer.frameLength)")
-            print("buffer : \(buffer.frameCapacity)")
-            
-            var pointer = buffer.floatChannelData?.pointee
-            
-            //for i in 0...buffer.frameLength {
-            //    print("buffer : \(pointer![Int(i)])")
-            //}
-            print("record time : \(time)")
-
-            print("record time : \(time.sampleRate)")
-            //print("record time : \(time.audioTimeStamp)")
-           // print("record time : \(time.sampleTime)")
-            //print("record time : \(self.audioInputNode.lastRenderTime)")
-
             DispatchQueue.main.async {
                 self.voicePitch = voicePitch
             }
@@ -227,6 +229,7 @@ extension VocalLessonViewController {
                 for i in self.lyrics.vocalFryTime {
                     if (Int(i) == currentTime1) {
                         DispatchQueue.global().async {
+                            //let isolatedBuffer = self.isolateVoice(from: buffer)
                             self.processBuffer("vocal_fry",buffer)
                         }
                     }
@@ -356,16 +359,39 @@ extension VocalLessonViewController {
          }
          */
     }
-    // Handle changes to the system's audio output volume
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "outputVolume" {
-            // Get the new volume value
-            let volume = change?[.newKey] as? Float ?? 0.0
-            
-            // Set the player node's volume to the new value
-            audioPlayerNode.volume = volume
+ 
+    func isolateVoice(from buffer: AVAudioPCMBuffer) -> AVAudioPCMBuffer? {
+       
+        let lowPassFilter = LowPassFilter()
+        // Convert buffer to floating-point representation
+        let floatBuffer = buffer
+        let floatData = floatBuffer.floatChannelData![0]
+        
+        // Apply low-pass filter to isolate voice
+        lowPassFilter.process(floatData, numSamples: Int(buffer.frameLength), sampleRate: Float(buffer.format.sampleRate),  cutoffFrequency: 900.0)
+        
+        // Convert floating-point buffer back to integer representation
+        let isolatedbuffer = floatBuffer
+        let dataOut = isolatedbuffer.floatChannelData![0]
+        //for i in 0..<Int(buffer.frameLength) {
+        //    let floatSample = floatData[i]
+          
+        //    dataOut[i] = floatSample
+        //}
+        if let channelData = isolatedbuffer.floatChannelData {
+            let channelDataValue = channelData.pointee
+            let channelDataValueArray = stride(
+                from: 0,
+                to: Int(isolatedbuffer.frameLength),
+                by: buffer.stride
+            ).map { channelDataValue[$0] }
+            print(channelDataValueArray)
         }
+       
+        
+        return isolatedbuffer
     }
+ 
     
     func returnVocalFryIndex(startTime : Float, endTime: Float) -> [Int] {
         var index : [Int] = []
@@ -433,7 +459,8 @@ extension VocalLessonViewController {
                 by: buffer.stride
             ).map { channelDataValue[$0] }
             
-            
+            let isolatedBuffer = self.isolateVoice(from: pcmBuffer)
+            print("----------------------------------------\n\n")
             let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label)
             self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
             
@@ -526,7 +553,8 @@ extension VocalLessonViewController {
         }
         return voiceBuffer
     }
-*/
+ */
+
     func didSuccessPredict(_ response : VocalLessonResponse) {
         self.labelArray.append(response.result)
         print(labelArray)
@@ -811,4 +839,36 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         return result
     }
     
+}
+class LowPassFilter {
+    private var state: [Double] = [0.0, 0.0]
+    
+    func process(_ data: UnsafeMutablePointer<Float>, numSamples: Int, sampleRate: Float, cutoffFrequency: Double) {
+        let wc = 2.0 * Double.pi * cutoffFrequency / Double(sampleRate)
+        //print("wc : \(wc)")
+        let alpha = sin(wc) / (2.0 * 0.707)
+        //print("alpha : \(alpha)")
+        let b0 = (1.0 - cos(wc)) / 2.0
+        //print("b0: \(b0)")
+        let b1 = 1.0 - cos(wc)
+        //print("b1: \(b1)")
+        let b2 = (1.0 - cos(wc)) / 2.0
+        //print("b2: \(b2)")
+        let a0 = 1.0 + alpha
+        //print("a0: \(a0)")
+        let a1 = -2.0 * cos(wc)
+        //print("a1: \(a1)")
+        let a2 = 1.0 - alpha
+        //print("a2: \(a2)")
+        //print("data : \(data[0])")
+        for i in 0..<numSamples {
+            //print("data : \(data[i])")
+            let x = Double(data[i])
+            let y = (b0 * x + b1 * state[0] + b2 * state[1] - a1 * state[0] - a2 * state[1]) / a0
+            data[i] = Float(y)
+            state[1] = state[0]
+            state[0] = y
+            
+        }
+    }
 }

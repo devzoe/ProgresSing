@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--검색-->
         <scene sceneID="3oK-nl-9tt">
             <objects>
                 <navigationController storyboardIdentifier="SearchNavigationController" id="Ox1-wT-TM0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="uaZ-TZ-qpX"/>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="uaZ-TZ-qpX"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PzJ-zc-QHp">
                         <rect key="frame" x="0.0" y="59" width="852" height="32"/>
@@ -31,7 +31,7 @@
         <!--Search View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SearchViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="SearchViewController" customModule="UpSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lIy-P2-YNA">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -73,7 +73,7 @@
         <!--Vocal Lesson View Controller-->
         <scene sceneID="pX2-Qr-Qwh">
             <objects>
-                <viewController storyboardIdentifier="VocalLessonViewController" id="u7z-6c-QYp" customClass="VocalLessonViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VocalLessonViewController" id="u7z-6c-QYp" customClass="VocalLessonViewController" customModule="UpSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mxh-m8-8qK">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -724,7 +724,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="TUj-J4-ejA">
             <objects>
-                <viewController storyboardIdentifier="TutorialViewController" id="Hpc-YK-zot" customClass="TutorialViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewController" id="Hpc-YK-zot" customClass="TutorialViewController" customModule="UpSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vl5-Sd-teR">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -957,7 +957,7 @@
         <!--Feedback View Controller-->
         <scene sceneID="QpU-UE-IHV">
             <objects>
-                <viewController storyboardIdentifier="FeedbackViewController" id="Def-Qu-AxQ" customClass="FeedbackViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedbackViewController" id="Def-Qu-AxQ" customClass="FeedbackViewController" customModule="UpSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OfW-cd-oJn">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1183,7 +1183,7 @@
         <!--Bottom Sheet View Controller-->
         <scene sceneID="XMK-Sz-qeO">
             <objects>
-                <viewController storyboardIdentifier="BottomSheetViewController" id="Ipu-rZ-99I" customClass="BottomSheetViewController" customModule="ProgresSing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BottomSheetViewController" id="Ipu-rZ-99I" customClass="BottomSheetViewController" customModule="UpSing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zVQ-wB-5Pp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

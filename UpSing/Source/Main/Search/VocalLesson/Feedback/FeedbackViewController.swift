@@ -9,6 +9,7 @@ import UIKit
 import FloatingPanel
 
 class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegate {
+    lazy var dataManager: RankingDataManager = RankingDataManager()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let lyric : Lyrics = Lyrics()
     
@@ -29,6 +30,9 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
     
     @IBOutlet weak var shareView: UIView!
     
+    var nickname : String = ""
+    var score : Float = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +41,28 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
         self.navigationController?.navigationBar.isHidden = false
         self.homeButton.setCornerRadius2(10)
         self.calculateScore()
+        self.alert()
+    }
+    func alert() {
+        let alert = UIAlertController(title: "닉네임 입력", message: "랭킹에 추가할 닉네임을 입력하세요.", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default) { (ok) in
+            self.nickname = (alert.textFields?[0].text)!
+            let ranking = Ranking(nickname: self.nickname, score: self.score)
+            self.dataManager.createRanking(ranking)
+        }
+        
+        let cancel = UIAlertAction(title: "cancel", style: .cancel) { (cancel) in
+            
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        alert.addTextField { (myTextField) in
+            myTextField.placeholder = "닉네임을 입력하세요."
+        }
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func calculateScore() {
@@ -57,6 +83,7 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
         self.vocalFryScoreLabel.text = String(format: "%.2f",vocalFryScore)
         
         let finalScore = (pitchScore+beltScore+vibratoScore+vocalFryScore) / 4
+        self.score = round(finalScore*100)/100
         self.finalScoreLabel.text = String(format: "%.2f",finalScore)
     }
     
@@ -71,7 +98,9 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
     }
     
     @IBAction func shareButtonTouchUpInside(_ sender: Any) {
-        self.setupView()
+        //self.setupView()
+        
+        self.presentModal()
     }
     private func setupView() {
         let bottomSheetVC = self.storyboard?.instantiateViewController(withIdentifier: "BottomSheetViewController") as! BottomSheetViewController
@@ -87,10 +116,35 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
         fpc.set(contentViewController: bottomSheetVC)
         fpc.addPanel(toParent: self)
         
+        
+        
         //floatingPaneldesign()
         
         //fpc.show()
         fpc.layout = CustomFloatingPanelLayout()
+    }
+    private func presentModal() {
+        let bottomSheetVC = self.storyboard?.instantiateViewController(withIdentifier: "BottomSheetViewController") as! BottomSheetViewController
+        bottomSheetVC.shareView = self.shareView
+        let nav = UINavigationController(rootViewController: bottomSheetVC)
+        // 1
+        nav.modalPresentationStyle = .pageSheet
+
+        
+        // 2
+        if #available(iOS 15.0, *) {
+            if let sheet = nav.sheetPresentationController {
+                
+                // 3
+                sheet.detents = [.medium(), .large()]
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        // 4
+        present(nav, animated: true, completion: nil)
+
     }
     
     

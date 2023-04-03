@@ -30,4 +30,25 @@ extension UIViewController {
             self.present(viewControllerToPresent, animated: true, completion: nil)
         }
     }
+    // MARK: 인디케이터 표시
+    func showIndicator() {
+        IndicatorView.shared.show()
+        IndicatorView.shared.showIndicator()
+    }
+    
+    // MARK: 인디케이터 숨김
+    @objc func dismissIndicator() {
+        IndicatorView.shared.dismiss()
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        image.draw(in: CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }

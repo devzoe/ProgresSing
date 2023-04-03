@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F05EE6829D5832900A688D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F05EE6729D5832900A688D0 /* GoogleService-Info.plist */; };
+		2F05EE7F29D5888500A688D0 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05EE7E29D5888500A688D0 /* FirebaseStorageManager.swift */; };
+		2F05EE8129D58FD700A688D0 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05EE8029D58FD700A688D0 /* IndicatorView.swift */; };
+		2F05EE8329D5A3EC00A688D0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05EE8229D5A3EC00A688D0 /* SettingViewController.swift */; };
+		2F05EE8629D5A76400A688D0 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05EE8429D5A76400A688D0 /* RankingTableViewCell.swift */; };
+		2F05EE8729D5A76400A688D0 /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F05EE8529D5A76400A688D0 /* RankingTableViewCell.xib */; };
 		2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FAE29A1F79100F7B727 /* UIColor.swift */; };
 		2F126FB529A506B100F7B727 /* MyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB429A506B100F7B727 /* MyRecord.swift */; };
 		2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB629A52A8300F7B727 /* PlayRecordingViewController.swift */; };
 		2F126FBA29A53E6400F7B727 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F126FB929A53E6400F7B727 /* TutorialViewController.swift */; };
+		2F649A7129D5AE0E00CC8950 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F649A7029D5AE0E00CC8950 /* Encodable.swift */; };
+		2F649A7429D5AE3000CC8950 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F649A7329D5AE3000CC8950 /* Ranking.swift */; };
+		2F649A7829D5AF7500CC8950 /* RankingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F649A7729D5AF7500CC8950 /* RankingDataManager.swift */; };
+		2F649A7A29D5D6E700CC8950 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F649A7929D5D6E700CC8950 /* UIImage.swift */; };
 		2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78A2994E2BD00184398 /* HomeViewController.swift */; };
 		2F80C78D2994E3C400184398 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78C2994E3C400184398 /* UIButton.swift */; };
 		2F80C78F2995741D00184398 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80C78E2995741D00184398 /* UIViewController.swift */; };
@@ -59,10 +69,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F05EE6729D5832900A688D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F05EE7E29D5888500A688D0 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		2F05EE8029D58FD700A688D0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		2F05EE8229D5A3EC00A688D0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2F05EE8429D5A76400A688D0 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
+		2F05EE8529D5A76400A688D0 /* RankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
 		2F126FAE29A1F79100F7B727 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		2F126FB429A506B100F7B727 /* MyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecord.swift; sourceTree = "<group>"; };
 		2F126FB629A52A8300F7B727 /* PlayRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRecordingViewController.swift; sourceTree = "<group>"; };
 		2F126FB929A53E6400F7B727 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		2F649A7029D5AE0E00CC8950 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		2F649A7329D5AE3000CC8950 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		2F649A7729D5AF7500CC8950 /* RankingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDataManager.swift; sourceTree = "<group>"; };
+		2F649A7929D5D6E700CC8950 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		2F80C78A2994E2BD00184398 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2F80C78C2994E3C400184398 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		2F80C78E2995741D00184398 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +168,14 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
+		2F649A7229D5AE1E00CC8950 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2F649A7329D5AE3000CC8950 /* Ranking.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		2F80C7B9299A895400184398 /* VocalLesson */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +257,7 @@
 		2FF3894A29926BD50034729D /* UpSing */ = {
 			isa = PBXGroup;
 			children = (
+				2F05EE6729D5832900A688D0 /* GoogleService-Info.plist */,
 				2FF3895F2992721E0034729D /* Configuration */,
 				2FF38960299272290034729D /* Util */,
 				2FF389612992723B0034729D /* Source */,
@@ -259,6 +288,8 @@
 			children = (
 				2F80C7B7299A60B100184398 /* Device.swift */,
 				2F80C7CF299CF4D100184398 /* LyricLabel.swift */,
+				2F05EE7E29D5888500A688D0 /* FirebaseStorageManager.swift */,
+				2F05EE8029D58FD700A688D0 /* IndicatorView.swift */,
 				2FF389672992729F0034729D /* Extension */,
 			);
 			path = Util;
@@ -304,6 +335,8 @@
 				2F80C78C2994E3C400184398 /* UIButton.swift */,
 				2F80C78E2995741D00184398 /* UIViewController.swift */,
 				2F126FAE29A1F79100F7B727 /* UIColor.swift */,
+				2F649A7029D5AE0E00CC8950 /* Encodable.swift */,
+				2F649A7929D5D6E700CC8950 /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -333,7 +366,12 @@
 		2FF3896C29927B6F0034729D /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2F649A7229D5AE1E00CC8950 /* Entity */,
 				2FF3896D29927B860034729D /* SettingStoryboard.storyboard */,
+				2F05EE8429D5A76400A688D0 /* RankingTableViewCell.swift */,
+				2F05EE8529D5A76400A688D0 /* RankingTableViewCell.xib */,
+				2F05EE8229D5A3EC00A688D0 /* SettingViewController.swift */,
+				2F649A7729D5AF7500CC8950 /* RankingDataManager.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -445,9 +483,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F05EE6829D5832900A688D0 /* GoogleService-Info.plist in Resources */,
 				2FF3897429927BFA0034729D /* SearchStoryboard.storyboard in Resources */,
 				2FF3897729927C300034729D /* VideoStoryboard.storyboard in Resources */,
 				2FD7F31B29A5535500B99CAA /* fine_tutorial.wav in Resources */,
+				2F05EE8729D5A76400A688D0 /* RankingTableViewCell.xib in Resources */,
 				2FF3895829926BD70034729D /* LaunchScreen.storyboard in Resources */,
 				2FF3895529926BD70034729D /* Assets.xcassets in Resources */,
 				2FF3896A29927B580034729D /* HomeStoryboard.storyboard in Resources */,
@@ -511,6 +551,7 @@
 			files = (
 				2F126FAF29A1F79100F7B727 /* UIColor.swift in Sources */,
 				2F80C79829957FBB00184398 /* ChartTableViewCell.swift in Sources */,
+				2F05EE8629D5A76400A688D0 /* RankingTableViewCell.swift in Sources */,
 				2F80C7BB299A89C800184398 /* Lyrics.swift in Sources */,
 				2FC5F7062993863000631F1A /* SearchViewController.swift in Sources */,
 				2FF3894C29926BD50034729D /* AppDelegate.swift in Sources */,
@@ -521,18 +562,25 @@
 				2F80C7E5299EACB300184398 /* AudioPlayer.swift in Sources */,
 				2F126FBA29A53E6400F7B727 /* TutorialViewController.swift in Sources */,
 				2FF3894E29926BD50034729D /* SceneDelegate.swift in Sources */,
+				2F05EE7F29D5888500A688D0 /* FirebaseStorageManager.swift in Sources */,
 				2FC5F70429928E0D00631F1A /* UIFont.swift in Sources */,
 				2F80C79529957E1E00184398 /* MyRecordViewController.swift in Sources */,
 				2F80C7C2299B67D600184398 /* AudioController.swift in Sources */,
 				2F126FB529A506B100F7B727 /* MyRecord.swift in Sources */,
+				2F649A7429D5AE3000CC8950 /* Ranking.swift in Sources */,
+				2F05EE8329D5A3EC00A688D0 /* SettingViewController.swift in Sources */,
 				2F80C7E1299EA28800184398 /* YIN.swift in Sources */,
 				2F80C79B2995836100184398 /* Chart.swift in Sources */,
+				2F649A7829D5AF7500CC8950 /* RankingDataManager.swift in Sources */,
 				2F80C7912995759000184398 /* BaseViewController.swift in Sources */,
 				2FEA2BC629C0944100DE8E54 /* VocalLessonResponse.swift in Sources */,
 				2F80C7A02995931200184398 /* SearchTableViewCell.swift in Sources */,
+				2F05EE8129D58FD700A688D0 /* IndicatorView.swift in Sources */,
+				2F649A7A29D5D6E700CC8950 /* UIImage.swift in Sources */,
 				2F80C78B2994E2BD00184398 /* HomeViewController.swift in Sources */,
 				2FD7F31D29A6655000B99CAA /* vocal_trained_model.mlmodel in Sources */,
 				2F80C78F2995741D00184398 /* UIViewController.swift in Sources */,
+				2F649A7129D5AE0E00CC8950 /* Encodable.swift in Sources */,
 				2F126FB729A52A8300F7B727 /* PlayRecordingViewController.swift in Sources */,
 				2F80C79329957DD300184398 /* VideoViewController.swift in Sources */,
 				2F80C7D9299E2CDA00184398 /* FeedbackViewController.swift in Sources */,
