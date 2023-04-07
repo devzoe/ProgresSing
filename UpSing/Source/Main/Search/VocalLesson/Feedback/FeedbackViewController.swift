@@ -38,11 +38,22 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
 
         // Do any additional setup after loading the view.
         appDelegate.shouldSupportAllOrientation = true
-        self.navigationController?.navigationBar.isHidden = false
+        
         self.homeButton.setCornerRadius2(10)
         self.calculateScore()
         self.alert()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
+   
     func alert() {
         let alert = UIAlertController(title: "닉네임 입력", message: "랭킹에 추가할 닉네임을 입력하세요.", preferredStyle: .alert)
         
@@ -85,11 +96,6 @@ class FeedbackViewController: BaseViewController, FloatingPanelControllerDelegat
         let finalScore = (pitchScore+beltScore+vibratoScore+vocalFryScore) / 4
         self.score = round(finalScore*100)/100
         self.finalScoreLabel.text = String(format: "%.2f",finalScore)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func homeButtonTouchUpInside(_ sender: Any) {

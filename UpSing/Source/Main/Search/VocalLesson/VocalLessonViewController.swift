@@ -11,28 +11,31 @@ import CoreML
 import Vision
 import Accelerate
 
-
-
 class VocalLessonViewController: BaseViewController {
     lazy var vocalLessonDataManager = VocalLessonDataManager()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    // 레코드 객체 생성 - 데이터를 가져오기 위함
+    
+    // MARK: 레코드 객체 생성 - 데이터를 가져오기 위함
     private var recordService: MyRecordViewModel = MyRecordViewModel.shared
+    let audioEngineQueue = DispatchQueue(label: "com.upsing.audioEngineQueue")
     
     let lyrics : Lyrics = Lyrics()
     
+    // MARK: lyric color - skyblue
     let strokeTextAttributes = [
         NSAttributedString.Key.strokeColor : UIColor.lyricSkyBlue,
         NSAttributedString.Key.foregroundColor : UIColor.lyricSkyBlue,
         NSAttributedString.Key.strokeWidth : -4.0,
         NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
     as [NSAttributedString.Key : Any]
+    // MARK: lyric color - white
     let defaultTextAttributes = [
         NSAttributedString.Key.strokeColor : UIColor.white,
         NSAttributedString.Key.foregroundColor : UIColor.white,
         NSAttributedString.Key.strokeWidth : -4.0,
         NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 50)]
     as [NSAttributedString.Key : Any]
+    // MARK: lyric color - red
     let pitchTextAttributes = [
         NSAttributedString.Key.strokeColor : UIColor.red,
         NSAttributedString.Key.foregroundColor : UIColor.red,
@@ -73,32 +76,32 @@ class VocalLessonViewController: BaseViewController {
     var voicePitch : Float = 0
     
     
-    let audioEngine = AVAudioEngine()
-    let audioPlayerNode = AVAudioPlayerNode()
+    var audioEngine : AVAudioEngine!
+    var audioPlayerNode : AVAudioPlayerNode!
     var audioBuffer: AVAudioPCMBuffer?
     var audioFileURL : URL!
     var audioFile : AVAudioFile!
     var audioFormat :AVAudioFormat!
     
-    // Attach audio input node for voice recording
-    var audioInputNode : AVAudioInputNode!
+    // MARK: Attach audio input node for voice recording
+    //var audioInputNode : AVAudioInputNode? = nil
     var audioInputFormat : AVAudioFormat!
-    //Mixer to mix 1K with mic input during recording
+ 
+    //MARK: Mixer to mix 1K with mic input during recording
     var mixerNode : AVAudioMixerNode!
     var recordPath : URL?
     var recordFile : AVAudioFile!
     
-    var labelArray : [String] = []
-    
     var prevRMSValue : Float = 0.3
     //fft setup object for 1024 values going forward (time domain -> frequency domain)
     let fftSetup = vDSP_DFT_zop_CreateSetup(nil, 1024, vDSP_DFT_Direction.FORWARD)
-    let model = try! vocal_trained_model(configuration: MLModelConfiguration())
+    var bufferList : [Float] = []
+    var check = 0
+    var sampleTime = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
-            //print("Check1 : \(Thread.current)")
             self.navigationController?.navigationBar.isHidden = true
             self.backgroundImageView.image = UIImage(named: "lessonBackground")
             self.backgroundImageView.transform = self.backgroundImageView.transform.rotated(by: .pi/2 * 3)
@@ -118,27 +121,32 @@ class VocalLessonViewController: BaseViewController {
             for i in self.beltCollection {
                 i.setCornerRadius2(10)
             }
-  
+        }
+        
+        audioEngineQueue.async { [weak self] in
+            guard let self = self else { return }
+
+            self.initPlay()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.global().async {
-            //print("check2 : \(Thread.current)")
-            self.initPlay()
-        }
-        
+   
     }
     override func viewWillDisappear(_ animated: Bool) {
+        //print("viewWillDisappear called")
         super.viewWillDisappear(animated)
         appDelegate.shouldSupportAllOrientation = true
-        self.stop()
+        audioEngineQueue.async { [weak self] in
+            guard let self = self else { return }
+            self.stop()
+        }
     }
     
     // MARK: back button
     @IBAction func backButtonTouchUpInside(_ sender: UIButton) {
+
         let mainTabBarController = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(identifier: "MainTabBarController")
         changeRootViewController(mainTabBarController)
     }
@@ -146,150 +154,78 @@ class VocalLessonViewController: BaseViewController {
 }
 
 // MARK: audio play
-
 extension VocalLessonViewController {
     func initPlay() {
-        // Connect audio player and time pitch node to audio engine's output node
-        
-        
-        
-        
         // MARK: Set up Audio Session
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setCategory(AVAudioSession.Category.playAndRecord, options: .defaultToSpeaker)
-        
-        //audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
-        
         try! audioSession.setActive(true)
-        //audioPlayerNode.volume = 1.0
-        //self.audioEngine.connect(audioInputNode, to: self.mixerNode, format: inputFormat)
-        //Connect mixer to mainMixer
-        //self.audioEngine.connect(self.mixerNode, to: self.audioEngine.mainMixerNode, format: inputFormat)
+       
+        self.audioEngine = AVAudioEngine()
+        self.audioPlayerNode = AVAudioPlayerNode()
         
-        // Start music playback
-
-        //Tap on the mixer output (MIXER HAS BOTH MICROPHONE AND 1K.mp3)
-        /* self.mixerNode.installTap(onBus: 0, bufferSize: AVAudioFrameCount((inputFormat.sampleRate)! * 0.4), format: inputFormat, block: { (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
-         
-         
-         })*/
+        let audioInputNode = audioEngine.inputNode
+        let inputFormat = audioInputNode.inputFormat(forBus: 0)
+        let outputFormat = audioInputNode.outputFormat(forBus: 0)
+        
+        // MARK: audio player setting
         self.audioFileURL = Bundle.main.url(forResource: "Fine-Melody", withExtension: "mp3")!
         self.audioFile = try! AVAudioFile(forReading: audioFileURL)
         self.audioFormat = audioFile.processingFormat
-        //print("play format : \(audioFormat)")
         self.audioBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
         try! self.audioFile.read(into: audioBuffer!)
         
-        // Set up a band-pass filter
-        let bandPassFilter = AVAudioUnitEQ(numberOfBands: 1)
-        let filterParameters = bandPassFilter.bands[0]
-        filterParameters.filterType = .bandPass
-        filterParameters.frequency = 100.0 // Center frequency
-        filterParameters.bandwidth = 2.0 // Bandwidth in octaves
-        filterParameters.gain = 0.0 // Gain in dB
-        filterParameters.bypass = false
-        
-
-        audioEngine.attach(bandPassFilter)
         self.audioEngine.attach(audioPlayerNode)
         
-        self.audioInputNode = audioEngine.inputNode
-        let inputFormat = audioInputNode.inputFormat(forBus: 0)
-        let format = audioInputNode.outputFormat(forBus: 0)
-        
-        audioEngine.connect(audioInputNode, to: bandPassFilter, format: format)
-        
-        audioEngine.connect(bandPassFilter, to: audioEngine.outputNode, format:audioEngine.outputNode.outputFormat(forBus: 0))
         self.audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: audioFormat)
     
         audioPlayerNode.scheduleBuffer(audioBuffer!) {
-            self.stop()
+            //self.stop()
         }
+        
         let bus = 0
-        let sampleRate = audioEngine.inputNode.inputFormat(forBus: 0).sampleRate
-        let timeInterval = 1.0
-        //print("sample rate :\(UInt32(audioEngine.inputNode.inputFormat(forBus: 0).sampleRate))")
-        //print("format : \(audioEngine.inputNode.inputFormat(forBus: 0))")
-        //print("input data : \(audioEngine.inputNode.inputFormat(forBus: 0).formatDescription)")
+        let sampleRate = inputFormat.sampleRate
+        let timeInterval = 0.1
         let bufferSize = AVAudioFrameCount(sampleRate * timeInterval)
-        //print("buffer size : \(bufferSize)")
         let format2 = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 1)
-        self.audioInputNode.installTap(onBus: 0, bufferSize: bufferSize, format: format2) { [self] (buffer, time) in
+        let bufferFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 48000, channels: 1, interleaved: false)!
+        // MARK: installtap - audioInputNode
+        let desiredFormat = self.createDesiredFormat()
+        
+        audioInputNode.installTap(onBus: 0, bufferSize: bufferSize, format: format2) { [weak self] (buffer, time) in
+            guard let self = self else { return }
             let voicePitch = self.processAudioData(buffer: buffer)
-            //let isolatedBuffer = self.isolateVoice(from: buffer)
             
-            DispatchQueue.main.async {
-                self.voicePitch = voicePitch
+            self.sampleTime += Int(bufferSize)
+            let currentTime = Double(sampleTime) / Double(sampleRate)
+            
+            //print("record time : \(currentTime)")
+            for i in 0..<self.lyrics.mr_sec.count {
+                if (sampleTime >= Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].0  )) && sampleTime < Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].1 ))) {
+                    if let channelData = buffer.floatChannelData {
+                        let channelDataValue = channelData.pointee
+                        let channelDataValueArray = stride(
+                            from: 0,
+                            to: Int(buffer.frameLength),
+                            by: buffer.stride
+                        ).map { channelDataValue[$0] }
+                        self.bufferList += channelDataValueArray
+                    }
+                    self.check += 1
+                }
+                if (self.check == 4) {
+                    print("record time : \(currentTime)")
+                    self.processBuffer(self.lyrics.mr_sec[i].2, self.bufferList, i)
+                    self.check = 0
+                    self.bufferList = []
+                }
             }
-            if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
-            {
-                let currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
-                //print("record time : \(currentTime)")
-                let currentTime1 = Int(currentTime)
-                for i in self.lyrics.vocalFryTime {
-                    if (Int(i) == currentTime1) {
-                        DispatchQueue.global().async {
-                            //let isolatedBuffer = self.isolateVoice(from: buffer)
-                            self.processBuffer("vocal_fry",buffer)
-                        }
-                    }
-                }
-                for i in self.lyrics.vocalFryTime {
-                    
-                    if( Int(i)+1 != 18 ){
-                        if (Int(i)+1 == currentTime1) {
-                            DispatchQueue.main.async {
-                                if( self.labelArray.contains("True") ){
-                                    self.vocalFryCount += 1
-                                    self.vocalFryCountLabel.text = String(vocalFryCount)
-                                    self.labelArray = []
-                                }
-                            }
-                        }
-                    }
-                }
-                for i in self.lyrics.vibratoTime {
-                    if (Int(i) == currentTime1) {
-                        DispatchQueue.global().async {
-                            self.processBuffer("vibrato",buffer)
-                        }
-                    }
-                }
-                for i in self.lyrics.vibratoTime {
-                    if (Int(i)+1 == currentTime1) {
-                        DispatchQueue.main.async {
-                            if( self.labelArray.contains("True") ){
-                                self.vibratoCount += 1
-                                self.vibratoCountLabel.text = String(vibratoCount)
-                                self.labelArray = []
-                            }
-                        }
-                    }
-                }
-                
-                for i in self.lyrics.beltTime {
-                    if (Int(i) == currentTime1) {
-                        DispatchQueue.global().async {
-                            self.processBuffer("belt",buffer)
-                        }
-                    }
-                }
-                for i in self.lyrics.beltTime {
-                    if (Int(i)+1 == currentTime1) {
-                        DispatchQueue.main.async {
-                            if( self.labelArray.contains("True") ){
-                                self.beltCount += 1
-                                self.beltCountLabel.text = String(beltCount)
-                                self.labelArray = []
-                            }
-                        }
-                    }
-                }
-                
-            }
+            self.voicePitch = voicePitch
+           
+            
             
             do{
-                // Write the audio buffer to a file
+                // MARK: Write the audio buffer to a file
                 if self.recordFile == nil {
                     // Create an audio file and write the header
                     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -299,32 +235,33 @@ extension VocalLessonViewController {
                     self.recordFile = try AVAudioFile(forWriting: fileURL, settings: inputFormat.settings)
                     try self.recordFile?.write(from: buffer)
                 } else {
-                    // Append the buffer to the audio file
+                    // MARK: Append the buffer to the audio file
                     try self.recordFile?.write(from: buffer)
                 }
             } catch {
                 print("Error writing audio buffer: \(error.localizedDescription)")
             }
-            
-            
         }
         
-        self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format : audioFormat) { (buffer, time) in
+        
+        // MARK: installtap - audioPlayerNode
+        self.audioPlayerNode.installTap(onBus: bus, bufferSize: 1024, format : audioFormat) { [weak self] (buffer, time) in
+            guard let self = self else { return }
             let songPitch = self.processAudioData(buffer: buffer)
-            //print("song Pitch : \(songPitch)")
-            //print("play time : \(time)")
+            
             DispatchQueue.main.async {
                 self.songPitch = songPitch
             }
             DispatchQueue.global().async {
+                
                 if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime)
                 {
                     var currentTime = Float(playerTime.sampleTime) / Float(playerTime.sampleRate)
                     let currentTimeString = self.convertNSTimeInterval2String(currentTime)
-                    //print("Current time: \(currentTime)")
-                    
+                   
                     if(currentTime > 206) {
                         self.stop()
+                        self.pushToFeedBack()
                     }
                     
                     for i in 0..<self.lyrics.startLyricsTime1.count {
@@ -332,10 +269,8 @@ extension VocalLessonViewController {
                         self.endTimeCheck1(i,self.lyrics.endLyricsTime1[i], currentTime: currentTimeString)
                         self.pitchCheck1(index: i, startTime1: self.lyrics.startLyricsTime1[i], endTime1: self.lyrics.endLyricsTime1[i], currentTime: currentTimeString)
                         if (i < self.lyrics.startLyricsTime2.count) {
-                            
                             self.startTimeCheck2(i, self.lyrics.startLyricsTime2[i], currentTime: currentTimeString)
                             self.endTimeCheck2(i,self.lyrics.endLyricsTime2[i], currentTime: currentTimeString)
-                            
                             self.pitchCheck2(index: i, startTime2:  self.lyrics.startLyricsTime2[i], endTime2: self.lyrics.endLyricsTime2[i], currentTime: currentTimeString)
                         }
                         
@@ -346,52 +281,13 @@ extension VocalLessonViewController {
         
         try! audioEngine.start()
         audioPlayerNode.play()
-        // Observe changes to the system's audio output volume
-        
-        
-        // Wait for music playback to finish
-        
-        
-        /*
-         while audioPlayerNode.isPlaying {
-         RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.1))
-         //print("run roop")
-         }
-         */
     }
- 
-    func isolateVoice(from buffer: AVAudioPCMBuffer) -> AVAudioPCMBuffer? {
-       
-        let lowPassFilter = LowPassFilter()
-        // Convert buffer to floating-point representation
-        let floatBuffer = buffer
-        let floatData = floatBuffer.floatChannelData![0]
-        
-        // Apply low-pass filter to isolate voice
-        lowPassFilter.process(floatData, numSamples: Int(buffer.frameLength), sampleRate: Float(buffer.format.sampleRate),  cutoffFrequency: 900.0)
-        
-        // Convert floating-point buffer back to integer representation
-        let isolatedbuffer = floatBuffer
-        let dataOut = isolatedbuffer.floatChannelData![0]
-        //for i in 0..<Int(buffer.frameLength) {
-        //    let floatSample = floatData[i]
-          
-        //    dataOut[i] = floatSample
-        //}
-        if let channelData = isolatedbuffer.floatChannelData {
-            let channelDataValue = channelData.pointee
-            let channelDataValueArray = stride(
-                from: 0,
-                to: Int(isolatedbuffer.frameLength),
-                by: buffer.stride
-            ).map { channelDataValue[$0] }
-            print(channelDataValueArray)
-        }
-       
-        
-        return isolatedbuffer
+    func createDesiredFormat() -> AVAudioFormat {
+        let desiredSampleRate: Double = 44100.0
+        let desiredChannelCount: AVAudioChannelCount = 1 // Mono
+        let desiredFormat = AVAudioFormat(standardFormatWithSampleRate: desiredSampleRate, channels: desiredChannelCount)
+        return desiredFormat!
     }
- 
     
     func returnVocalFryIndex(startTime : Float, endTime: Float) -> [Int] {
         var index : [Int] = []
@@ -400,7 +296,6 @@ extension VocalLessonViewController {
                 index.append(i)
                 //print("fry index : \(i) fry time : \(time)")
             }
-            
         }
         return index
     }
@@ -425,165 +320,80 @@ extension VocalLessonViewController {
         }
         return index
     }
-    func processBuffer(_ label : String, _ buffer: AVAudioPCMBuffer) {
-        print("process buffer : \(buffer.frameLength)")
-        guard let recordingFormat = AVAudioFormat(
-            commonFormat: .pcmFormatFloat32,
-            sampleRate: Double(17640),
-            channels: 1,
-            interleaved: true
-        ), let formatConverter = AVAudioConverter(from:audioEngine.inputNode.inputFormat(forBus: 0), to: recordingFormat) else { return }
-        guard let pcmBuffer = AVAudioPCMBuffer(
-            pcmFormat: recordingFormat,
-            frameCapacity: AVAudioFrameCount(recordingFormat.sampleRate)
-        ) else { return }
-        
-        var error: NSError?
-        let inputBlock: AVAudioConverterInputBlock = { _, outStatus in
-            outStatus.pointee = AVAudioConverterInputStatus.haveData
-            return buffer
-        }
-        
-        formatConverter.convert(to: pcmBuffer, error: &error, withInputFrom: inputBlock)
-        
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        //var isolatedBuffer = self.isolateVoice(buffer: pcmBuffer)
-        if let channelData = pcmBuffer.floatChannelData {
-            let channelDataValue = channelData.pointee
-            let channelDataValueArray = stride(
-                from: 0,
-                to: Int(pcmBuffer.frameLength),
-                by: buffer.stride
-            ).map { channelDataValue[$0] }
-            
-            let isolatedBuffer = self.isolateVoice(from: pcmBuffer)
-            print("----------------------------------------\n\n")
-            let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label)
-            self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
-            
-            //print("channelDataValue : \(channelDataValueArray)")
-            /*
-            let mean = Float(channelDataValueArray.reduce(0,+))/Float(channelDataValueArray.count)
-            let std = self.standardDeviation(arr: channelDataValueArray)
-            print("converted buffer : \(channelDataValueArray.count)")
-            
-            var newArray = stride(
-                from: 0,
-                to: Int(pcmBuffer.frameLength),
-                by: 1
-            ).map { channelDataValue[$0] - mean / std }
-            
-            var p : UnsafeMutableRawPointer = UnsafeMutableRawPointer(&newArray)
-            
-            //var input : [Float]
-            let input = try! MLMultiArray(dataPointer: p, shape: [1,44100,1], dataType: .float32, strides: [1,1,1])
-            let prediction = try! model.prediction(conv1d_33_input: input)
-            // Pass the input data to the model
-            
-            // Get the output result
-            let output = prediction.Identity
-            var outputArray : [Double] = []
-            for i in 0..<output.count {
-                outputArray.append(output[i].doubleValue)
-            }
-            
-            let maxIndex = self.getMaxIndex(output)
-            //print("max Index: \(maxIndex)")
-            
-            //outputArray.remove(at: maxIndex)
-            //let secondMax = outputArray.max()
-            //let secondIndex = outputArray.firstIndex(of: secondMax!)
-            self.labelArray.append(maxIndex)
-            //self.labelArray.append(secondIndex!)
-            // Update the UI with the output result
-            DispatchQueue.main.async {
-                // Update the UI with the output value
-                //print("model output : \(output)")
-                //print("fft magnitudes : \(fftMagnitudes)")
-                //print("input : \(input)")
-                //print(output)
-                switch maxIndex {
-                case 0:
-                    print("label : \(label), prediction : belt, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
-                    print("\n")
-                case 1:
-                    print("label : \(label), prediction : straight, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
-                    print("\n")
-                case 2:
-                    print("label : \(label), prediction : vibrato, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
-                    print("\n")
-                case 3:
-                    print("label : \(label), prediction : vocal fry, probability : belt-\(outputArray[0]), vibrato-\(outputArray[2]), vocal fry-\(outputArray[3])")
-                    print("\n")
-                default:
-                    print("default")
-                }
-            }
-             */
-        }
-    }
-/*
-    func isolateVoice(buffer : AVAudioPCMBuffer) -> AVAudioPCMBuffer {
-        let sampleCount = buffer.frameLength
-        let channelCount = Int(buffer.format.channelCount)
-
-        let samples = buffer.floatChannelData!
-        var magnitudes = [Float](repeating: 0.0, count: Int(sampleCount))
-        
-        vDSP_vdist(samples[0], 1, samples[1], 1, &magnitudes, 1, vDSP_Length(sampleCount))
-
-        var normalizedMagnitudes = [Float](repeating: 0.0, count: Int(sampleCount))
-        vDSP_vsmul(magnitudes, 1, [2.0 / Float(sampleCount)], &normalizedMagnitudes, 1, vDSP_Length(sampleCount))
-
-        let noiseThreshold = Float(0.1) // Set noise threshold to 0.1
-        var noiseMagnitudes = [Float](repeating: 0.0, count: Int(sampleCount))
-        vDSP_vclr(&noiseMagnitudes, 1, vDSP_Length(sampleCount))
-        vDSP_vthr(normalizedMagnitudes, 1, [noiseThreshold], &noiseMagnitudes, 1, vDSP_Length(sampleCount))
-        vDSP_vsub(noiseMagnitudes, 1, normalizedMagnitudes, 1, &normalizedMagnitudes, 1, vDSP_Length(sampleCount))
-
-        let voiceBuffer = AVAudioPCMBuffer(pcmFormat: buffer.format, frameCapacity: buffer.frameCapacity)!
-        voiceBuffer.frameLength = buffer.frameLength
-
-        let voiceSamples = voiceBuffer.floatChannelData!
-        for channel in 0..<channelCount {
-            vDSP_vmul(samples[channel], 1, normalizedMagnitudes, 1, voiceSamples[channel], 1, vDSP_Length(sampleCount))
-        }
-        return voiceBuffer
-    }
- */
-
-    func didSuccessPredict(_ response : VocalLessonResponse) {
-        self.labelArray.append(response.result)
-        print(labelArray)
-        print("성공")
-    }
-    func failedToRequest(message: String) {
-        //self.presentAlert(title: message)
-        print(message)
-    }
     
-    func getMaxIndex(_ array: MLMultiArray) -> Int {
-        var maxIndex = 0
-        var maxValue = 0.0
-        for i in 0..<array.count {
-            if let value = array[i] as? Double, value > maxValue {
-                maxValue = value
-                maxIndex = i
+    // MARK: request buffer
+    func processBuffer(_ label : String,_ buffer: [Float], _ idx: Int) {
+   
+        if let pcmBuffer = floatArrayToPCMBuffer(floatArray: buffer, sampleRate: 19200, channels: 1) {
+            //print("PCM buffer created")
+            
+            guard let recordingFormat = AVAudioFormat(
+                commonFormat: .pcmFormatFloat32,
+                sampleRate: Double(17640),
+                channels: 1,
+                interleaved: true
+            ), let formatConverter = AVAudioConverter(from: pcmBuffer.format, to: recordingFormat) else { return }
+            
+            guard let convertedBuffer = AVAudioPCMBuffer(
+                pcmFormat: recordingFormat,
+                frameCapacity: AVAudioFrameCount(recordingFormat.sampleRate)
+            ) else { return }
+            
+            var error: NSError?
+            let inputBlock: AVAudioConverterInputBlock = { _, outStatus in
+                outStatus.pointee = AVAudioConverterInputStatus.haveData
+                return pcmBuffer
             }
+            
+            formatConverter.convert(to: convertedBuffer, error: &error, withInputFrom: inputBlock)
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            //var isolatedBuffer = self.isolateVoice(buffer: pcmBuffer)
+            if let channelData = convertedBuffer.floatChannelData {
+                let channelDataValue = channelData.pointee
+                let channelDataValueArray = stride(
+                    from: 0,
+                    to: Int(convertedBuffer.frameLength),
+                    by: pcmBuffer.stride
+                ).map { channelDataValue[$0] }
+                
+                print("converted buffer : \(channelDataValueArray.count)")
+                
+                let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label, idx: idx)
+                //print(channelDataValueArray)
+                
+                print("label : \(vocalLessonRequest.label)")
+                print("idx : \(vocalLessonRequest.idx)")
+                
+                self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
+            }
+        } else {
+            print("Error creating PCM buffer")
         }
-        return maxIndex
+       
     }
-    
-    func standardDeviation(arr : [Float]) -> Float
-    {
-        let length = Float(arr.count)
-        let avg = arr.reduce(0, {$0 + $1}) / length
-        let sumOfSquaredAvgDiff = arr.map { pow($0 - avg, 2.0)}.reduce(0, {$0 + $1})
-        return sqrt(sumOfSquaredAvgDiff / length)
+    func floatArrayToPCMBuffer(floatArray: [Float], sampleRate: Double, channels: AVAudioChannelCount) -> AVAudioPCMBuffer? {
+        let frameCount = AVAudioFrameCount(floatArray.count) / channels
+        let audioFormat = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: channels)
+        guard let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat!, frameCapacity: frameCount) else {
+            print("Error creating PCM buffer")
+            return nil
+        }
+
+        pcmBuffer.frameLength = frameCount
+        let channelData = pcmBuffer.floatChannelData
+
+        for i in 0..<floatArray.count {
+            let channelIndex = 0
+            let frameIndex = i
+            channelData?[channelIndex][frameIndex] = floatArray[i]
+        }
+        return pcmBuffer
     }
+   
     
     func processAudioData(buffer: AVAudioPCMBuffer) -> Float{
         guard let channelData = buffer.floatChannelData?[0] else {return 0}
@@ -600,13 +410,20 @@ extension VocalLessonViewController {
         //print("fftMagnotudes: \(fftMagnitudes)")
         return rmsValue
     }
+    // MARK: stop, push to feed back view
     func stop() {
-        audioEngine.inputNode.removeTap(onBus: 0)
-        audioPlayerNode.removeTap(onBus: 0)
-        audioEngine.stop()
-        //audioPlayerNode.stop()
+        //print("audio engine stop")
+        self.audioEngine.inputNode.removeTap(onBus: 0)
+        self.audioPlayerNode.removeTap(onBus: 0)
+        self.audioEngine.stop()
+        self.audioEngine.disconnectNodeInput(audioPlayerNode)
+        self.audioEngine.reset()
+        self.sampleTime = 0
+        //self.audioEngine = nil
+    }
+    func pushToFeedBack() {
         self.recordService.add(record: MyRecord(imageName: "fine", artist: "태연", title: "fine", recordURL: (self.recordPath!)))
-        //print("recordpath1 :  \(self.recordPath!)")
+       
         DispatchQueue.main.async {
             let feedbackVC = self.storyboard?.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
             feedbackVC.pitchCount = self.pitchCount
@@ -617,7 +434,7 @@ extension VocalLessonViewController {
         }
     }
     
-    //토스트 메시지
+    // MARK: toast message
     func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)){
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -633,27 +450,26 @@ extension VocalLessonViewController {
     }
 }
 
-extension VocalLessonViewController: AVAudioPlayerDelegate {
+// MARK: time check
+extension VocalLessonViewController {
     func startTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
-            //self.koreanLirics1.textColor = .blue
-            
+        
             //self.koreanLirics1.text = lyrics.koreanLyrics[index*2]
             //self.koreanLirics2.text = lyrics.koreanLyrics[index*2+1]
             
-            DispatchQueue.main.async { [self] in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2], attributes: strokeTextAttributes)
                 if (index < lyrics.startLyricsTime1.count - 1 ) {
                     self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: defaultTextAttributes)
                 }
                 
                 self.progress1.progress = 0.0
-                
-                
-                
+                 
                 let startTime1 = self.convertString2Time(self.lyrics.startLyricsTime1[index])
                 let endTime2 : Float?
-                if(index < self.lyrics.startLyricsTime1.count - 1  ) {
+                if(index < self.lyrics.startLyricsTime1.count - 1 ) {
                     endTime2 = self.convertString2Time(self.lyrics.endLyricsTime2[index])
                 } else {
                     endTime2 = self.convertString2Time(self.lyrics.endLyricsTime1[index])
@@ -662,25 +478,23 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
                 
                 let timeIndex1 = self.returnVocalFryIndex(startTime: startTime1, endTime: endTime2!)
                 for i in timeIndex1 {
-                    DispatchQueue.main.async {
+                
                         self.vocalFryCollection[i].isHidden = false
-                    }
+                    
                 }
                 let timeIndex2 = self.returnVibratoIndex(startTime: startTime1, endTime: endTime2!)
                 for i in timeIndex2 {
-                    DispatchQueue.main.async {
+                  
                         self.vibratoCollection[i].isHidden = false
-                    }
+                    
                 }
                 let timeIndex3 = self.returnBeltIndex(startTime: startTime1, endTime: endTime2!)
                 for i in timeIndex3 {
-                    DispatchQueue.main.async {
+                    
                         self.beltCollection[i].isHidden = false
-                    }
+                    
                 }
-                
-                
-                
+   
             }
         }
     }
@@ -729,9 +543,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
             }
         }
     }
-    
-    
-    
+  
     func endTimeCheck1(_ index: Int, _ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics1.textColor = .white
@@ -764,7 +576,8 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
     func startTimeCheck2(_ index : Int,_ lyricsTime: String, currentTime : String) {
         if (lyricsTime == currentTime) {
             //self.koreanLirics2.textColor = .blue
-            DispatchQueue.main.async { [self] in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.koreanLirics1.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+2], attributes: defaultTextAttributes)
                 self.koreanLirics2.attributedText = NSMutableAttributedString(string: lyrics.koreanLyrics[index*2+1], attributes: strokeTextAttributes)
                 
@@ -822,8 +635,7 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
             }
         }
     }
-    func convertNSTimeInterval2String(_ time:Float
-    ) -> String {
+    func convertNSTimeInterval2String(_ time:Float ) -> String {
         let min = Int(time/60)
         let sec = Int(time.truncatingRemainder(dividingBy: 60))
         let strTime = String(format: "%02d:%02d", min, sec)
@@ -838,37 +650,30 @@ extension VocalLessonViewController: AVAudioPlayerDelegate {
         //print("real time : \(result)")
         return result
     }
-    
 }
-class LowPassFilter {
-    private var state: [Double] = [0.0, 0.0]
-    
-    func process(_ data: UnsafeMutablePointer<Float>, numSamples: Int, sampleRate: Float, cutoffFrequency: Double) {
-        let wc = 2.0 * Double.pi * cutoffFrequency / Double(sampleRate)
-        //print("wc : \(wc)")
-        let alpha = sin(wc) / (2.0 * 0.707)
-        //print("alpha : \(alpha)")
-        let b0 = (1.0 - cos(wc)) / 2.0
-        //print("b0: \(b0)")
-        let b1 = 1.0 - cos(wc)
-        //print("b1: \(b1)")
-        let b2 = (1.0 - cos(wc)) / 2.0
-        //print("b2: \(b2)")
-        let a0 = 1.0 + alpha
-        //print("a0: \(a0)")
-        let a1 = -2.0 * cos(wc)
-        //print("a1: \(a1)")
-        let a2 = 1.0 - alpha
-        //print("a2: \(a2)")
-        //print("data : \(data[0])")
-        for i in 0..<numSamples {
-            //print("data : \(data[i])")
-            let x = Double(data[i])
-            let y = (b0 * x + b1 * state[0] + b2 * state[1] - a1 * state[0] - a2 * state[1]) / a0
-            data[i] = Float(y)
-            state[1] = state[0]
-            state[0] = y
-            
+
+// MARK: server connection
+extension VocalLessonViewController {
+    func didSuccessPredict(_ response : VocalLessonResponse,_ label : String) {
+        //self.labelArray.append(response.result)
+            print("\(response.result)")
+            print("--서버 연결 성공--")
+        if response.result == "True" {
+            if label == "vocal_fry" {
+                self.vocalFryCount += 1
+                self.vocalFryCountLabel.text = String(self.vocalFryCount)
+            }
+            if label == "belt" {
+                self.beltCount += 1
+                self.beltCountLabel.text = String(self.beltCount)
+            }
+            if label == "vibrato" {
+                self.vibratoCount += 1
+                self.vibratoCountLabel.text = String(self.vibratoCount)
+            }
         }
+    }
+    func failedToRequest(message: String) {
+        print(message)
     }
 }

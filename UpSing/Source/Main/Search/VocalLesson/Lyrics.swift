@@ -6,48 +6,7 @@
 //
 
 import Foundation
-/*
-public enum StartLyricsTime1: String {
-    case time1 = "00:05"
-    case time2 = "00:11"
-    case time3 = "00:20"
-    case time4 = "00:27"
-    case time5 = "00:38"
-    case time6 = "00:44"
-    case time7 = "00:52"
-    case time8 = "01:00"
-}
-public enum EndLyricsTime1: String {
-    case time1 = "00:07"
-    case time2 = "00:15"
-    case time3 = "00:22"
-    case time4 = "00:33"
-    case time5 = "00:40"
-    case time6 = "00:49"
-    case time7 = "00:54"
-    case time8 = "01:10"
-}
-public enum StartLyricsTime2: String {
-    case time1 = "00:09"
-    case time2 = "00:16"
-    case time3 = "00:22"
-    case time4 = "00:33"
-    case time5 = "00:41"
-    case time6 = "00:49"
-    case time7 = "00:55"
-    case time8 = "01:10"
-}
-public enum EndLyricsTime2: String {
-    case time1 = "00:11"
-    case time2 = "00:19"
-    case time3 = "00:26"
-    case time4 = "00:38"
-    case time5 = "00:43"
-    case time6 = "00:51"
-    case time7 = "00:59"
-    case time8 = "01:12"
-}
- */
+
 
 struct Lyrics {
     var koreanLyrics : [String]
@@ -60,6 +19,7 @@ struct Lyrics {
     var vocalFryTime : [Float]
     var beltTime : [Float]
     var vibratoTime : [Float]
+    var mr_sec: [(Float, Float, String)]
 
     init() {
         self.koreanLyrics = [
@@ -248,6 +208,55 @@ struct Lyrics {
             114,
             125,
             147,149,154
+        ]
+        
+        self.mr_sec = [(6.5,   6.9, "vocal_fry"),
+                       (  9.5,   9.9, "vocal_fry"),
+                       ( 13.6,  14.0, "vocal_fry"),
+                       ( 17.2,  17.6, "vocal_fry"),
+                       ( 17.6,  18.0, "vocal_fry"),
+                       ( 20.5,  20.9, "vocal_fry"),
+                       ( 25.7,  26.1, "vibrato"),
+                       ( 28.2,  28.6, "belt"),
+                       ( 29.6,  30.0, "belt"),
+                       ( 31.0,  31.4, "belt"),
+                       ( 32.5,  32.9, "vibrato"),
+                       ( 36.5,  36.9, "vibrato"),
+                       ( 39.3,  39.7, "belt"),
+                       ( 47.9,  48.3, "vibrato"),
+                       ( 50.2,  50.6, "belt"),
+                       ( 52.6,  53.0, "belt"),
+                       ( 59.0,  59.4, "vibrato"),
+                       
+                       ( 75.0,  75.4, "vocal_fry"),
+                       ( 80.4,  80.8, "vocal_fry"),
+                       ( 80.7,  81.1, "belt"),
+                       ( 86.0,  86.4, "vocal_fry"),
+                       ( 90.2,  90.6, "vocal_fry"),
+                       
+                       ( 94.5,  94.9, "vibrato"),
+                       ( 95.8,  96.2, "belt"), 
+                       ( 96.4,  96.8, "vocal_fry"),
+                       ( 97.3,  97.7, "belt"),
+                       ( 98.6,  99.0, "vibrato"),
+                       ( 99.9, 100.3, "vocal_fry"),
+                       (102.9, 103.3, "belt"),
+                       (105.5, 105.9, "belt"),
+                       (107.4, 107.8, "belt"),
+                       (114.1, 114.5, "vibrato"),
+                       
+                       (116.4, 116.8, "belt"),
+                       (118.8, 119.2, "belt"),
+                       (125.2, 125.6, "vibrato"),
+                       (142.1, 142.5, "vocal_fry"),
+                       (147.1, 147.5, "vibrato"),
+                       
+                       (149.3, 149.7, "vibrato"),
+                       (153.9, 154.3, "vibrato"),
+                       (160.7, 161.1, "belt"),
+                       (163.0, 163.4, "belt"),
+                       (171.6, 172.0, "belt"),
+                       (174.3, 174.7, "belt")
         ]
     }
 }

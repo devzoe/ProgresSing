@@ -17,7 +17,7 @@ final class RankingDataManager {
     func createRanking(_ ranking: Ranking, completion: ((Error?) -> Void)? = nil) {
         let collectionPath = "scores"
         let collectionListener = Firestore.firestore().collection(collectionPath)
-        
+       
         guard let dictionary = ranking.asDictionary else {
             print("decode error")
             return

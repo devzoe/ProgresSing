@@ -9,4 +9,5 @@ import Foundation
 struct VocalLessonRequest: Encodable {
     var data: [Float]
     var label : String
+    var idx : Int
 }

@@ -22,7 +22,6 @@ class MyRecordViewModel {
             self.recordList.append(record)
         }
     }
-    
     // Create
     public func add(record : MyRecord) {
         self.recordList.append(record)
