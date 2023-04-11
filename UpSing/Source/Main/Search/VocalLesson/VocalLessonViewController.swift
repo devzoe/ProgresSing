@@ -18,7 +18,7 @@ class VocalLessonViewController: BaseViewController {
     // MARK: 레코드 객체 생성 - 데이터를 가져오기 위함
     private var recordService: MyRecordViewModel = MyRecordViewModel.shared
     let audioEngineQueue = DispatchQueue(label: "com.upsing.audioEngineQueue")
-    
+
     let lyrics : Lyrics = Lyrics()
     
     // MARK: lyric color - skyblue
@@ -97,7 +97,8 @@ class VocalLessonViewController: BaseViewController {
     let fftSetup = vDSP_DFT_zop_CreateSetup(nil, 1024, vDSP_DFT_Direction.FORWARD)
     var bufferList : [Float] = []
     var check = 0
-    var sampleTime = 0
+    var sampleTime: AVAudioFramePosition = 0
+    var currentTimeCheck:Float = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -127,7 +128,9 @@ class VocalLessonViewController: BaseViewController {
             guard let self = self else { return }
 
             self.initPlay()
+
         }
+ 
     }
     
     override func viewDidLoad() {
@@ -196,12 +199,17 @@ extension VocalLessonViewController {
             guard let self = self else { return }
             let voicePitch = self.processAudioData(buffer: buffer)
             
-            self.sampleTime += Int(bufferSize)
-            let currentTime = Double(sampleTime) / Double(sampleRate)
-            
+            //self.sampleTime += AVAudioFramePosition(bufferSize)
+            //let currentTime = Double(sampleTime) / sampleRate
             //print("record time : \(currentTime)")
+            self.currentTimeCheck += 0.1
+            //print("record time1 : \(currentTimeCheck)")
             for i in 0..<self.lyrics.mr_sec.count {
-                if (sampleTime >= Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].0  )) && sampleTime < Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].1 ))) {
+                
+                //if (sampleTime >= Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].0  )) //&& sampleTime < Int64(bufferFormat.sampleRate * Double(self.lyrics.mr_sec[i].1)))
+                if (self.currentTimeCheck >= self.lyrics.mr_sec[i].0 && self.currentTimeCheck <= self.lyrics.mr_sec[i].1)
+                {
+                   // print("record time1 : \(currentTimeCheck)")
                     if let channelData = buffer.floatChannelData {
                         let channelDataValue = channelData.pointee
                         let channelDataValueArray = stride(
@@ -209,12 +217,16 @@ extension VocalLessonViewController {
                             to: Int(buffer.frameLength),
                             by: buffer.stride
                         ).map { channelDataValue[$0] }
+                        //print("buffer list value count : \(channelDataValueArray.count)")
                         self.bufferList += channelDataValueArray
                     }
+                    
                     self.check += 1
                 }
                 if (self.check == 4) {
-                    print("record time : \(currentTime)")
+                    //print("record time in timer : \(currentTimeCheck)")
+                    //print("record time : \(currentTime)")
+                    //print("buffer list : \(bufferList.count)")
                     self.processBuffer(self.lyrics.mr_sec[i].2, self.bufferList, i)
                     self.check = 0
                     self.bufferList = []
@@ -360,13 +372,13 @@ extension VocalLessonViewController {
                     by: pcmBuffer.stride
                 ).map { channelDataValue[$0] }
                 
-                print("converted buffer : \(channelDataValueArray.count)")
+                //print("converted buffer : \(channelDataValueArray.count)")
                 
                 let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label, idx: idx)
-                //print(channelDataValueArray)
+                print("\(channelDataValueArray),")
                 
-                print("label : \(vocalLessonRequest.label)")
-                print("idx : \(vocalLessonRequest.idx)")
+                //print("label : \(vocalLessonRequest.label)")
+                //print("idx : \(vocalLessonRequest.idx)")
                 
                 self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
             }
@@ -419,6 +431,7 @@ extension VocalLessonViewController {
         self.audioEngine.disconnectNodeInput(audioPlayerNode)
         self.audioEngine.reset()
         self.sampleTime = 0
+        self.currentTimeCheck = 0
         //self.audioEngine = nil
     }
     func pushToFeedBack() {
@@ -656,8 +669,8 @@ extension VocalLessonViewController {
 extension VocalLessonViewController {
     func didSuccessPredict(_ response : VocalLessonResponse,_ label : String) {
         //self.labelArray.append(response.result)
-            print("\(response.result)")
-            print("--서버 연결 성공--")
+        //print("\(response.result)")
+        //print("--서버 연결 성공--")
         if response.result == "True" {
             if label == "vocal_fry" {
                 self.vocalFryCount += 1
