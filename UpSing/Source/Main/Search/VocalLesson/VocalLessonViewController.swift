@@ -372,13 +372,13 @@ extension VocalLessonViewController {
                     by: pcmBuffer.stride
                 ).map { channelDataValue[$0] }
                 
-                //print("converted buffer : \(channelDataValueArray.count)")
+                print("converted buffer : \(channelDataValueArray.count)")
                 
                 let vocalLessonRequest = VocalLessonRequest(data: channelDataValueArray, label: label, idx: idx)
-                print("\(channelDataValueArray),")
+                //print("\(channelDataValueArray),")
                 
-                //print("label : \(vocalLessonRequest.label)")
-                //print("idx : \(vocalLessonRequest.idx)")
+                print("label : \(vocalLessonRequest.label)")
+                print("idx : \(vocalLessonRequest.idx)")
                 
                 self.vocalLessonDataManager.predict(parameters: vocalLessonRequest, delegate: self)
             }
@@ -669,8 +669,8 @@ extension VocalLessonViewController {
 extension VocalLessonViewController {
     func didSuccessPredict(_ response : VocalLessonResponse,_ label : String) {
         //self.labelArray.append(response.result)
-        //print("\(response.result)")
-        //print("--서버 연결 성공--")
+        print("\(response.result)")
+        print("--서버 연결 성공--")
         if response.result == "True" {
             if label == "vocal_fry" {
                 self.vocalFryCount += 1
