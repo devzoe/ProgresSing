@@ -669,8 +669,8 @@ extension VocalLessonViewController {
 extension VocalLessonViewController {
     func didSuccessPredict(_ response : VocalLessonResponse,_ label : String) {
         //self.labelArray.append(response.result)
-        print("\(response.result)")
-        print("--서버 연결 성공--")
+        //print("\(response.result)")
+        //print("--서버 연결 성공--")
         if response.result == "True" {
             if label == "vocal_fry" {
                 self.vocalFryCount += 1
